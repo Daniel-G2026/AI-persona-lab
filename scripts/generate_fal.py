@@ -16,7 +16,8 @@ Per experiment folder:
     review.csv         one row per seed for scoring
 
 Safety rails: refuses to start if the batch could push recorded spend past the cap, skips seeds already
-generated, and stops at the first failed request instead of retrying.
+generated, and stops at the first failed request instead of retrying. The raw API response is saved before the
+image is downloaded, so if a download fails, rerunning the same seeds finishes it without paying for a new generation.
 """
 
 import argparse
@@ -27,12 +28,20 @@ import json
 import math
 import os
 import shutil
+import ssl
 import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
+
+# Python's default CA store on this machine rejects fal's image CDN (v3b.fal.media); certifi's bundle works.
+try:
+    import certifi
+    SSL_CTX = ssl.create_default_context(cafile=certifi.where())
+except ImportError:
+    SSL_CTX = ssl.create_default_context()
 REVIEW_COLUMNS = [
     "seed", "file", "realism_1to5", "skin_texture_1to5", "eyes_1to5", "hair_hairline_1to5",
     "asymmetry_natural_1to5", "matches_brief_1to5", "scar_visible_side", "beauty_mark_visible_side",
@@ -84,13 +93,13 @@ def call_fal(api_url, key, payload):
         headers={"Authorization": f"Key {key}", "Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=300) as resp:
+    with urllib.request.urlopen(req, timeout=300, context=SSL_CTX) as resp:
         headers = {k.lower(): v for k, v in resp.headers.items() if k.lower().startswith("x-fal")}
         return json.loads(resp.read()), headers
 
 
 def download(url, dest):
-    with urllib.request.urlopen(url, timeout=300) as resp:
+    with urllib.request.urlopen(url, timeout=300, context=SSL_CTX) as resp:
         data = resp.read()
     dest.write_bytes(data)
     return hashlib.sha256(data).hexdigest()
@@ -187,11 +196,15 @@ def main():
         return
 
     spent = sum(r.get("cap_cost_usd", 0) for r in rows if r.get("billed", True))
-    projected = spent + len(todo) * cap_cost(mp, price)
+    # Seeds with a saved response were already billed but never recorded; finishing them costs nothing new.
+    pending = [s for s in todo if (images_dir / f"seed-{s}.response.json").exists()]
+    spent += len(pending) * cap_cost(mp, price)
+    new_requests = [s for s in todo if s not in pending]
+    projected = spent + len(new_requests) * cap_cost(mp, price)
     print(f"Endpoint: {config['endpoint']}  size {size['width']}x{size['height']} ({mp:.2f} MP)")
-    print(f"Seeds: {todo}")
-    print(f"Estimated cost: ${len(todo) * mp * price:.4f} "
-          f"(conservative ${len(todo) * cap_cost(mp, price):.4f}); "
+    print(f"Seeds: {todo}" + (f" (finishing already-paid {pending} from saved responses)" if pending else ""))
+    print(f"Estimated cost: ${len(new_requests) * mp * price:.4f} "
+          f"(conservative ${len(new_requests) * cap_cost(mp, price):.4f}); "
           f"recorded so far ${spent:.4f}; cap ${cap:.2f}")
     if projected > cap:
         sys.exit(f"Refusing: projected spend ${projected:.4f} exceeds cap ${cap:.2f}.")
@@ -211,46 +224,63 @@ def main():
     new_rows = []
     for seed in todo:
         payload = {"prompt": prompt, **params, "seed": seed}
-        started = dt.datetime.now(dt.timezone.utc)
+        stem = f"seed-{seed}"
+        response_path = images_dir / f"{stem}.response.json"
+        recovered = response_path.exists()
+        started = (dt.datetime.fromtimestamp(response_path.stat().st_mtime, dt.timezone.utc) if recovered
+                   else dt.datetime.now(dt.timezone.utc))
         row = {
             "experiment": config["experiment"], "seed": seed, "endpoint": config["endpoint"],
             "requested_at_utc": started.isoformat(timespec="seconds"),
             "params_sent": {k: v for k, v in payload.items() if k != "prompt"},
             "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
+            "recovered_from_saved_response": recovered,
         }
-        try:
-            result, headers = call_fal(config["api_url"], key, payload)
-        except urllib.error.HTTPError as e:
-            row |= {"status": "error", "billed": False, "error": f"HTTP {e.code}: {e.read().decode(errors='replace')[:500]}"}
-            with ledger.open("a", encoding="utf-8") as f:
-                f.write(json.dumps(row) + "\n")
-            sys.exit(f"Seed {seed} failed, stopping. {row['error']}")
+        if recovered:
+            saved = json.loads(response_path.read_text(encoding="utf-8"))
+            result, headers = saved["body"], saved["headers"]
+        else:
+            try:
+                result, headers = call_fal(config["api_url"], key, payload)
+            except urllib.error.HTTPError as e:
+                row |= {"status": "error", "billed": False, "error": f"HTTP {e.code}: {e.read().decode(errors='replace')[:500]}"}
+                with ledger.open("a", encoding="utf-8") as f:
+                    f.write(json.dumps(row) + "\n")
+                sys.exit(f"Seed {seed} failed, stopping. {row['error']}")
+            response_path.write_text(json.dumps({"headers": headers, "body": result}, indent=2), encoding="utf-8")
 
         image = result["images"][0]
         w, h = image.get("width") or size["width"], image.get("height") or size["height"]
         out_mp = megapixels(w, h)
-        stem = f"seed-{seed}"
-        (images_dir / f"{stem}.response.json").write_text(json.dumps({"headers": headers, "body": result}, indent=2), encoding="utf-8")
+        units = headers.get("x-fal-billable-units")
         png = images_dir / f"{stem}.png"
-        digest = download(image["url"], png)
+        try:
+            if not png.exists():
+                download(image["url"], png)
+        except urllib.error.URLError as e:
+            sys.exit(f"Seed {seed} was generated (and billed) but the download failed: {e}. "
+                     "Rerun the same seeds to finish it from the saved response at no extra cost.")
+        digest = hashlib.sha256(png.read_bytes()).hexdigest()
         row |= {
             "status": "ok", "billed": True,
             "returned_seed": result.get("seed"),
             "request_id": headers.get("x-fal-request-id"),
             "fal_headers": headers,
             "width": w, "height": h, "megapixels": round(out_mp, 4),
-            "est_cost_usd": round(out_mp * price, 5),
-            "cap_cost_usd": cap_cost(out_mp, price),
+            "billable_units": float(units) if units else None,
+            "est_cost_usd": round((float(units) if units else out_mp) * price, 5),
+            "cap_cost_usd": round(float(units) * price, 5) if units else cap_cost(out_mp, price),
             "timings": result.get("timings"),
             "has_nsfw_concepts": any(result.get("has_nsfw_concepts") or []),
             "file": f"images/{png.name}", "sha256": digest, "bytes": png.stat().st_size,
             "backup": backup(png, exp_dir, backup_root),
-            "seconds_elapsed": round((dt.datetime.now(dt.timezone.utc) - started).total_seconds(), 1),
+            "seconds_elapsed": None if recovered else round((dt.datetime.now(dt.timezone.utc) - started).total_seconds(), 1),
         }
         with ledger.open("a", encoding="utf-8") as f:
             f.write(json.dumps(row) + "\n")
         flag = "  SAFETY FLAG (likely black image)" if row["has_nsfw_concepts"] else ""
-        print(f"seed {seed}: ok, returned seed {row['returned_seed']}, {w}x{h}, ~${row['est_cost_usd']}{flag}")
+        how = " (recovered, no new charge)" if recovered else ""
+        print(f"seed {seed}: ok{how}, returned seed {row['returned_seed']}, {w}x{h}, ~${row['est_cost_usd']}{flag}")
         new_rows.append(row)
 
     all_rows = rows + new_rows

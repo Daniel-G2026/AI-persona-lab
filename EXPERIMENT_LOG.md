@@ -2,7 +2,7 @@
 
 ## Experiment 001 — Initial Full-Character Generation (Phase A: portrait candidates)
 Date: 2026-10-25 (setup approved)
-Status: Approved, awaiting fal API key and credits. Batch 1 (3 images) not yet run.
+Status: Batch 1 (seeds 1001–1003) generated 2026-10-25; paused for founder + ChatGPT review. Batch 2 not approved.
 
 ### Hypothesis
 A low-cost image-generation workflow can produce a promising, photorealistic **adult fictional person** with a coherent face **and full body**, suitable for later identity-consistency testing.
@@ -23,16 +23,23 @@ A low-cost image-generation workflow can produce a promising, photorealistic **a
 - Script: `scripts/generate_fal.py`. Per-request records: `experiments/001-portrait/runs.jsonl`. Storage and backup: `experiments/README.md`.
 
 ### Results
-- Actual total cost: TBD
-- Portrait candidates / usable portraits: TBD
-- Full-body candidates / usable full-body images: TBD
-- Output file paths and saved settings: TBD
-- Realism assessment: TBD
-- Face/body cohesion: TBD
-- Identity consistency across angles or scenes: Not yet tested
+**Batch 1: seeds 1001–1003 (2026-10-25)**
+- Actual total cost: $0.03 by script estimate (fal's `x-fal-billable-units: 2` per image × $0.005). fal bills **whole megapixels**: 1.77 MP is charged as 2 MP, so about $0.01/image. Confirm in the fal dashboard.
+- Portrait candidates: 3. Usable: pending review.
+- Returned seeds matched requested seeds (1001, 1002, 1003). No safety flags. Inference took 1.6–2.3 s per image.
+- Files: `experiments/001-portrait/contact_sheet.jpg`, `runs.jsonl` (params, request ids, hashes), `review.csv` (empty scoring sheet). Originals are local in `images/` and mirrored to OneDrive (`AI-persona-lab-originals`).
+- Claude's technical first look (not the quality review):
+  - Realism is strong in all three: believable skin with pores and some sheen, natural hairlines, no hand/text/extra-person artifacts.
+  - **Eye colour drifted to brown in all three**; the brief asks for hazel.
+  - **No visible forehead scar or cheekbone beauty mark in any image**; the small landmarks were not rendered.
+  - Hair: 1001 has the closest match to 2B waves. 1002 and 1003 are mostly straight or slicked back.
+  - Neckline: 1002 is a crew neck as prompted; 1001 and 1003 are scoop necks.
+  - The three seeds give **very similar faces** (low variation between seeds). That suits consistency but limits casting variety from seed changes alone.
+- Face/body cohesion: Not tested in this phase.
+- Identity consistency across angles or scenes: Not yet tested.
 
 ### Problems
-Not yet run.
+- First run: seed 1001 generated (and was billed), but downloading the image failed with an SSL certificate error. Python's default certificate store rejects fal's image host. The image was recovered from the saved API response at no extra charge. The script now uses the certifi bundle and recovers saved-but-undownloaded seeds automatically.
 
 ### Decision
 Pending.
