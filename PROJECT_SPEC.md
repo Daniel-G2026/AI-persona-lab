@@ -36,7 +36,9 @@ Create an original fictional adult AI influencer who remains photorealistic and 
 - **Mouth:** Medium-full, soft naturally shaped lips, slightly fuller lower lip, gentle Cupid's bow; no conspicuously overfilled appearance.
 - **Expression:** Calm and subtly alluring at rest, with a genuine relaxed smile in appropriate shots.
 - **Hair:** Deep brown; thick density; mostly type 2B loose S-shaped waves (not tight ringlets); length below shoulders; naturally soft hairline. Glossy, high-maintenance-but-effortless 'rich-girl' waves with natural volume and a little irregularity.
-- **Distinctive landmarks:** Faint smile line(s), small subtle forehead scar, and a discreet beauty mark along the cheekbone. **Exact side and placement of scar/beauty mark are not yet locked**; these must be decided from the selected canonical face and then preserved in every applicable view, rather than flipping left/right between outputs.
+- **Distinctive landmarks:** Faint smile line(s) and a discreet beauty mark along the cheekbone.
+  - **Beauty mark: LOCKED (founder, 2026-10-25) on the subject's LEFT cheekbone** (the right side of a front-facing image as the viewer sees it), as in reference 2002. Preserve it in every view where that cheek is visible; never mirror it to the right cheek.
+  - **Forehead scar: DEFERRED.** Not established in the canonical references; do not add it until the founder decides otherwise.
 
 ### Body and Movement
 - **Height:** Approx. 5 ft 7 in (170 cm); maintain believable relative scale using environment/camera cues rather than treating an isolated photo as a precise height measurement.
@@ -66,7 +68,9 @@ Create an original fictional adult AI influencer who remains photorealistic and 
 - Show realistic asymmetry and physical variation *without* moving, duplicating, or erasing her distinguishing facial features.
 
 ## Canonical Reference Set
-**Status: Not yet generated or approved.**
+**Status: Portrait references provisionally approved; full-body references not yet generated.**
+- Provisional refined canonical portrait: Exp 002 Nano Banana Pro seed 2002, `experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png`
+- Original untouched facial baseline: Exp 001 seed 1001, `experiments/001-portrait/shortlist/seed-1001.png`
 
 Build a cohesive reference set depicting the **same original adult fictional character**, not unrelated independently selected faces and bodies:
 1. Close-up facial portrait.
@@ -87,8 +91,8 @@ Reference sheets are not proof of consistency: the pipeline must subsequently re
 
 ## Current Workflow
 - Status: Character design brief complete; generating and evaluating canonical identity is next.
-- Approved tools: None yet.
-- Canonical face and body references: None yet.
+- Approved tools: Nano Banana Pro Edit (fal) is the preferred portrait refinement tool (Exp 002). Full-body tool under evaluation (Exp 003).
+- Canonical face and body references: face provisionally 2002 (baseline 1001); body none yet.
 - Execution and review responsibilities: See `WORKFLOW.md`.
 - Historical tests and costs: See `EXPERIMENT_LOG.md`.
 

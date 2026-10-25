@@ -1,0 +1,17 @@
+{
+  "note": "Face boxes chosen manually by Claude (x0, y0, x1, y1 in original pixels), hairline to chin with some margin. Crops are upscaled for viewing only; upscaling does not add detail. 'source_px' on the sheet is the true crop size.",
+  "references": {
+    "2002": [430, 380, 1330, 1280],
+    "1001": [270, 230, 870, 830]
+  },
+  "images": {
+    "ref2002-seed-3001.png": [720, 200, 1020, 500],
+    "ref2002-seed-3002.png": [690, 110, 1010, 430],
+    "ref2002-seed-3003.png": [690, 145, 1010, 465],
+    "ref2002-seed-3004.png": [680, 150, 1000, 470],
+    "ref2002+1001-seed-3001.png": [716, 210, 1016, 510],
+    "ref2002+1001-seed-3002.png": [690, 110, 1030, 450],
+    "ref2002+1001-seed-3003.png": [690, 140, 1010, 460],
+    "ref2002+1001-seed-3004.png": [690, 130, 1010, 450]
+  }
+}

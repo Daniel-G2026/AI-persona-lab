@@ -1,0 +1,59 @@
+{
+  "experiment": "003-full-body",
+  "description": "First full-body identity test: same woman as the canonical portrait (2002, baseline 1001), full-length, neutral activewear, relaxed standing pose. Compares 2002-only vs 2002+1001 references.",
+  "approved_by_founder": "2026-10-25",
+  "proposal": "experiments/003-full-body/PROPOSAL.md",
+  "spend_cap_usd": 2.00,
+  "references": {
+    "2002": {
+      "path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
+      "sha256": "5b5191d0f0cf2e24f752b9e800115cf0684417b8b57890c1bcd2a774ab818893",
+      "label": "REF 002/nbp-2002 (primary)"
+    },
+    "1001": {
+      "path": "experiments/001-portrait/shortlist/seed-1001.png",
+      "sha256": "12bb637bbce3be7eafc100bfba9030a8dd494bd3712fef3179214035329e8b88",
+      "label": "REF 001/1001 (baseline)"
+    }
+  },
+  "arms": [
+    {
+      "name": "ref2002",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "references": ["2002"],
+      "prompt_file": "prompt_ref2002.txt",
+      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
+      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+    },
+    {
+      "name": "ref2002+1001",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "references": ["2002", "1001"],
+      "prompt_file": "prompt_ref2002+1001.txt",
+      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
+      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+    }
+  ],
+  "settings_note": "Nano Banana Pro accepts a seed but does not return one. safety_tolerance left at fal default. Reference order matters: 2002 is always first.",
+  "seeds_planned": "3001-3004 per arm (8 images)",
+  "acceptance_rules": [
+    "Mandatory per image: identity vs 2002 >= 4/5 (judged on manual face crops); photorealism >= 4/5; head-to-shoes, uncropped; natural perspective; face-body cohesion; no exaggerated or artificial proportions.",
+    "If the face lacks the resolution to judge identity, mark identity INCONCLUSIVE rather than passing or failing it. Upscaled crops do not recover lost detail.",
+    "Head-to-height ratio ~1:7.5 is an approximate reference only, not a mandatory measurement.",
+    "Realistic anatomy, natural proportions and 2002 identity outrank the body brief; exaggerated curves fail.",
+    "Body brief scored 1-5 per item; target average >= 3.5. Glutes only partly judgeable from the front.",
+    "Beauty mark is locked on the subject's LEFT cheekbone; expected to be invisible at full-body distance. No forehead scar (deferred).",
+    "Experiment passes if >= 2 of an arm's 4 images meet every mandatory criterion; the arm with more passes decides future reference use."
+  ],
+  "review_columns": [
+    "arm", "seed", "file", "width", "height", "face_crop_px",
+    "identity_vs_2002_1to5_or_inconclusive", "photorealism_1to5",
+    "full_frame_head_to_shoes_yes_no", "natural_perspective_yes_no", "face_body_cohesion_yes_no",
+    "exaggerated_or_artificial_yes_no",
+    "torso_1to5", "waist_stomach_1to5", "bust_1to5", "hips_1to5", "glutes_1to5_partial", "legs_1to5", "height_impression_1to5",
+    "body_brief_avg", "hair_2b_yes_no", "eye_colour_matches_2002_yes_no", "beauty_mark_left_if_visible",
+    "scar_absent_yes_no", "passes_all_mandatory_yes_no", "shortlist_yes_no", "reviewer", "notes"
+  ]
+}
