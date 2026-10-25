@@ -98,7 +98,7 @@ Experiment 003: first full-body identity test. Proposal: `experiments/003-full-b
 
 ## Experiment 003 — First Full-Body Identity Test
 Date: 2026-10-25
-Status: Approved by founder 2026-10-25; running.
+Status: Run complete (8/8). Paused for founder + ChatGPT review.
 
 ### Hypothesis
 Nano Banana Pro, given the canonical portrait as a reference, can produce a believable head-to-shoes image of the same woman that matches the body brief, and adding the 1001 baseline as a second reference changes identity preservation.
@@ -119,4 +119,29 @@ Nano Banana Pro, given the canonical portrait as a reference, can produce a beli
   6. All outputs, references, settings and costs are recorded in `runs.jsonl` and this log.
 - Acceptance rules: in `config.json` and `PROPOSAL.md`.
 - Cap: $2.00. Estimate: $1.20.
+
+### Results
+- Actual cost: **$1.20** by script estimate (8 × $0.15). Each request reported 1 billable unit; the second reference did not change the price. Confirm in the fal dashboard. Month-to-date ≈ $2.13.
+- Actual dimensions: 1696×2528 (2:3) for all 8. No seeds returned (Nano Banana Pro limitation). No safety flags. Reference hashes unchanged after the run.
+- Files in `experiments/003-full-body/`:
+  - `contact_sheet.jpg`: both references, then all 8
+  - `face_crops.jpg`: manual face crops next to 2002 and 1001; boxes in `face_crops.json`, sheet built by `scripts/face_crop_sheet.py`
+  - `runs.jsonl`
+  - `review.csv`: face-crop size prefilled
+  - Originals are local and mirrored to OneDrive.
+- **Face resolution:** each face is about 300–340 px in the source (references: 2002 about 900 px, 1001 about 600 px). That is enough to judge overall identity and the beauty mark, but not pores or fine iris detail. Reviewers should mark identity inconclusive where they can't decide.
+- Claude's technical first look (the acceptance calls are for founder + ChatGPT):
+  - **Identity:** all 8 faces read as close to 2002 at this resolution: face shape, brows, nose, lips and hair. No obvious lookalike substitutions. Some (ref2002 3003/3004, ref2002+1001 3004) have a mauve or purple eye-makeup tint and a slightly more polished look than 2002.
+  - **Beauty mark:** visible on the subject's **left** cheekbone (correct, locked side) in most images and never mirrored. No scar in any image (as instructed).
+  - **Anatomy:** hands, fingers and feet look clean in all 8. Natural standing poses, full head-to-shoes framing, no obvious wide-angle distortion.
+  - **Body vs brief:** consistently slim and athletic, with a flat toned stomach and long legs. Bust and hips read toward the lean, modest end of the brief rather than "lean-curvy", which errs on the side of founder adjustment 4 (no exaggeration).
+  - **Wardrobe compliance:** 6 of 8 wear the requested sports top and leggings. ref2002 3003 has a long-sleeve top, ref2002+1001 3004 has a t-shirt, and ref2002+1001 3002 is an olive/green set rather than a neutral tone.
+  - **Reference arms:** no clear difference between 2002 only and 2002 + 1001 at this resolution. This needs the founder/ChatGPT scores.
+
+### Problems
+- Faces are only about 300–340 px in a full-length 2K frame, which limits identity judgment. A 4K run ($0.30 per image) or a separate three-quarter-length frame would give more facial detail.
+- Some outfit drift from the prompt (2 of 8 tops, 1 of 8 colours).
+
+### Decision
+Pending founder + ChatGPT review.
 

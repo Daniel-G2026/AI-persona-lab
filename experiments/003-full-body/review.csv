@@ -1,0 +1,9 @@
+arm,seed,file,width,height,face_crop_px,identity_vs_2002_1to5_or_inconclusive,photorealism_1to5,full_frame_head_to_shoes_yes_no,natural_perspective_yes_no,face_body_cohesion_yes_no,exaggerated_or_artificial_yes_no,torso_1to5,waist_stomach_1to5,bust_1to5,hips_1to5,glutes_1to5_partial,legs_1to5,height_impression_1to5,body_brief_avg,hair_2b_yes_no,eye_colour_matches_2002_yes_no,beauty_mark_left_if_visible,scar_absent_yes_no,passes_all_mandatory_yes_no,shortlist_yes_no,reviewer,notes
+ref2002,3001,images/ref2002-seed-3001.png,1696,2528,300x300,,,,,,,,,,,,,,,,,,,,,,
+ref2002,3002,images/ref2002-seed-3002.png,1696,2528,320x320,,,,,,,,,,,,,,,,,,,,,,
+ref2002,3003,images/ref2002-seed-3003.png,1696,2528,320x320,,,,,,,,,,,,,,,,,,,,,,
+ref2002,3004,images/ref2002-seed-3004.png,1696,2528,320x320,,,,,,,,,,,,,,,,,,,,,,
+ref2002+1001,3001,images/ref2002+1001-seed-3001.png,1696,2528,300x300,,,,,,,,,,,,,,,,,,,,,,
+ref2002+1001,3002,images/ref2002+1001-seed-3002.png,1696,2528,340x340,,,,,,,,,,,,,,,,,,,,,,
+ref2002+1001,3003,images/ref2002+1001-seed-3003.png,1696,2528,320x320,,,,,,,,,,,,,,,,,,,,,,
+ref2002+1001,3004,images/ref2002+1001-seed-3004.png,1696,2528,320x320,,,,,,,,,,,,,,,,,,,,,,
