@@ -1,0 +1,61 @@
+{
+  "experiment": "002-portrait-refine",
+  "description": "Reference-based refinement of the provisional canonical face (Exp 001 seed 1001): hazel irises, right-cheekbone beauty mark, left-forehead scar, while preserving identity. Compares two edit models.",
+  "approved_by_founder": "2026-10-25",
+  "spend_cap_usd": 1.50,
+  "prompt_file": "prompt.txt",
+  "reference_image": {
+    "path": "experiments/001-portrait/shortlist/seed-1001.png",
+    "sha256": "12bb637bbce3be7eafc100bfba9030a8dd494bd3712fef3179214035329e8b88",
+    "label": "REFERENCE 001/1001",
+    "source": "Experiment 001, Z-Image Turbo, seed 1001, 1152x1536. Baseline; never modified."
+  },
+  "arms": [
+    {
+      "name": "flux2pro",
+      "endpoint": "fal-ai/flux-2-pro/edit",
+      "api_url": "https://fal.run/fal-ai/flux-2-pro/edit",
+      "model_page": "https://fal.ai/models/fal-ai/flux-2-pro/edit",
+      "uses_reference": true,
+      "params": {
+        "image_size": { "width": 1152, "height": 1536 },
+        "output_format": "png"
+      },
+      "settings_note": "Custom size identical to the reference (3:4). safety_tolerance and enable_safety_checker left at fal defaults.",
+      "cost": { "type": "first_mp_plus_extra", "first_mp_usd": 0.03, "extra_mp_usd": 0.015, "price_checked_on": "2026-10-25" }
+    },
+    {
+      "name": "nanobananapro",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "model_page": "https://fal.ai/models/fal-ai/nano-banana-pro/edit",
+      "uses_reference": true,
+      "params": {
+        "aspect_ratio": "3:4",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "settings_note": "No custom pixel size; 3:4 preset. 2K chosen over 1K (same $0.15 price) because 1K is below the reference's 1.77 MP and would understate skin and mark detail. Accepts a seed but does not return one. safety_tolerance left at fal default.",
+      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+    }
+  ],
+  "seeds_planned": "2001-2004 per arm (8 images)",
+  "acceptance_rules": [
+    "Identity preservation vs 1001 >= 4/5 AND photorealism >= 4/5 are both mandatory.",
+    "Identity takes priority over cosmetic changes: an image with both marks but a noticeably changed face is rejected.",
+    "Hazel eyes, beauty mark (subject's right cheekbone = viewer's left) and scar (subject's upper-left forehead = viewer's right) are secondary; missing or faint marks do not fail an otherwise accepted image.",
+    "Reject if more artificial or glamorous than 1001.",
+    "Winning model becomes the preferred portrait refinement tool only; full-body performance is evaluated separately."
+  ],
+  "review_columns": [
+    "arm", "seed", "file", "width", "height",
+    "identity_vs_1001_1to5", "photorealism_1to5",
+    "more_artificial_or_glamorous_than_1001_yes_no",
+    "eyes_read_hazel_yes_no",
+    "beauty_mark_present_yes_no", "beauty_mark_correct_side_yes_no", "beauty_mark_subtle_yes_no",
+    "scar_present_yes_no", "scar_correct_side_yes_no", "scar_subtle_yes_no",
+    "hair_still_2b_yes_no", "lips_jaw_skin_unchanged_yes_no",
+    "accepted_yes_no", "shortlist_yes_no", "reviewer", "notes"
+  ]
+}

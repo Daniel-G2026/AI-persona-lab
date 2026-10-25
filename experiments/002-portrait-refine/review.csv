@@ -1,0 +1,9 @@
+arm,seed,file,width,height,identity_vs_1001_1to5,photorealism_1to5,more_artificial_or_glamorous_than_1001_yes_no,eyes_read_hazel_yes_no,beauty_mark_present_yes_no,beauty_mark_correct_side_yes_no,beauty_mark_subtle_yes_no,scar_present_yes_no,scar_correct_side_yes_no,scar_subtle_yes_no,hair_still_2b_yes_no,lips_jaw_skin_unchanged_yes_no,accepted_yes_no,shortlist_yes_no,reviewer,notes
+flux2pro,2001,images/flux2pro-seed-2001.png,1152,1536,,,,,,,,,,,,,,,,
+flux2pro,2002,images/flux2pro-seed-2002.png,1152,1536,,,,,,,,,,,,,,,,
+flux2pro,2003,images/flux2pro-seed-2003.png,1152,1536,,,,,,,,,,,,,,,,
+flux2pro,2004,images/flux2pro-seed-2004.png,1152,1536,,,,,,,,,,,,,,,,
+nanobananapro,2001,images/nanobananapro-seed-2001.png,1792,2400,,,,,,,,,,,,,,,,
+nanobananapro,2002,images/nanobananapro-seed-2002.png,1792,2400,,,,,,,,,,,,,,,,
+nanobananapro,2003,images/nanobananapro-seed-2003.png,1792,2400,,,,,,,,,,,,,,,,
+nanobananapro,2004,images/nanobananapro-seed-2004.png,1792,2400,,,,,,,,,,,,,,,,
