@@ -1,0 +1,13 @@
+{
+  "note": "Face boxes chosen manually by Claude (x0, y0, x1, y1 in original pixels). Crops are upscaled for viewing only; upscaling does not add detail.",
+  "references": {
+    "2002": [430, 380, 1330, 1280],
+    "003base": [720, 200, 1020, 500]
+  },
+  "images": {
+    "front-edit-seed-4001.png": [670, 180, 990, 500],
+    "front-gen-seed-4001.png": [660, 40, 1000, 380],
+    "3q-gen-seed-4001.png": [660, 110, 1000, 450],
+    "3q-gen+003-seed-4001.png": [700, 190, 1020, 510]
+  }
+}

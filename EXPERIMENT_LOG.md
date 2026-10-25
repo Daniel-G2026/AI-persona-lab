@@ -151,5 +151,68 @@ ChatGPT review, relayed by the founder (2026-10-25):
 - No per-image scores recorded. The 2002-only vs 2002 + 1001 question was not decided.
 
 ### Next Experiment
-Experiment 004: lower-body shape refinement. Proposal: `experiments/004-body-shape/PROPOSAL.md` (pending founder approval).
+Experiment 004: lower-body shape refinement. Proposal: `experiments/004-body-shape/PROPOSAL.md` (approved 2026-10-25 with adjustments).
+
+---
+
+## Experiment 004 — Lower-Body Shape Refinement
+Date: 2026-10-25
+Status: Batch 1 (seed 4001, one image per arm) complete 2026-10-25. Paused for founder + ChatGPT review. Seeds 4002–4003 not approved.
+
+### Hypothesis
+Nano Banana Pro can add more lateral hip curvature and rounded, lifted glutes without changing the 2002 face, upper body, longer torso, waist width, bust or slim athletic build. Editing an Exp 003 image may control a front view better than generating fresh. For three-quarter views, an Exp 003 body reference may help or hinder.
+
+### Setup
+- Proposal: `experiments/004-body-shape/PROPOSAL.md`. Settings: `experiments/004-body-shape/config.json`.
+- Model: Nano Banana Pro Edit, 2K, 2:3, PNG, fal default safety settings.
+- References:
+  - 2002 face (SHA-256 `5b5191d0…8893`)
+  - **Exp 003 `ref2002-seed-3001` as a temporary editing base**, copied to `experiments/004-body-shape/base/003-ref2002-seed-3001.png` (SHA-256 `6da8e656…768d`). **Its physique is not canonical** (founder).
+- Arms:
+  - **front-edit**: edits the 003 base; references 003 base + 2002
+  - **front-gen**: new image from 2002
+  - **3q-gen**: new image from 2002
+  - **3q-gen+003**: new image from 2002 + 003 base
+  - Prompts are in `prompt_*.txt`.
+- Founder adjustments applied:
+  1. The body description now stresses moderate fullness at the sides of the hips and in the upper glutes, with the curve coming from there, "not from heavier thighs or an extra-narrow waist". The front-edit prompt says the same.
+  2. Three-quarter pose: realistic posture; arms relaxed and slightly away from the body so neither overlaps the hips or seat; lateral hip curve and glute profile "clearly visible in silhouette".
+  3. **Staged run: seed 4001 for each of the 4 arms (4 images), then stop for founder + ChatGPT review.** Seeds 4002–4003 need separate approval.
+  4. The 003 base is temporary and not canonical (as above).
+  5. Prompts explicitly preserve facial identity, upper-body anatomy, longer torso, waist width, bust size and the slim athletic build.
+- Wardrobe line tightened: a short fitted sports top, not a t-shirt or long-sleeved, in a single taupe-grey tone.
+- Cap: $2.50 for the whole experiment. Estimate: $0.60 for batch 1, $1.80 for all 12.
+
+### Results — Batch 1 (seed 4001, 4 images)
+- Actual cost: **$0.60** by script estimate (4 × $0.15, 1 billable unit each, including the two-reference arms). Experiment total so far: $0.60 of the $2.50 cap. Month-to-date ≈ $2.73.
+- All images 1696×2528. No seeds returned, no safety flags. Reference hashes unchanged.
+- Files in `experiments/004-body-shape/`:
+  - `contact_sheet.jpg`
+  - `before_after.jpg`: the 003 base and all 4 at identical scale
+  - `face_crops.jpg` (boxes in `face_crops.json`)
+  - `runs.jsonl`
+  - `review.csv`: face-crop sizes prefilled
+- **Approximate front-view widths** (manual, ±10 px, same 1696×2528 frame; front-gen has slightly different framing):
+
+| Image | Shoulders | Waist (narrowest) | Hips (widest) | Hip ÷ waist |
+|---|---|---|---|---|
+| 003 base | ~540 | ~322 | ~432 | ~1.34 |
+| front-edit 4001 | ~542 | ~318 | ~438 | ~1.38 |
+| front-gen 4001 | ~570 | ~324 | ~444 | ~1.37 |
+
+- Claude's technical first look (the acceptance calls are for founder + ChatGPT):
+  - **front-edit:** nearly identical to the base. Face, upper body, outfit and pose are preserved, but the hip change is within measurement error and is hard to see side by side. The edit was too conservative.
+  - **front-gen:** a good match to the brief's upper body and a clean anatomy. The hip line is only marginally curvier than the base; it reads about the same.
+  - **3q-gen:** the **only image showing the target shape**: a clear lateral hip curve and rounded, lifted glute projection in profile, while the waist and upper body stay slim. It doesn't look BBL-like to me, but reviewers should judge. **The pose overshot:** she is turned well past 45°, closer to a rear three-quarter view, looking back over her shoulder. One hand sits near the side of her thigh, but the silhouette stays readable.
+  - **3q-gen+003:** **the pose failed.** She is only slightly turned, close to front-facing, so the glute profile isn't visible. The 003 reference appears to have pulled her back into its front-facing stance.
+  - **Identity:** all 4 faces are plausible matches to 2002 at about 320–340 px. Wherever the beauty mark is visible, it's on her left cheek. No scar. Hands and feet look clean.
+  - **Outfit:** all 4 wear the tightened wardrobe (short sports top, taupe-grey leggings, neutral sneakers). That fixes the Exp 003 drift.
+
+### Problems
+- The front edit made almost no visible change (the hip shift is within measurement error).
+- The 003 body reference overrode the three-quarter pose instruction.
+- The 3q-gen angle overshot 45°.
+
+### Decision
+Pending founder + ChatGPT review. Seeds 4002–4003 need approval, possibly with revised prompts.
 
