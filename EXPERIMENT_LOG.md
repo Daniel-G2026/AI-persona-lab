@@ -51,7 +51,7 @@ After a face-and-body identity is approved, test the same character across front
 
 ## Experiment 002 — Reference-Based Portrait Refinement of Seed 1001
 Date: 2026-10-25
-Status: Run complete (8/8). Paused for founder + ChatGPT review.
+Status: Complete. Founder decision recorded 2026-10-25.
 
 ### Hypothesis
 An instruction-based edit model can keep the provisional canonical face (Exp 001 seed 1001) recognizably the same person while changing the irises to hazel and adding a right-cheekbone beauty mark and a left-forehead scar.
@@ -82,10 +82,14 @@ An instruction-based edit model can keep the provisional canonical face (Exp 001
 - Nano Banana Pro does not return a seed (reproducibility gap).
 
 ### Decision
-Pending founder + ChatGPT review.
+Founder decision (2026-10-25), after ChatGPT review:
+- **Provisional refined canonical portrait reference: Nano Banana Pro seed 2002** → `experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png` (SHA-256 `5b5191d0…8893`).
+- **Original untouched facial baseline: Exp 001 seed 1001** remains preserved → `experiments/001-portrait/shortlist/seed-1001.png`.
+- Nano Banana Pro is the preferred portrait refinement tool. Full-body performance is evaluated separately (Experiment 003).
+- Observed in 2002: the beauty mark is on the subject's **left** cheekbone (viewer's right). No visible forehead scar. Irises are warm amber-brown. **The mark side is not yet formally locked in `PROJECT_SPEC.md`** pending founder confirmation.
 
 ### Next Experiment
-To be decided after review. Options for the mirrored marks:
+Experiment 003: first full-body identity test (proposal pending approval). Options for the mirrored marks:
 - adopt the side the model produced and lock that in `PROJECT_SPEC.md`
 - re-prompt using only image-side wording
 - use a masked edit or inpaint to place the marks exactly
