@@ -89,7 +89,7 @@ Founder decision (2026-10-25), after ChatGPT review:
 - Observed in 2002: the beauty mark is on the subject's **left** cheekbone (viewer's right). No visible forehead scar. Irises are warm amber-brown. **The mark side is not yet formally locked in `PROJECT_SPEC.md`** pending founder confirmation.
 
 ### Next Experiment
-Experiment 003: first full-body identity test (proposal pending approval). Options for the mirrored marks:
+Experiment 003: first full-body identity test. Proposal: `experiments/003-full-body/PROPOSAL.md` (pending founder approval). Options for the mirrored marks:
 - adopt the side the model produced and lock that in `PROJECT_SPEC.md`
 - re-prompt using only image-side wording
 - use a masked edit or inpaint to place the marks exactly
