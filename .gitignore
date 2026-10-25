@@ -1,0 +1,13 @@
+# Credentials: never commit
+.env
+.env.*
+!.env.example
+
+# Original generations stay local (backed up separately, see experiments/README.md).
+# Shortlisted images go in experiments/*/shortlist/ and ARE committed.
+experiments/*/images/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
