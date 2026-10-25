@@ -1,26 +1,31 @@
 # AI Persona Lab — Experiment Log
 
-## Experiment 001 — Initial Face Generation
+## Experiment 001 — Initial Full-Character Generation
 Date: TBD
 Status: Planned
 
 ### Hypothesis
-We can produce several promising original adult character faces using a low-cost image-generation model.
+A low-cost image-generation workflow can produce a promising, photorealistic **adult fictional person** with a coherent face **and full body**, suitable for later identity-consistency testing.
 
 ### Setup
-Model: Z-Image Turbo (candidate, not yet approved)
-Provider: fal.ai (candidate)
-Reference images: None
-Prompt: TBD
-Seed and model settings: TBD
-Number of generations: TBD
+- Model: Z-Image Turbo (candidate, not approved)
+- Provider: fal.ai (candidate, not approved)
+- Approved character specification: TBD
+- Reference images: None yet
+- Portrait prompt: TBD
+- Full-body prompt: TBD
+- Seeds and model settings: TBD
+- Number of generations: TBD
+- Estimated cost and founder approval: TBD
 
 ### Results
-Total cost: TBD
-Usable images: TBD
-Selected output files: TBD
-Realism assessment: TBD
-Identity consistency: Not yet tested
+- Actual total cost: TBD
+- Portrait candidates / usable portraits: TBD
+- Full-body candidates / usable full-body images: TBD
+- Output file paths and saved settings: TBD
+- Realism assessment: TBD
+- Face/body cohesion: TBD
+- Identity consistency across angles or scenes: Not yet tested
 
 ### Problems
 Not yet run.
@@ -29,4 +34,4 @@ Not yet run.
 Pending.
 
 ### Next Experiment
-Test the shortlisted character in multiple lighting conditions, poses and scenes, then perform an early video test.
+After a face-and-body identity is approved, test the same character across front/side/three-quarter views, different outfits, poses, scenes, and lighting, then perform an early image-to-video consistency test. Do not assemble a large LoRA or Soul ID dataset until these tests justify it.
