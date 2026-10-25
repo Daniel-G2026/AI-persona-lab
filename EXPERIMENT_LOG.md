@@ -94,3 +94,29 @@ Experiment 003: first full-body identity test. Proposal: `experiments/003-full-b
 - re-prompt using only image-side wording
 - use a masked edit or inpaint to place the marks exactly
 
+---
+
+## Experiment 003 — First Full-Body Identity Test
+Date: 2026-10-25
+Status: Approved by founder 2026-10-25; running.
+
+### Hypothesis
+Nano Banana Pro, given the canonical portrait as a reference, can produce a believable head-to-shoes image of the same woman that matches the body brief, and adding the 1001 baseline as a second reference changes identity preservation.
+
+### Setup
+- Proposal: `experiments/003-full-body/PROPOSAL.md`. Settings: `experiments/003-full-body/config.json`.
+- Model: Nano Banana Pro Edit (`fal-ai/nano-banana-pro/edit`), aspect 2:3, resolution 2K, PNG, fal default safety settings.
+- Arms (4 images each, seeds 3001–3004):
+  - **ref2002**: reference 2002 only. Prompt: `prompt_ref2002.txt`.
+  - **ref2002+1001**: 2002 first, 1001 second. Prompt: `prompt_ref2002+1001.txt` (adds one sentence naming the second image as a supporting reference).
+- References: 2002 (SHA-256 `5b5191d0…8893`) and 1001 (`12bb637b…8b88`), hash-checked before and after the run.
+- Founder adjustments applied:
+  1. Beauty mark locked on the subject's left cheekbone (now in `PROJECT_SPEC.md`); the prompt says so. The scar is deferred and the prompt says "Do not add any scar."
+  2. Identity is judged on manually selected face crops. An upscaled crop doesn't add detail, so identity is marked **inconclusive** when the face is too small to judge.
+  3. A head-to-height ratio of about 1:7.5 is an approximate reference only.
+  4. Prompt line added: "Realistic anatomy, natural proportions and her identity from the reference take priority over the body description: do not exaggerate her curves to match it."
+  5. Manual face crops, no OpenCV.
+  6. All outputs, references, settings and costs are recorded in `runs.jsonl` and this log.
+- Acceptance rules: in `config.json` and `PROPOSAL.md`.
+- Cap: $2.00. Estimate: $1.20.
+

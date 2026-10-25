@@ -16,8 +16,10 @@ Per experiment folder:
     review.csv         one row per image for scoring
 
 A config either has one model (top-level "endpoint"/"api_url"/"params", as in 001) or several under "arms".
-Each seed is run once per arm. With "reference_image", edit arms receive that image as a data URI in image_urls;
-its SHA-256 is checked before and after the run so the baseline is provably unchanged.
+Each seed is run once per arm. Reference images are declared under "references" (name -> path, sha256, label) and
+each edit arm lists the ones it sends, in order, as data URIs in image_urls ("reference_image" + "uses_reference"
+is the older single-reference form). Every reference's SHA-256 is checked before and after the run so baselines are
+provably unchanged. An arm may set its own "prompt_file"; otherwise prompt.txt is used.
 
 Safety rails: refuses to start if the batch could push recorded spend past the cap, skips images already
 generated, and stops at the first failed request instead of retrying. The raw API response is saved before the
@@ -121,6 +123,20 @@ def expected_out_mp(arm):
     return megapixels(size["width"], size["height"]) if isinstance(size, dict) else 1.0
 
 
+def references_of(config):
+    if "references" in config:
+        return config["references"]
+    if "reference_image" in config:
+        return {"ref": config["reference_image"]}
+    return {}
+
+
+def arm_refs(arm, config):
+    if "references" in arm:
+        return arm["references"]
+    return ["ref"] if arm.get("uses_reference") and "reference_image" in config else []
+
+
 def stem_for(arm_name, seed):
     return f"{arm_name}-seed-{seed}" if arm_name else f"seed-{seed}"
 
@@ -155,8 +171,7 @@ def build_contact_sheet(exp_dir, config, rows):
     from PIL import Image, ImageDraw, ImageFont
 
     tiles = []
-    ref = config.get("reference_image")
-    if ref:
+    for ref in references_of(config).values():
         tiles.append((REPO / ref["path"], ref.get("label", "REFERENCE")))
     ok = sorted((r for r in rows if r["status"] == "ok" and (exp_dir / r["file"]).exists()),
                 key=lambda r: (r.get("arm", ""), r["seed"]))
@@ -219,7 +234,7 @@ def main():
 
     exp_dir = (REPO / args.experiment).resolve()
     config = json.loads((exp_dir / "config.json").read_text(encoding="utf-8"))
-    prompt = (exp_dir / "prompt.txt").read_text(encoding="utf-8").strip()
+    default_prompt_file = config.get("prompt_file", "prompt.txt")
     ledger = exp_dir / "runs.jsonl"
     images_dir = exp_dir / "images"
     rows = read_ledger(ledger)
@@ -238,15 +253,19 @@ def main():
         if not arms:
             sys.exit(f"No arms named {wanted}")
 
-    ref = config.get("reference_image")
-    ref_path, in_mp = None, 0.0
-    if ref:
-        ref_path = REPO / ref["path"]
-        if sha256_file(ref_path) != ref["sha256"]:
+    refs = references_of(config)
+    ref_mp = {}
+    for name, ref in refs.items():
+        if sha256_file(REPO / ref["path"]) != ref["sha256"]:
             sys.exit(f"Reference image {ref['path']} does not match its recorded SHA-256; refusing to run.")
         from PIL import Image
-        with Image.open(ref_path) as im:
-            in_mp = megapixels(*im.size)
+        with Image.open(REPO / ref["path"]) as im:
+            ref_mp[name] = megapixels(*im.size)
+    prompts = {a["name"]: (exp_dir / a.get("prompt_file", default_prompt_file)).read_text(encoding="utf-8").strip()
+               for a in arms}
+
+    def in_mp_for(a):
+        return sum(ref_mp[n] for n in arm_refs(a, config))
 
     cap = config["spend_cap_usd"]
     done = {(r.get("arm", ""), r["seed"]) for r in rows if r["status"] == "ok"}
@@ -259,7 +278,7 @@ def main():
         return
 
     def job_cost(a):
-        return arm_cost(a, expected_out_mp(a), in_mp if a.get("uses_reference") else 0.0)
+        return arm_cost(a, expected_out_mp(a), in_mp_for(a))
 
     spent = sum(r.get("cap_cost_usd", 0) for r in rows if r.get("billed", True))
     # Images with a saved response were already billed but never recorded; finishing them costs nothing new.
@@ -277,22 +296,22 @@ def main():
     if projected > cap:
         sys.exit(f"Refusing: projected spend ${projected:.4f} exceeds cap ${cap:.2f}.")
 
-    ref_uri = None
-    if ref_path:
-        ref_uri = "data:image/png;base64," + base64.b64encode(ref_path.read_bytes()).decode()
+    ref_uri = {n: "data:image/png;base64," + base64.b64encode((REPO / r["path"]).read_bytes()).decode()
+               for n, r in refs.items()}
 
     def payload_for(arm, seed):
-        p = {"prompt": prompt, **arm["params"], "seed": seed}
-        if arm.get("uses_reference"):
-            p["image_urls"] = [ref_uri]
+        p = {"prompt": prompts[arm["name"]], **arm["params"], "seed": seed}
+        if arm_refs(arm, config):
+            p["image_urls"] = [ref_uri[n] for n in arm_refs(arm, config)]
         return p
 
-    def loggable(payload):
-        return {k: (["<reference_image>"] if k == "image_urls" else v) for k, v in payload.items() if k != "prompt"}
+    def loggable(payload, arm):
+        return {k: ([f"<reference:{n}>" for n in arm_refs(arm, config)] if k == "image_urls" else v)
+                for k, v in payload.items() if k != "prompt"}
 
     if args.dry_run:
         a, s = jobs[0]
-        example = {"prompt": prompt[:60] + "...", **loggable(payload_for(a, s))}
+        example = {"prompt": prompts[a["name"]][:60] + "...", **loggable(payload_for(a, s), a)}
         print(f"Dry run. First request ({a['api_url']}) would be:\n" + json.dumps(example, indent=2))
         return
 
@@ -315,9 +334,10 @@ def main():
         row = {
             "experiment": config["experiment"], "arm": arm["name"], "seed": seed, "endpoint": arm["endpoint"],
             "requested_at_utc": started.isoformat(timespec="seconds"),
-            "params_sent": loggable(payload),
-            "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
-            "reference_sha256": ref["sha256"] if arm.get("uses_reference") else None,
+            "params_sent": loggable(payload, arm),
+            "prompt_file": arm.get("prompt_file", default_prompt_file),
+            "prompt_sha256": hashlib.sha256(prompts[arm["name"]].encode()).hexdigest(),
+            "references": [{"name": n, "path": refs[n]["path"], "sha256": refs[n]["sha256"]} for n in arm_refs(arm, config)],
             "recovered_from_saved_response": recovered,
         }
         if recovered:
@@ -346,7 +366,7 @@ def main():
             w, h = im.size  # actual pixels, not what was requested
         units = headers.get("x-fal-billable-units")
         units = float(units) if units else None
-        cost = arm_cost(arm, megapixels(w, h), in_mp if arm.get("uses_reference") else 0.0,
+        cost = arm_cost(arm, megapixels(w, h), in_mp_for(arm),
                         units if arm["cost"]["type"] == "per_megapixel" else None)
         row |= {
             "status": "ok", "billed": True,
@@ -371,8 +391,9 @@ def main():
         print(f"{stem}: ok{how}, returned seed {row['returned_seed']}, {w}x{h}, ~${row['est_cost_usd']}{flag}")
         new_rows.append(row)
 
-    if ref_path and sha256_file(ref_path) != ref["sha256"]:
-        print(f"WARNING: reference image {ref['path']} changed during the run!")
+    for ref in refs.values():
+        if sha256_file(REPO / ref["path"]) != ref["sha256"]:
+            print(f"WARNING: reference image {ref['path']} changed during the run!")
     all_rows = rows + new_rows
     build_contact_sheet(exp_dir, config, all_rows)
     update_review_csv(exp_dir, config, all_rows)
