@@ -13,7 +13,7 @@
     "003base": {
       "path": "experiments/004-body-shape/base/003-ref2002-seed-3001.png",
       "sha256": "6da8e656a77b1cdd98c4e1010f0776527acbd0ffa74e97bd3c59340e4be5768d",
-      "label": "BASE 003/ref2002-3001 (temporary, not canonical)"
+      "label": "BASE 003/3001 (temp)"
     }
   },
   "arms": [
