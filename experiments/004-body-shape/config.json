@@ -1,0 +1,79 @@
+{
+  "experiment": "004-body-shape",
+  "description": "Lower-body shape refinement: more lateral hip curvature and rounded, lifted glutes while keeping the 2002 face, upper body, longer torso, waist width, bust and slim athletic build. Front edit vs front generation; three-quarter generation with and without an Exp 003 body reference.",
+  "approved_by_founder": "2026-10-25",
+  "proposal": "experiments/004-body-shape/PROPOSAL.md",
+  "spend_cap_usd": 2.50,
+  "references": {
+    "2002": {
+      "path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
+      "sha256": "5b5191d0f0cf2e24f752b9e800115cf0684417b8b57890c1bcd2a774ab818893",
+      "label": "REF 002/nbp-2002 (face)"
+    },
+    "003base": {
+      "path": "experiments/004-body-shape/base/003-ref2002-seed-3001.png",
+      "sha256": "6da8e656a77b1cdd98c4e1010f0776527acbd0ffa74e97bd3c59340e4be5768d",
+      "label": "BASE 003/ref2002-3001 (temporary, not canonical)"
+    }
+  },
+  "arms": [
+    {
+      "name": "front-edit",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "references": ["003base", "2002"],
+      "prompt_file": "prompt_front_edit.txt",
+      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
+      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+    },
+    {
+      "name": "front-gen",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "references": ["2002"],
+      "prompt_file": "prompt_front_gen.txt",
+      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
+      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+    },
+    {
+      "name": "3q-gen",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "references": ["2002"],
+      "prompt_file": "prompt_3q_gen.txt",
+      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
+      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+    },
+    {
+      "name": "3q-gen+003",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "references": ["2002", "003base"],
+      "prompt_file": "prompt_3q_gen_003.txt",
+      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
+      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+    }
+  ],
+  "settings_note": "Nano Banana Pro accepts a seed but does not return one. safety_tolerance left at fal default.",
+  "seeds_planned": "4001-4003 per arm (12 images)",
+  "batches": [
+    { "name": "batch-1", "seeds": "4001", "status": "approved: 1 image per arm (4 total), then stop for founder + ChatGPT review" },
+    { "name": "batch-2", "seeds": "4002-4003", "status": "not yet approved" }
+  ],
+  "acceptance_rules": [
+    "Mandatory per image: identity vs 2002 >= 4/5 on the face crop (inconclusive if unresolvable; does not auto-pass); photorealism >= 4/5; not exaggerated (BBL-like, surgical, cartoonish or generally heavier fails); upper body preserved (waist no narrower, bust no larger, torso, stomach, shoulders unchanged).",
+    "Shape goals (1-5 each, target avg >= 3.5): front = more outward lateral hip curve than the Exp 003 base, smoother waist-to-hip transition, curve from hips/upper glutes not thighs; three-quarter = lateral hip shape and rounded, lifted glute projection clearly visible, still slim.",
+    "Supporting evidence only: manual shoulder/waist/hip pixel widths on front images vs the base.",
+    "The 003 base is a temporary editing base; its physique is not canonical.",
+    "An arm passes if >= 2 of its 3 images meet every mandatory criterion and the shape target."
+  ],
+  "review_columns": [
+    "arm", "seed", "file", "width", "height", "face_crop_px",
+    "identity_vs_2002_1to5_or_inconclusive", "photorealism_1to5", "exaggerated_or_artificial_yes_no",
+    "waist_not_narrower_yes_no", "bust_not_larger_yes_no", "torso_stomach_shoulders_preserved_yes_no",
+    "lateral_hip_curve_1to5", "waist_to_hip_transition_1to5", "curve_from_hips_not_thighs_yes_no",
+    "glute_roundness_projection_1to5_3q_only", "silhouette_unobscured_yes_no_3q_only", "still_slim_athletic_yes_no",
+    "shape_avg", "outfit_matches_yes_no", "beauty_mark_left_if_visible", "scar_absent_yes_no",
+    "passes_all_mandatory_yes_no", "shortlist_yes_no", "reviewer", "notes"
+  ]
+}

@@ -151,5 +151,35 @@ ChatGPT review, relayed by the founder (2026-10-25):
 - No per-image scores recorded. The 2002-only vs 2002 + 1001 question was not decided.
 
 ### Next Experiment
-Experiment 004: lower-body shape refinement. Proposal: `experiments/004-body-shape/PROPOSAL.md` (pending founder approval).
+Experiment 004: lower-body shape refinement. Proposal: `experiments/004-body-shape/PROPOSAL.md` (approved 2026-10-25 with adjustments).
+
+---
+
+## Experiment 004 — Lower-Body Shape Refinement
+Date: 2026-10-25
+Status: Approved by founder (after ChatGPT review) 2026-10-25. Batch 1 (1 image per arm) running.
+
+### Hypothesis
+Nano Banana Pro can add more lateral hip curvature and rounded, lifted glutes without changing the 2002 face, upper body, longer torso, waist width, bust or slim athletic build. Editing an Exp 003 image may control a front view better than generating fresh. For three-quarter views, an Exp 003 body reference may help or hinder.
+
+### Setup
+- Proposal: `experiments/004-body-shape/PROPOSAL.md`. Settings: `experiments/004-body-shape/config.json`.
+- Model: Nano Banana Pro Edit, 2K, 2:3, PNG, fal default safety settings.
+- References:
+  - 2002 face (SHA-256 `5b5191d0…8893`)
+  - **Exp 003 `ref2002-seed-3001` as a temporary editing base**, copied to `experiments/004-body-shape/base/003-ref2002-seed-3001.png` (SHA-256 `6da8e656…768d`). **Its physique is not canonical** (founder).
+- Arms:
+  - **front-edit**: edits the 003 base; references 003 base + 2002
+  - **front-gen**: new image from 2002
+  - **3q-gen**: new image from 2002
+  - **3q-gen+003**: new image from 2002 + 003 base
+  - Prompts are in `prompt_*.txt`.
+- Founder adjustments applied:
+  1. The body description now stresses moderate fullness at the sides of the hips and in the upper glutes, with the curve coming from there, "not from heavier thighs or an extra-narrow waist". The front-edit prompt says the same.
+  2. Three-quarter pose: realistic posture; arms relaxed and slightly away from the body so neither overlaps the hips or seat; lateral hip curve and glute profile "clearly visible in silhouette".
+  3. **Staged run: seed 4001 for each of the 4 arms (4 images), then stop for founder + ChatGPT review.** Seeds 4002–4003 need separate approval.
+  4. The 003 base is temporary and not canonical (as above).
+  5. Prompts explicitly preserve facial identity, upper-body anatomy, longer torso, waist width, bust size and the slim athletic build.
+- Wardrobe line tightened: a short fitted sports top, not a t-shirt or long-sleeved, in a single taupe-grey tone.
+- Cap: $2.50 for the whole experiment. Estimate: $0.60 for batch 1, $1.80 for all 12.
 
