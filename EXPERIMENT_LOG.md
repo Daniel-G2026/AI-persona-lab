@@ -98,7 +98,7 @@ Experiment 003: first full-body identity test. Proposal: `experiments/003-full-b
 
 ## Experiment 003 — First Full-Body Identity Test
 Date: 2026-10-25
-Status: Run complete (8/8). Paused for founder + ChatGPT review.
+Status: Complete. Reviewed 2026-10-25.
 
 ### Hypothesis
 Nano Banana Pro, given the canonical portrait as a reference, can produce a believable head-to-shoes image of the same woman that matches the body brief, and adding the 1001 baseline as a second reference changes identity preservation.
@@ -143,5 +143,13 @@ Nano Banana Pro, given the canonical portrait as a reference, can produce a beli
 - Some outfit drift from the prompt (2 of 8 tops, 1 of 8 colours).
 
 ### Decision
-Pending founder + ChatGPT review.
+ChatGPT review, relayed by the founder (2026-10-25):
+- Full-body generation is **promising**: identity and realism are good enough to continue.
+- **The lower body is too slim and too straight for the brief.** Missing: (1) more outward hip curve from the front; (2) more glute projection and roundness from the side and three-quarter angle.
+- Preserve: 2002 facial identity, slim balanced upper body, longer torso, flat lightly toned stomach, natural medium bust, long toned legs, realistic athletic look.
+- Do not: make her generally thicker, shrink the waist, enlarge the bust, or create a BBL-like, surgically enhanced or cartoonish shape.
+- No per-image scores recorded. The 2002-only vs 2002 + 1001 question was not decided.
+
+### Next Experiment
+Experiment 004: lower-body shape refinement. Proposal: `experiments/004-body-shape/PROPOSAL.md` (pending founder approval).
 
