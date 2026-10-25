@@ -1,0 +1,32 @@
+{
+  "experiment": "001-portrait",
+  "description": "Prompt 1 (Portrait / Face Candidate) baseline batch on Z-Image Turbo via fal.ai",
+  "approved_by_founder": "2026-10-25",
+  "endpoint": "fal-ai/z-image/turbo",
+  "api_url": "https://fal.run/fal-ai/z-image/turbo",
+  "model_page": "https://fal.ai/models/fal-ai/z-image/turbo",
+  "model_version_note": "fal does not expose a model version for this endpoint; reproducibility relies on endpoint + date + seed + params, plus the request ids recorded in runs.jsonl.",
+  "price_per_megapixel_usd": 0.005,
+  "price_checked_on": "2026-10-25",
+  "spend_cap_usd": 1.00,
+  "prompt_file": "prompt.txt",
+  "prompt_source": "PROMPTS.md, Prompt 1, verbatim",
+  "params": {
+    "image_size": { "width": 1152, "height": 1536 },
+    "num_inference_steps": 8,
+    "acceleration": "none",
+    "num_images": 1,
+    "output_format": "png",
+    "enable_prompt_expansion": false,
+    "enable_safety_checker": true
+  },
+  "seeds_planned": "1001-1020",
+  "batches": [
+    { "name": "batch-1", "seeds": "1001-1003", "status": "approved; stop for founder + ChatGPT review" },
+    { "name": "batch-2", "seeds": "1004-1020", "status": "not yet approved" }
+  ],
+  "notes": [
+    "acceleration 'none' is the baseline choice only; it is not assumed better than 'regular'. Compare with a same-seed A/B before changing it.",
+    "Z-Image Turbo does not accept a negative prompt or guidance scale; the PROMPTS.md guardrails are not sent."
+  ]
+}
