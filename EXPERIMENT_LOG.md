@@ -213,6 +213,34 @@ Nano Banana Pro can add more lateral hip curvature and rounded, lifted glutes wi
 - The 003 body reference overrode the three-quarter pose instruction.
 - The 3q-gen angle overshot 45°.
 
-### Decision
-Pending founder + ChatGPT review. Seeds 4002–4003 need approval, possibly with revised prompts.
+### Decision (Batch 1 review)
+Founder + ChatGPT assessment (2026-10-25):
+- front-edit 4001: insufficient change.
+- front-gen 4001: insufficient outward hip curvature.
+- 3q-gen 4001: closest lower-body shape to the target, but the pose is too rear-facing and **the face has drifted**.
+- 3q-gen+003 4001: inadequate three-quarter angle.
+- **Do not run seeds 4002–4003 with the original prompts** (cancelled).
+- Wanted: a **noticeably more pronounced lower-body silhouette**, visually apparent compared with Exp 003, while preserving the approved upper body and facial identity.
+
+### Revised Batch 2 (proposed, awaiting approval)
+- Two new generations, **2002 as the only identity reference**, seed 4101:
+  - `front-gen-v2`: front-facing. Prompt: `experiments/004-body-shape/prompt_front_gen_v2.txt`
+  - `3q-gen-v2`: true three-quarter view. Prompt: `experiments/004-body-shape/prompt_3q_gen_v2.txt`
+- Prompt changes vs batch 1:
+  - The lower-body description is rewritten around the founder/ChatGPT points:
+    1. clearly visible outward hip curve from the front
+    2. volume in the lateral hips and upper glutes, not thicker thighs
+    3. noticeably rounded, lifted glutes with natural backward projection
+    4. a smooth narrow waist → full hips → toned upper thighs transition
+    5. no narrowing of the waist or enlarging of the bust
+  - The hedged wording ("slightly fuller", "gently", "subtle") is removed. The no-BBL / no-surgical / no-cartoonish / not-heavier guardrails are kept.
+  - The upper body is explicitly held as approved.
+  - **Face drift:** the prompts add "Her face must stay clearly visible and recognizable as the woman in the reference." The three-quarter head turn is limited to "only slightly toward the camera" (3q-gen 4001 drifted while looking back over its shoulder).
+  - **True three-quarter pose:** body rotated about 45° with the front of the torso and her left side both visible, left hip nearest the camera. "Her back is NOT toward the camera, and she is not looking over her shoulder." Chest and stomach partly visible; arms slightly forward so the hips and seat stay unobscured.
+  - Front pose: weight on one leg, arms a little away from her sides so they don't cover her waist or hips.
+  - The wardrobe line now notes the leggings "fit closely enough to show her real shape".
+  - Camera at about waist height (was waist-to-chest) to avoid shortening the legs and hips.
+- ChatGPT's full anatomical description was not received verbatim; the prompts were written from its five emphasis points.
+- Estimate: 2 × $0.15 = **$0.30**. Experiment 004 total would be $0.90 of the $2.50 cap; month-to-date about $3.03.
+- Same success criteria as Experiment 004, plus: the front image must show a hip curve **visibly** more outward than the 003 base (side by side and by approximate width ratio); the three-quarter image must be a true 45° view with an unobscured hip and glute silhouette and identity ≥ 4/5.
 
