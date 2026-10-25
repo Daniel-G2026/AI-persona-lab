@@ -3,7 +3,7 @@
   "description": "Lower-body shape refinement: more lateral hip curvature and rounded, lifted glutes while keeping the 2002 face, upper body, longer torso, waist width, bust and slim athletic build. Front edit vs front generation; three-quarter generation with and without an Exp 003 body reference.",
   "approved_by_founder": "2026-10-25",
   "proposal": "experiments/004-body-shape/PROPOSAL.md",
-  "spend_cap_usd": 2.50,
+  "spend_cap_usd": 2.5,
   "references": {
     "2002": {
       "path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
@@ -21,44 +21,145 @@
       "name": "front-edit",
       "endpoint": "fal-ai/nano-banana-pro/edit",
       "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
-      "references": ["003base", "2002"],
+      "references": [
+        "003base",
+        "2002"
+      ],
       "prompt_file": "prompt_front_edit.txt",
-      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
-      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
     },
     {
       "name": "front-gen",
       "endpoint": "fal-ai/nano-banana-pro/edit",
       "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
-      "references": ["2002"],
+      "references": [
+        "2002"
+      ],
       "prompt_file": "prompt_front_gen.txt",
-      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
-      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
     },
     {
       "name": "3q-gen",
       "endpoint": "fal-ai/nano-banana-pro/edit",
       "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
-      "references": ["2002"],
+      "references": [
+        "2002"
+      ],
       "prompt_file": "prompt_3q_gen.txt",
-      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
-      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
     },
     {
       "name": "3q-gen+003",
       "endpoint": "fal-ai/nano-banana-pro/edit",
       "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
-      "references": ["2002", "003base"],
+      "references": [
+        "2002",
+        "003base"
+      ],
       "prompt_file": "prompt_3q_gen_003.txt",
-      "params": { "aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png" },
-      "cost": { "type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25" }
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "front-gen-v2",
+      "prompt_file": "prompt_front_gen_v2.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "references": [
+        "2002"
+      ],
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "3q-gen-v2",
+      "prompt_file": "prompt_3q_gen_v2.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "references": [
+        "2002"
+      ],
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
     }
   ],
   "settings_note": "Nano Banana Pro accepts a seed but does not return one. safety_tolerance left at fal default.",
   "seeds_planned": "4001-4003 per arm (12 images)",
   "batches": [
-    { "name": "batch-1", "seeds": "4001", "status": "approved: 1 image per arm (4 total), then stop for founder + ChatGPT review" },
-    { "name": "batch-2", "seeds": "4002-4003", "status": "not yet approved" }
+    {
+      "name": "batch-1",
+      "seeds": "4001",
+      "arms": "front-edit, front-gen, 3q-gen, 3q-gen+003",
+      "status": "done; reviewed 2026-10-25"
+    },
+    {
+      "name": "batch-2 (original prompts)",
+      "seeds": "4002-4003",
+      "status": "cancelled by founder 2026-10-25: do not run the original prompts"
+    },
+    {
+      "name": "batch-2-revised",
+      "seeds": "4101",
+      "arms": "front-gen-v2, 3q-gen-v2",
+      "status": "proposed; awaiting founder approval"
+    }
   ],
   "acceptance_rules": [
     "Mandatory per image: identity vs 2002 >= 4/5 on the face crop (inconclusive if unresolvable; does not auto-pass); photorealism >= 4/5; not exaggerated (BBL-like, surgical, cartoonish or generally heavier fails); upper body preserved (waist no narrower, bust no larger, torso, stomach, shoulders unchanged).",
@@ -68,12 +169,31 @@
     "An arm passes if >= 2 of its 3 images meet every mandatory criterion and the shape target."
   ],
   "review_columns": [
-    "arm", "seed", "file", "width", "height", "face_crop_px",
-    "identity_vs_2002_1to5_or_inconclusive", "photorealism_1to5", "exaggerated_or_artificial_yes_no",
-    "waist_not_narrower_yes_no", "bust_not_larger_yes_no", "torso_stomach_shoulders_preserved_yes_no",
-    "lateral_hip_curve_1to5", "waist_to_hip_transition_1to5", "curve_from_hips_not_thighs_yes_no",
-    "glute_roundness_projection_1to5_3q_only", "silhouette_unobscured_yes_no_3q_only", "still_slim_athletic_yes_no",
-    "shape_avg", "outfit_matches_yes_no", "beauty_mark_left_if_visible", "scar_absent_yes_no",
-    "passes_all_mandatory_yes_no", "shortlist_yes_no", "reviewer", "notes"
+    "arm",
+    "seed",
+    "file",
+    "width",
+    "height",
+    "face_crop_px",
+    "identity_vs_2002_1to5_or_inconclusive",
+    "photorealism_1to5",
+    "exaggerated_or_artificial_yes_no",
+    "waist_not_narrower_yes_no",
+    "bust_not_larger_yes_no",
+    "torso_stomach_shoulders_preserved_yes_no",
+    "lateral_hip_curve_1to5",
+    "waist_to_hip_transition_1to5",
+    "curve_from_hips_not_thighs_yes_no",
+    "glute_roundness_projection_1to5_3q_only",
+    "silhouette_unobscured_yes_no_3q_only",
+    "still_slim_athletic_yes_no",
+    "shape_avg",
+    "outfit_matches_yes_no",
+    "beauty_mark_left_if_visible",
+    "scar_absent_yes_no",
+    "passes_all_mandatory_yes_no",
+    "shortlist_yes_no",
+    "reviewer",
+    "notes"
   ]
 }
