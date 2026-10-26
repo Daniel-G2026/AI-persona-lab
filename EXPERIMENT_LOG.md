@@ -633,5 +633,74 @@ Founder + ChatGPT (2026-10-25):
 - **Reconstruction testing complete.** No further tuning of the same studio photographs.
 
 ### Next Experiment
-Experiment 008: identity and body-shape transfer to new outfits, poses and environments. Proposal: `experiments/008-identity-body-transfer/PROPOSAL.md` (pending founder approval).
+Experiment 008: identity and body-shape transfer to new outfits, poses and environments. Proposal: `experiments/008-identity-body-transfer/PROPOSAL.md` (approved 2026-10-25 with adjustments).
+
+---
+
+## Experiment 008 — Identity and Body-Shape Transfer
+Date: 2026-10-25
+Status: Approved 2026-10-25 for **2 images**, $0.50 cap. **Run complete; paused for founder + ChatGPT review.**
+
+### Hypothesis
+Nano Banana Pro, given 2002 (face) and the Version B R2 0.35 front and three-quarter images (body), can produce the same woman with Version B fullness in new outfits, poses and real environments, rather than reverting to a default slimmer body.
+
+### Setup
+- Settings: `experiments/008-identity-body-transfer/config.json`. Prompts: `prompt_8-1.txt`, `prompt_8-2.txt`.
+- Nano Banana Pro Edit, 2:3, 2K, PNG, fal default safety settings. **Price and parameters re-verified on fal before running:** $0.15/image (4K would be double); up to 14 references; 2:3 and 2K supported.
+- References in order:
+  1. 2002 (face)
+  2. Version B front R2 0.35 (body)
+  3. Version B three-quarter R2 0.35 (body)
+  - All hash-checked. Version A is not sent; it is the slim comparison point only.
+- **8-1** (seed 8001): city sidewalk, facing the camera. **Adjustment 1:** realistically fitted, slim-cut, high-waisted stretch-denim jeans that clearly show the hip and upper-thigh silhouette (replacing straight-leg jeans), white ribbed tank top, white sneakers.
+- **8-2** (seed 8002): apartment kitchen, true three-quarter view. **Adjustment 2:** fitted oatmeal knit dress. She stands in front of the counter with fingertips on its edge; the counter, arms and fabric explicitly must not hide the waist, hips, glutes or upper thighs, and there are no loose folds over the lower body.
+- **Adjustment 3:** the B-retention index is **supporting evidence only** (clothing, stance, rotation and perspective affect the ratios). A **separate qualitative judgement** of whether Version B fullness is still visually recognizable is required.
+- Estimate $0.30.
+
+### Results (2 images)
+- Cost **$0.30** (2 × $0.15). Exp 008 total $0.30 of the $0.50 cap. Month-to-date ≈ $4.77. Both 1696×2528; no safety flags; no seed returned (Nano Banana Pro). Reference hashes verified before the run (generate_fal check).
+- Files in `experiments/008-identity-body-transfer/`:
+  - `contact_sheet.jpg`
+  - **`body_comparison.jpg`**: each output | Version A | Version B, equal scale
+  - **`face_crops.jpg`**: 2002, both B references, both outputs
+  - `measurements.json`, `runs.jsonl`, `review.csv`
+  - Originals are local and mirrored to OneDrive.
+
+**Transfer quality**
+- Both outputs used the requested new outfit, pose and environment. **No copying** of the studio, taupe set or reference poses.
+  - 8-1: sunlit city sidewalk, slim-cut stretch jeans, white ribbed tank, white sneakers.
+  - 8-2: kitchen, fitted oatmeal ribbed knit dress.
+- Photorealism looks high in both (natural light, believable skin and fabric, hands fine).
+- **8-2 pose deviation:** rendered near side-on (about 80–90°) with her body turned toward the counter, not the requested true 45° three-quarter view. The counter and arms do not hide the hips or glutes.
+
+**A. Facial identity (scored separately)**
+- 8-1: a strong match to 2002 (face shape, brows, eyes, nose, lips, hair). **Beauty mark on the left side, but it sits lower, toward the jaw near the mouth, instead of on the cheekbone:** a position drift.
+- 8-2: the same woman; a natural open smile changes the expression. Beauty mark on the left cheekbone ✓. Slight styling difference from the smile and warm light; no strong "polished" drift.
+- No scar in either. Face crops about 340 px: identity judgeable, fine detail limited.
+
+**B. Body shape (measurements = supporting evidence; qualitative judgement separate)**
+| 8-1 front (manual, ±10 px) | Version A | Version B | 8-1 |
+|---|---|---|---|
+| Shoulders | 560 | 560 | 560 |
+| Waist | 315 | 315 | **355** |
+| Hips | 467 | 528 | 510 |
+| Upper thigh, single leg | ~211 | ~242 | ~242 |
+| B-retention index: hip ÷ shoulder | 0 | 1 | **0.7** |
+| B-retention index: thigh ÷ shoulder | 0 | 1 | **1.0** |
+| B-retention index: hip ÷ waist (curve contrast) | 0 | 1 | **-0.24** |
+
+- 8-1 caveats: the waist is measured over a fitted ribbed tank (fabric may add width); denim adds thickness at the hips and thighs.
+- 8-2: **pose-limited, no index.** Output depth ratio 1.40 (glute 350 / waist 250 px) vs about 1.46 (A) and 1.62 (B) in the 45° references. Not comparable because of the side-on rotation.
+- **Qualitative (Claude), the deciding judgement per founder adjustment 3:**
+  - **8-1: Version B fullness is NOT clearly recognizable.** Despite near-B widths at the hips and thighs, the figure reads as a slim, straight, athletic body. The waist reads wider and the waist-to-hip curve is weaker than even Version A, and the legs look slim in the jeans. Visually closer to Version A than to Version B. **Verdict: face transfers; body partly regresses toward the default slimmer figure.**
+  - **8-2: partially recognizable.** The glutes are clearly rounded and projected in profile (the strongest Version B trait carried over). The hips and upper thighs read slim, the overall silhouette is slimmer than B, and the side-on pose prevents a like-for-like comparison. **Verdict: face transfers; body partly preserved (glutes), partly regressed (hips/thighs); pose deviated.**
+
+**C. Waist and bust**
+- Bust natural and not enlarged in either. 8-1's waist did not narrow (it reads wider).
+
+### Interpretation (technical, for review)
+Nano Banana Pro transfers the **face** reliably into new scenes, but **body references alone do not reliably carry Version B's fuller lower body**. The model drifts toward a slimmer, straighter default, most visibly in the front view. Two images is a small sample.
+
+### Decision
+Pending founder + ChatGPT review. Version A untouched; nothing canonical; no further generations without approval.
 

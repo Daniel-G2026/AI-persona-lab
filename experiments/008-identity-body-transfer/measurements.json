@@ -1,0 +1,67 @@
+{
+  "method": "Manual gridded measurement by Claude (+/-10 px) on outputs and on Version A/B references with the same method. Supporting evidence only (clothing, stance, rotation, perspective affect ratios).",
+  "8-1_front": {
+    "version_A_px": {
+      "shoulders": 560,
+      "waist": 315,
+      "hips": 467,
+      "thigh_single": 211
+    },
+    "version_B_px": {
+      "shoulders": 560,
+      "waist": 315,
+      "hips": 528,
+      "thigh_single": 242
+    },
+    "output_px": {
+      "shoulders": 560,
+      "waist": 355,
+      "hips": 510,
+      "thigh_single": 242
+    },
+    "ratios": {
+      "A": {
+        "hip_shoulder": 0.834,
+        "thigh_shoulder": 0.377,
+        "hip_waist": 1.483
+      },
+      "B": {
+        "hip_shoulder": 0.943,
+        "thigh_shoulder": 0.432,
+        "hip_waist": 1.676
+      },
+      "output": {
+        "hip_shoulder": 0.911,
+        "thigh_shoulder": 0.432,
+        "hip_waist": 1.437
+      }
+    },
+    "B_retention_index": {
+      "hip_shoulder": 0.7,
+      "thigh_shoulder": 1.0,
+      "hip_waist": -0.24
+    },
+    "caveats": "Output waist measured over a fitted ribbed tank (fabric may add width); jeans add denim thickness at hips/thighs. Shoulder width equal across all three, so the scale is comparable."
+  },
+  "8-2_three_quarter": {
+    "output_px": {
+      "waist_depth": 250,
+      "glute_level_depth": 350,
+      "ratio": 1.4
+    },
+    "references_px_manual_045deg": {
+      "A": {
+        "waist_depth": 259,
+        "glute_depth": 377,
+        "ratio": 1.46
+      },
+      "B": {
+        "waist_depth": 259,
+        "glute_depth": 420,
+        "ratio": 1.62
+      }
+    },
+    "B_retention_index": null,
+    "status": "POSE-LIMITED: output rendered near side-on (~80-90 deg) instead of the requested ~45 deg three-quarter view; depth ratios are not comparable with the 45-degree references, so no index is reported."
+  }
+}

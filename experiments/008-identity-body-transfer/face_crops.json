@@ -1,0 +1,37 @@
+{
+  "note": "Face boxes chosen manually by Claude (x0, y0, x1, y1). Upscaled for viewing only.",
+  "references": {
+    "2002": [
+      430,
+      380,
+      1330,
+      1280
+    ],
+    "B-front": [
+      660,
+      100,
+      1000,
+      440
+    ],
+    "B-3q": [
+      680,
+      110,
+      1020,
+      450
+    ]
+  },
+  "images": {
+    "8-1-seed-8001.png": [
+      700,
+      100,
+      1040,
+      440
+    ],
+    "8-2-seed-8002.png": [
+      700,
+      110,
+      1040,
+      450
+    ]
+  }
+}
