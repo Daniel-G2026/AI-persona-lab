@@ -1,0 +1,67 @@
+{
+  "note": "Face boxes chosen manually by Claude (x0, y0, x1, y1 in original pixels). Upscaled for viewing only.",
+  "references": {
+    "2002": [
+      430,
+      380,
+      1330,
+      1280
+    ],
+    "1001": [
+      270,
+      230,
+      870,
+      830
+    ],
+    "A-front": [
+      660,
+      100,
+      1000,
+      440
+    ],
+    "A-3q": [
+      680,
+      110,
+      1020,
+      450
+    ]
+  },
+  "images": {
+    "B-front-edit-seed-5001.png": [
+      680,
+      95,
+      1020,
+      435
+    ],
+    "B-3q-edit-seed-5001.png": [
+      690,
+      100,
+      1030,
+      440
+    ],
+    "A-front-gen-seed-5001.png": [
+      680,
+      100,
+      1020,
+      440
+    ],
+    "B-front-gen-seed-5001.png": [
+      690,
+      95,
+      1030,
+      435
+    ],
+    "A-3q-gen-seed-5001.png": [
+      690,
+      100,
+      1030,
+      440
+    ],
+    "B-3q-gen-seed-5001.png": [
+      690,
+      95,
+      1030,
+      435
+    ]
+  }
+}

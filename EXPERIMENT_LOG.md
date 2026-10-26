@@ -272,5 +272,71 @@ Founder direction (2026-10-25):
 - Both must be the same woman, and are compared side by side before any direction is chosen. `PROJECT_SPEC.md` is not rewritten around Version B.
 
 ### Next Experiment
-Experiment 005: Version A vs Version B comparison. Proposal: `experiments/005-body-ab/PROPOSAL.md` (pending founder approval).
+Experiment 005: Version A vs Version B comparison. Proposal: `experiments/005-body-ab/PROPOSAL.md` (approved 2026-10-25, Stage 1 only).
+
+---
+
+## Experiment 005 — Body Direction A/B Comparison
+Date: 2026-10-25
+Status: Design approved by founder (after ChatGPT review) 2026-10-25. **Stage 1 only (6 images) authorized** and complete 2026-10-25. Paused for founder + ChatGPT review. Stage 2 not approved.
+
+### Hypothesis
+The same woman can be shown in two body directions: **Version A** (current lean-curvy) and **Version B** (fuller hips, upper thighs and glutes, same face and upper body). These can be compared side by side without the identity drifting into a different woman.
+
+### Setup
+- Proposal: `experiments/005-body-ab/PROPOSAL.md`. Settings: `experiments/005-body-ab/config.json`.
+- Model: Nano Banana Pro Edit, 2K, 2:3, PNG, fal default safety settings.
+- References (hash-checked):
+  - 2002 face anchor
+  - Version A bases (preserved, read-only originals): `base/004-front-gen-v2-seed-4101.png` (`24dd9192…`) and `base/004-3q-gen-v2-seed-4101.png` (`3c8eafb4…`)
+- Arms:
+  - **Track 1 (paired edits):** `B-front-edit` and `B-3q-edit` edit the Version A bases (A image first, then 2002).
+  - **Track 2 (matched generations, 2002 only):** `A-front-gen`, `B-front-gen`, `A-3q-gen`, `B-3q-gen`. A and B prompts are identical except the body paragraphs.
+- Stage 1: seed 5001 for all 6 arms. Estimate **$0.90**. Experiment cap **$3.00**.
+- Founder adjustments on approval:
+  1. **Version B thighs strengthened** (all 4 B prompts): visibly fuller upper thighs through both inner and outer thigh contours, natural quadriceps and hamstring fullness, athletic definition, gradual taper toward the knees; the A/B thigh difference should be clearly noticeable. **Version A prompts unchanged.**
+  2. **Evaluation:** separate real anatomical differences from apparent ones caused by camera angle, perspective, stance or pose. Matched seeds don't guarantee identical compositions. A pair-level review (`review_pairs.csv`) records composition differences and discounts differences they explain.
+- Preserved for both versions: 2002 facial identity, beauty mark on the left cheekbone, slim upper body, same waist width and medium natural bust, longer torso, realistic anatomy and skin.
+- **Version A stays a fully valid alternative. No winner is designated until the founder compares the images.**
+
+### Results — Stage 1 (seed 5001, 6 images)
+- Actual cost: **$0.90** by script estimate (6 × $0.15). Experiment 005 total $0.90 of the $3.00 cap. Month-to-date ≈ $3.93.
+- All 1696×2528, no seeds returned, no safety flags, reference hashes unchanged.
+- Files in `experiments/005-body-ab/`:
+  - **`ab_pairs.jpg`**: 4 rows, A left / B right, same scale. Built by `scripts/ab_sheet.py` from `config.json` pairs.
+  - `face_crops.jpg`: 2002, 1001, both A bases and all 6 outputs.
+  - `contact_sheet.jpg`
+  - `review.csv`: per image, with version, view and method prefilled.
+  - `review_pairs.csv`: per pair, including composition-difference columns.
+  - `runs.jsonl`
+- **Identity:** all 6 faces read as the same woman as 2002 and as each other, at about 340 px face crops. The beauty mark is on the left cheekbone in all 6. No scar. Hands and feet look clean.
+- **Composition:** Track 2's matched seeds produced **very similar compositions** for A and B in both views (same pose, framing and lighting), so those pairs compare well. Track 1 pairs share the base image by design.
+- **Approximate measurements** (manual, ±10 px; ratios matter more than raw pixels because framing differs between tracks):
+
+| Front | Waist | Hips | Upper thighs (outer) | Hip ÷ waist | Thigh ÷ waist |
+|---|---|---|---|---|---|
+| A base 4101 | ~310 | ~465 | ~442 | ~1.50 | ~1.43 |
+| B edit 5001 | ~315 | ~472 | ~445 | ~1.50 | ~1.41 |
+| A gen 5001 | ~350 | ~505 | ~510 | ~1.44 | ~1.46 |
+| B gen 5001 | ~355 | ~515 | ~520 | ~1.45 | ~1.46 |
+
+| Three-quarter (body depth) | Waist | Glute level | Glute ÷ waist |
+|---|---|---|---|
+| A base 4101 | ~259 | ~377 | ~1.46 |
+| B edit 5001 | ~255 | ~398 | ~1.56 |
+| A gen 5001 | ~275 | ~395 | ~1.44 |
+| B gen 5001 | ~252 | ~395 | ~1.57 |
+
+- Claude's technical first look (**no winner designated**; founder + ChatGPT decide):
+  - **Front, both tracks:** the A/B difference is **small**. Width ratios are within measurement error. Visually, B's thighs may read a touch fuller in places, but not the "clearly noticeable" difference intended. The front edit repeated Exp 004's pattern of barely changing the base.
+  - **Three-quarter, Track 1 (edit):** a **visible, real difference**. B has a rounder, more projected seat (back contour about 28 px further out at glute level) and fuller-looking thighs, while the waist depth, upper body, face, pose and lighting are unchanged. Because the pose is identical, this is anatomical, not a camera effect.
+  - **Three-quarter, Track 2 (generation):** B looks rounder and more projected, but **part of the higher ratio comes from a smaller waist depth** (about 252 vs 275 px), against the "do not narrow the waist" rule. It could be a slight rotation difference or real waist narrowing; reviewers should check.
+  - Neither version looks exaggerated or distorted. Both remain realistic.
+
+### Problems
+- Version B's front-view difference is far smaller than intended in both edit and generation.
+- B 3q gen 5001 may narrow the waist (or be slightly rotated).
+
+### Decision
+Pending founder + ChatGPT review. **No version designated as the winner. Version A remains a fully valid alternative.** Stage 2 not approved.
 

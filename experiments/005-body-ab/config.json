@@ -1,0 +1,249 @@
+{
+  "experiment": "005-body-ab",
+  "description": "Body direction A/B comparison: Version A (current lean-curvy) vs Version B (fuller hips, thighs, glutes), same woman. Track 1 = B edits of the existing A images; Track 2 = matched A/B generations from 2002 only.",
+  "approved_by_founder": "2026-10-25 (Stage 1 only)",
+  "proposal": "experiments/005-body-ab/PROPOSAL.md",
+  "spend_cap_usd": 3.0,
+  "references": {
+    "2002": {
+      "path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
+      "sha256": "5b5191d0f0cf2e24f752b9e800115cf0684417b8b57890c1bcd2a774ab818893",
+      "label": "REF 2002 (face)"
+    },
+    "A-front": {
+      "path": "experiments/005-body-ab/base/004-front-gen-v2-seed-4101.png",
+      "sha256": "24dd91922c51f10d4914876941ad646f013c6953f7f609e8544a22a0e36713a0",
+      "label": "A front = 004 fg-v2 4101"
+    },
+    "A-3q": {
+      "path": "experiments/005-body-ab/base/004-3q-gen-v2-seed-4101.png",
+      "sha256": "3c8eafb46a533421f3eee4ac3ae10431df9452410a26ff4c9d428a2f171db1a5",
+      "label": "A 3q = 004 3q-v2 4101"
+    },
+    "1001": {
+      "path": "experiments/001-portrait/shortlist/seed-1001.png",
+      "sha256": "12bb637bbce3be7eafc100bfba9030a8dd494bd3712fef3179214035329e8b88",
+      "label": "REF 1001 (baseline; sheets only)"
+    }
+  },
+  "arms": [
+    {
+      "name": "B-front-edit",
+      "version": "B",
+      "view": "front",
+      "method": "edit",
+      "references": [
+        "A-front",
+        "2002"
+      ],
+      "prompt_file": "prompt_B_front_edit.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "B-3q-edit",
+      "version": "B",
+      "view": "three-quarter",
+      "method": "edit",
+      "references": [
+        "A-3q",
+        "2002"
+      ],
+      "prompt_file": "prompt_B_3q_edit.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "A-front-gen",
+      "version": "A",
+      "view": "front",
+      "method": "generate",
+      "references": [
+        "2002"
+      ],
+      "prompt_file": "prompt_A_front_gen.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "B-front-gen",
+      "version": "B",
+      "view": "front",
+      "method": "generate",
+      "references": [
+        "2002"
+      ],
+      "prompt_file": "prompt_B_front_gen.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "A-3q-gen",
+      "version": "A",
+      "view": "three-quarter",
+      "method": "generate",
+      "references": [
+        "2002"
+      ],
+      "prompt_file": "prompt_A_3q_gen.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "B-3q-gen",
+      "version": "B",
+      "view": "three-quarter",
+      "method": "generate",
+      "references": [
+        "2002"
+      ],
+      "prompt_file": "prompt_B_3q_gen.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "name": "Track 1 front",
+      "A": "ref:A-front",
+      "B": "B-front-edit"
+    },
+    {
+      "name": "Track 1 three-quarter",
+      "A": "ref:A-3q",
+      "B": "B-3q-edit"
+    },
+    {
+      "name": "Track 2 front",
+      "A": "A-front-gen",
+      "B": "B-front-gen"
+    },
+    {
+      "name": "Track 2 three-quarter",
+      "A": "A-3q-gen",
+      "B": "B-3q-gen"
+    }
+  ],
+  "settings_note": "Nano Banana Pro accepts a seed but does not return one; matched seeds do not guarantee matched compositions. safety_tolerance left at fal default.",
+  "batches": [
+    {
+      "name": "stage-1",
+      "seeds": "5001",
+      "arms": "all 6",
+      "status": "approved 2026-10-25; then stop for founder + ChatGPT review"
+    },
+    {
+      "name": "stage-2",
+      "seeds": "5002-5003 (edits), 5002 (generations)",
+      "status": "not approved"
+    }
+  ],
+  "evaluation_note": "Distinguish real anatomical differences from apparent ones caused by camera angle, perspective, distance, stance or pose. Matched seeds do not guarantee identical compositions; record when a pair's pose, angle or framing differs, and discount differences explained by it. No version is designated the winner until the founder compares the images.",
+  "review_columns": [
+    "arm",
+    "version",
+    "view",
+    "method",
+    "seed",
+    "file",
+    "width",
+    "height",
+    "face_crop_px",
+    "identity_vs_2002_1to5_or_inconclusive",
+    "beauty_mark_left_if_visible",
+    "photorealism_1to5",
+    "upper_body_preserved_yes_no",
+    "waist_not_narrower_yes_no",
+    "bust_not_larger_yes_no",
+    "not_distorted_yes_no",
+    "matches_intended_version_1to5",
+    "hip_width_curve_1to5",
+    "upper_thigh_fullness_1to5",
+    "glute_size_projection_1to5_3q",
+    "body_appeal_1to5",
+    "outfit_pose_on_brief_yes_no",
+    "passes_all_mandatory_yes_no",
+    "reviewer",
+    "notes"
+  ],
+  "pair_review_columns": [
+    "pair",
+    "A_file",
+    "B_file",
+    "same_woman_yes_no",
+    "composition_differs_yes_no",
+    "composition_difference_notes",
+    "anatomical_difference_visible_yes_no",
+    "apparent_only_difference_notes",
+    "more_attractive_A_B_tie",
+    "more_believable_A_B_tie",
+    "reviewer",
+    "notes"
+  ]
+}

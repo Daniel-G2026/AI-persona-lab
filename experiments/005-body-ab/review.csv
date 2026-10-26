@@ -1,0 +1,7 @@
+arm,version,view,method,seed,file,width,height,face_crop_px,identity_vs_2002_1to5_or_inconclusive,beauty_mark_left_if_visible,photorealism_1to5,upper_body_preserved_yes_no,waist_not_narrower_yes_no,bust_not_larger_yes_no,not_distorted_yes_no,matches_intended_version_1to5,hip_width_curve_1to5,upper_thigh_fullness_1to5,glute_size_projection_1to5_3q,body_appeal_1to5,outfit_pose_on_brief_yes_no,passes_all_mandatory_yes_no,reviewer,notes
+A-3q-gen,A,three-quarter,generate,5001,images/A-3q-gen-seed-5001.png,1696,2528,340x340,,,,,,,,,,,,,,,,
+A-front-gen,A,front,generate,5001,images/A-front-gen-seed-5001.png,1696,2528,340x340,,,,,,,,,,,,,,,,
+B-3q-edit,B,three-quarter,edit,5001,images/B-3q-edit-seed-5001.png,1696,2528,340x340,,,,,,,,,,,,,,,,
+B-3q-gen,B,three-quarter,generate,5001,images/B-3q-gen-seed-5001.png,1696,2528,340x340,,,,,,,,,,,,,,,,
+B-front-edit,B,front,edit,5001,images/B-front-edit-seed-5001.png,1696,2528,340x340,,,,,,,,,,,,,,,,
+B-front-gen,B,front,generate,5001,images/B-front-gen-seed-5001.png,1696,2528,340x340,,,,,,,,,,,,,,,,

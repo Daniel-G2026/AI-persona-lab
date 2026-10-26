@@ -1,0 +1,5 @@
+pair,A_file,B_file,same_woman_yes_no,composition_differs_yes_no,composition_difference_notes,anatomical_difference_visible_yes_no,apparent_only_difference_notes,more_attractive_A_B_tie,more_believable_A_B_tie,reviewer,notes
+Track 1 front,base/004-front-gen-v2-seed-4101.png,images/B-front-edit-seed-5001.png,,,,,,,,,
+Track 1 three-quarter,base/004-3q-gen-v2-seed-4101.png,images/B-3q-edit-seed-5001.png,,,,,,,,,
+Track 2 front seed 5001,images/A-front-gen-seed-5001.png,images/B-front-gen-seed-5001.png,,,,,,,,,
+Track 2 three-quarter seed 5001,images/A-3q-gen-seed-5001.png,images/B-3q-gen-seed-5001.png,,,,,,,,,

@@ -1,6 +1,6 @@
 # Experiment 005 — Body Direction A/B Comparison (Proposal)
 
-**Status:** Proposed by Claude 2026-10-25. **Awaiting founder approval. Nothing generated.**
+**Status:** Design approved 2026-10-25; **Stage 1 only** authorized. See amendments at the end.
 
 ## Purpose
 A **comparative branch**, not a replacement. Same woman, two body directions, compared side by side:
@@ -167,3 +167,9 @@ Each is **[FACE] + [BODY A or BODY B] + [WARDROBE + POSE] + [FRAMING]**. Every b
 1. The design: Track 1 paired edits + Track 2 matched generations, 14 images, staged 6 + 8
 2. $3.00 cap
 3. The prompts (or ChatGPT's revisions)
+
+## Amendments on approval (founder, 2026-10-25)
+1. Version B thigh wording strengthened in all four B prompts: inner and outer thigh contours, quadriceps and hamstring fullness, athletic definition, gradual taper to the knees. Version A unchanged.
+2. Evaluation separates real anatomical differences from apparent ones (camera angle, perspective, stance, pose). Matched seeds don't guarantee matched compositions. `review_pairs.csv` adds composition-difference and apparent-only-difference columns.
+3. Stage 1 only (6 images, $0.90). Stage 2 needs separate approval. No winner until the founder compares the images.
+
