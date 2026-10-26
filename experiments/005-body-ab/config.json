@@ -19,6 +19,11 @@
       "path": "experiments/005-body-ab/base/004-3q-gen-v2-seed-4101.png",
       "sha256": "3c8eafb46a533421f3eee4ac3ae10431df9452410a26ff4c9d428a2f171db1a5",
       "label": "A 3q = 004 3q-v2 4101"
+    },
+    "1001": {
+      "path": "experiments/001-portrait/shortlist/seed-1001.png",
+      "sha256": "12bb637bbce3be7eafc100bfba9030a8dd494bd3712fef3179214035329e8b88",
+      "label": "REF 1001 (baseline; sheets only)"
     }
   },
   "arms": [
