@@ -433,7 +433,7 @@ Experiment 007: realism reconstruction of the B-strong targets. Proposal: `exper
 
 ## Experiment 007 — Realism Reconstruction of the B-strong Target
 Date: 2026-10-25
-Status: Approach approved in principle by founder (after ChatGPT review), **staged**. **Step 1 (free B-strong-v2 re-warp) complete. Paused for founder visual approval.** No paid calls. The paid reconstruction checkpoint is not yet approved.
+Status: Approach approved in principle by founder (after ChatGPT review), **staged**. Step 1 (free B-strong-v2 re-warp) approved; step 1b fixes done; **6-image paid checkpoint complete 2026-10-25. Paused for founder + ChatGPT review.**
 
 ### Founder conditions for later stages
 - After v2 approval, propose a **6-image checkpoint**: R1 (FLUX Fill, interior mask), R2 (Z-Image i2i, **one documented strength**) and R3 (Nano Banana Pro), each 1 front + 1 three-quarter. About $0.52.
@@ -507,4 +507,67 @@ Founder (after ChatGPT review, 2026-10-25): **B-strong-v2 approved** as the reco
 - **R3:** Nano Banana Pro Edit on the full image, references [fixed target, 2002], 2:3, 2K, seed 7001 (not returned by this model). No compositing.
 - Prompts: `experiments/007-reconstruction/prompt_R*.txt` (as proposed). Settings: `recon_config.json`.
 - Raw outputs kept in `raw/` and mirrored to OneDrive; composites in `out/`.
+
+### Checkpoint results (6 images)
+- **Cost: $0.52** by estimate. R1 2 × $0.10 (no billable-units header returned), R2 2 × $0.01 (2 units each), R3 2 × $0.15 (1 unit each). Exp 007 total $0.52 of the $1.50 cap. Month-to-date ≈ $4.45. No safety flags.
+- **Raw outputs kept** (founder item 5): `experiments/007-reconstruction/raw/` (crop or full PNGs plus API responses, mirrored to OneDrive under `…/007-reconstruction/images/`). Composites in `out/` (also mirrored). Both are git-ignored; hashes are in `runs.jsonl`.
+- Review files:
+  - `recon_compare.jpg`: Version A | target | R1 | R2 | R3, equal scale
+  - `recon_face_crops.jpg`
+  - `recon_closeups.jpg` plus 1:1 strips `closeup_front_thigh.png`, `closeup_front_armhip.png`, `closeup_3q_glute_armhip.png`
+  - `recon_report.json`: measurements, retention, alignment, outside-region and boundary checks
+
+**Technical checks (founder items 1–4)**
+| Check | front R1 | front R2 | front R3 | 3q R1 | 3q R2 | 3q R3 |
+|---|---|---|---|---|---|---|
+| Output size as sent / aligned | **1440×832 returned for a 1696×992 crop: NOT aligned**, rescaled into place | 1696×992 ✓ | 1696×2528 ✓ | **1440×832: NOT aligned**, rescaled | 1696×992 ✓ | 1696×2528 ✓ |
+| Pixels changed outside the compositing region | **0** | **0** | n/a (whole image re-rendered) | **0** | **0** | n/a |
+| Luma step across the 12 px band boundary (out vs target) | 1.64 vs 1.34 | n/a | n/a | 1.12 vs 0.42 | n/a | n/a |
+
+- **FLUX Fill [pro] appears to cap output at about 1.2 MP**, and returned a slightly different aspect ratio (1.731 vs 1.710). R1 had to be rescaled about 1.18× back into the crop, so the redrawn region is softer and may sit a pixel or two off its surroundings. **Fix for any re-run:** send a narrower lower-body crop of at most about 1.2 MP with 32-multiple sides (e.g. 896×992), so no rescale is needed.
+- R1 band boundary: a slightly larger tonal step than in the target (small in absolute terms, about 1 luma level). No visible stretch remains in the 12 px band at 1:1, but see the R1 defects below.
+
+**Fullness retention** (automatic legging outline; vs Version A, and vs the target)
+| | Target vs A | R1 | R2 | R3 |
+|---|---|---|---|---|
+| Front hips | +14.4% | +14.4% (0.0%) | +14.4% (0.0%) | **+11.8% (−2.3%)** |
+| Front upper thigh, single leg | +21.9% | +19.4% (−2.0%) | +21.9% (0.0%) | +22.4% (+0.4%) |
+| Front mid thigh, single leg | +26.5% | +26.5% | +26.5% | +26.0% (−0.4%) |
+| 3q glutes | +11.1% | +11.1% | +11.1% | +11.6% (+0.5%) |
+| 3q upper thigh | +13.5% | +13.5% | +13.5% | +13.9% (+0.3%) |
+| 3q waistband | +0.4% | same | same | +0.0% |
+
+- Proposal thresholds were front hips ≥ +14%, thighs ≥ +20%, glutes ≥ +10%.
+  - **R2 meets all** in both views.
+  - R1 meets all except the front upper-thigh single leg (+19.4%, just under +20%, a measurement edge case from the redrawn inner-thigh contour).
+  - **R3 misses the front hips** (+11.8%: its silhouette was slightly reduced at the hips). It meets the rest.
+
+**Face (R3 checked independently against 2002, founder item 4)**
+- R1 and R2 faces are pixel-identical to the target (outside their masks by construction).
+- R3 re-rendered the face. Still recognizably the same woman; beauty mark on the left cheekbone in both views. **But it has drifted:** warmer/redder skin, slightly bolder brows, a more contrasted, more made-up look than 2002.
+
+**Photorealism and defects (Claude's 1:1 inspection; subjective)**
+- **R1 (FLUX Fill, interior mask): defects.**
+  - A doubled inner-thigh contour with a reddish line near the crotch (front).
+  - A dark notch/fold at the front right wrist-to-hip contact.
+  - A small dark spot under the three-quarter fingers.
+  - Fabric slightly darker than the surrounding original.
+  - Plus the resolution/alignment issue above. **Not usable as-is.**
+- **R2 (Z-Image i2i, strength 0.35, broad mask): clean.**
+  - Smooth, natural fabric.
+  - Natural arm/hip contacts (no light line, no notch).
+  - No visible seams at the 8 px composite feather.
+  - Silhouette exactly preserved.
+  - The change from the target is **subtle**: shading is refreshed and smoothed, but it is not a dramatic re-render. Some warp-era shading character may remain.
+- **R3 (Nano Banana Pro, full image): the most natural fabric and lighting overall.**
+  - Hands redrawn but intact.
+  - Background and upper body re-rendered (not pixel-identical).
+  - Front hips reduced 2.3% vs the target, and the face drifted as above.
+- No method shows new background warping. Knees look smooth in all three.
+
+### Decision
+Pending founder + ChatGPT review. No winner and nothing canonical. Version A untouched and valid. **Technical summary:**
+- R2 best satisfies the constraints (shape and identity exact, clean, cheap) but is a light-touch refresh.
+- R3 looks most natural but slightly slims the front hips and drifts the face.
+- R1 needs a re-run at ≤ 1.2 MP crop size and still showed contour defects.
 

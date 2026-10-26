@@ -14,3 +14,7 @@ __pycache__/
 
 # Experiment 006 per-image diff PNGs (summarised in warp_diff_sheet.jpg)
 experiments/*/warp/*-diff.png
+
+# Experiment 007 raw API outputs and composites stay local (mirrored to BACKUP_DIR); sheets + metadata are committed
+experiments/007-reconstruction/raw/
+experiments/007-reconstruction/out/
