@@ -236,7 +236,7 @@ def cmd_report(exp, cfg):
         fb = view["face_box"]
         face_tiles.append((target[fb[1]:fb[3], fb[0]:fb[2]], f"{v}: target face"))
         M = build_masks(target, view, cfg["masks"])
-        for m in ("R1", "R2", "R3"):
+        for m in ("R1", "R2", "R2-s045", "R3"):
             if (v, m) not in ok:
                 continue
             out, region, info = composite(exp, cfg, v, m)

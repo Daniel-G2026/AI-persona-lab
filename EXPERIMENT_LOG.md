@@ -581,7 +581,7 @@ Founder + ChatGPT (2026-10-25):
 - Version A preserved as a valid alternative. **Neither physique is canonical.**
 - No further FLUX Fill or global Nano Banana spend this checkpoint. R1 and R3 are disabled in `recon_config.json` (`enabled: false`), and `scripts/reconstruct.py` skips disabled methods.
 
-### Proposed: R2 strength comparison (awaiting founder approval)
+### R2 strength comparison (approved by founder 2026-10-25)
 - New method `R2-s045` in `recon_config.json`: **identical to R2 except strength 0.45**. Verified programmatically:
   - same endpoint (`fal-ai/z-image/turbo/image-to-image`)
   - same B-strong-v2-fixed inputs, prompts (`prompt_R2_front.txt`, `prompt_R2_3q.txt`), crop rows 1008–2000 (1696×992, custom `image_size` = crop) and broad masks with 8 px inside feather
@@ -595,4 +595,33 @@ Founder + ChatGPT (2026-10-25):
   4. compositing seams
   5. exact face and upper-body preservation (changed pixels outside the mask must be 0)
 - Rule: **if 0.45 gives no meaningful realism improvement, 0.35 stays the preferred setting.**
+
+### Results — R2 strength 0.45 vs 0.35 (2 images)
+- Cost **$0.02** (2 billable units × $0.005 each). Exp 007 total **$0.54** of the $1.50 cap. Month-to-date ≈ $4.47. Seed 7001 returned for both; no safety flags.
+- Both outputs 1696×992, **aligned**. **0 pixels changed outside the broad mask** in both views, so the face and upper body are exactly preserved.
+- Raw outputs: `raw/*-R2-s045.png` (+ responses), mirrored to OneDrive. Composites: `out/*-R2-s045.png`.
+- Review sheets:
+  - `s045_compare.jpg` (target | 0.35 | 0.45, equal scale)
+  - 1:1 strips: `s045_closeup_front_thigh.png`, `s045_closeup_front_armhip.png`, `s045_closeup_front_knees.png`, `s045_closeup_3q_glute_armhip.png`, `s045_closeup_3q_thigh_knee.png`
+- How much the image changed inside the mask (mean absolute difference from the target): front 3.67 → 5.13, three-quarter 3.90 → 5.57. So 0.45 alters more, as expected.
+
+| Retention vs Version A (vs target) | R2 0.35 | R2 0.45 |
+|---|---|---|
+| Front hips | +14.4% (0.0%) | +14.4% (0.0%) |
+| Front upper thigh, single leg | +21.9% (0.0%) | +21.9% (0.0%) |
+| Front mid thigh, single leg | +26.5% (0.0%) | +25.4% (−0.9%) |
+| **3q glutes** | +11.1% (0.0%) | **+6.2% (−4.4%)**: fails the ≥ +10% threshold |
+| 3q upper thigh | +13.5% (0.0%) | +11.5% (−1.8%) |
+
+- Comparison on the founder's five points (Claude, 1:1):
+  1. **Fabric texture, tension and shading:** no meaningful realism gain at 0.45. The fabric looks about the same, just more altered.
+  2. **Fullness:** front held. **The three-quarter glute contour was pulled in** (−4.4% depth; visibly smaller curve).
+  3. **Contours and contacts: worse at 0.45.**
+     - An odd fabric "tab" at the top of the front thigh gap.
+     - **The light streak at the front wrist/hip contact reappeared** (the artifact fixed before the checkpoint).
+  4. **Seams: worse at 0.45.** In the three-quarter view, a pale **ghost band** remains where the original glute outline was, inside the broad mask (the model redrew a smaller glute and left the vacated area light). Visible even at full-length scale.
+  5. Face and upper body: exactly preserved in both (0 px outside the mask).
+
+### Decision (strength comparison)
+Per the founder's rule (if 0.45 brings no meaningful realism improvement, keep 0.35): **0.45 brings no improvement and adds defects, so R2 at strength 0.35 remains the preferred setting.** Pending founder confirmation. The R2 0.35 outputs remain the shortlisted provisional Version B reconstructed candidates. R2-s045 is disabled in the config. Version A untouched; nothing canonical.
 
