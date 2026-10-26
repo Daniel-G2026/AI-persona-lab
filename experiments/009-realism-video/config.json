@@ -1,0 +1,138 @@
+{
+  "experiment": "009-realism-video",
+  "stage": "Part 1 stills only (video NOT approved)",
+  "approved_by_founder": "2026-10-25 (Part 1: 4 stills + free phone-pass variants)",
+  "proposal": "experiments/009-realism-video/PROPOSAL.md",
+  "spend_cap_usd": 0.75,
+  "references": {
+    "2002": {
+      "path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
+      "sha256": "5b5191d0f0cf2e24f752b9e800115cf0684417b8b57890c1bcd2a774ab818893",
+      "label": "REF 2002 (face)"
+    },
+    "A-front": {
+      "path": "experiments/005-body-ab/base/004-front-gen-v2-seed-4101.png",
+      "sha256": "24dd91922c51f10d4914876941ad646f013c6953f7f609e8544a22a0e36713a0",
+      "label": "REF A front (body)"
+    },
+    "A-3q": {
+      "path": "experiments/005-body-ab/base/004-3q-gen-v2-seed-4101.png",
+      "sha256": "3c8eafb46a533421f3eee4ac3ae10431df9452410a26ff4c9d428a2f171db1a5",
+      "label": "REF A 3q (body)"
+    },
+    "B-front": {
+      "path": "experiments/007-reconstruction/shortlist/B/front-R2-s035.png",
+      "sha256": "5eae9d12976f650cffe72dadfcd31db9966a0fdbfcd7200b89d7a6807c798354",
+      "label": "REF B front (body)"
+    },
+    "B-3q": {
+      "path": "experiments/007-reconstruction/shortlist/B/three-quarter-R2-s035.png",
+      "sha256": "f8d1cddfae0a027a2355e63a6efc4f386a8f30492ff33d8eb8f4406e9e6c79ba",
+      "label": "REF B 3q (body)"
+    }
+  },
+  "arms": [
+    {
+      "name": "S1-A",
+      "scenario": "mirror selfie",
+      "body_version": "A",
+      "references": [
+        "2002",
+        "A-front",
+        "A-3q"
+      ],
+      "prompt_file": "prompt_S1-A.txt",
+      "seed_planned": 9101,
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "9:16",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "S1-B",
+      "scenario": "mirror selfie",
+      "body_version": "B",
+      "references": [
+        "2002",
+        "B-front",
+        "B-3q"
+      ],
+      "prompt_file": "prompt_S1-B.txt",
+      "seed_planned": 9102,
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "9:16",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "S2-A",
+      "scenario": "friend-taken photo outside coffee shop",
+      "body_version": "A",
+      "references": [
+        "2002",
+        "A-front",
+        "A-3q"
+      ],
+      "prompt_file": "prompt_S2-A.txt",
+      "seed_planned": 9103,
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "9:16",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "S2-B",
+      "scenario": "friend-taken photo outside coffee shop",
+      "body_version": "B",
+      "references": [
+        "2002",
+        "B-front",
+        "B-3q"
+      ],
+      "prompt_file": "prompt_S2-B.txt",
+      "seed_planned": 9104,
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "9:16",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    }
+  ],
+  "video_gate": "MANDATORY: no image-to-video unless at least one still passes identity (>=4/5) and realism (overall 'would a scroller suspect AI' >=4/5) with no major artifacts, AND the founder separately approves video.",
+  "fallback_rule": "If the stills remain obviously AI-generated, stop and propose a different still-image approach (e.g. a real photographic background as the base)."
+}

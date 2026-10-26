@@ -709,5 +709,77 @@ Founder reassessment (2026-10-25):
 - Keep 2002 as the face anchor. Keep **both** Version A and Version B body references; neither is canonical.
 
 ### Next Experiment
-Experiment 009: smartphone-style photographic believability and an early image-to-video proof of concept. Proposal: `experiments/009-realism-video/PROPOSAL.md` (pending founder approval).
+Experiment 009: smartphone-style photographic believability and an early image-to-video proof of concept. Proposal: `experiments/009-realism-video/PROPOSAL.md` (direction approved 2026-10-25; Part 1 only).
+
+---
+
+## Experiment 009 — Smartphone Believability (Part 1: stills)
+Date: 2026-10-25
+Status: Direction approved by founder (after ChatGPT review). **Part 1 only authorized: 4 stills + free phone-pass variants, about $0.60.** Video NOT approved. **Part 1 complete 2026-10-25; paused for founder, ChatGPT and blind human review.**
+
+### Hypothesis
+With prompts aimed at ordinary smartphone photography (phone optics, real light, lived-in settings, candid posing, unretouched skin), Nano Banana Pro can produce stills of the same woman that ordinary viewers would not immediately identify as AI.
+
+### Setup
+- Settings: `experiments/009-realism-video/config.json`. Prompts: `prompt_S{1,2}-{A,B}.txt`. Nano Banana Pro Edit, **9:16, 2K**, PNG, fal default safety settings, $0.15/image (re-verified on fal earlier today).
+- References in order: 2002 (face), then the body front and three-quarter for **Version A or Version B**. Both versions are kept; neither is canonical. All hash-checked.
+- Arms:
+  - **S1** mirror selfie in a lived-in hallway (A seed 9101, B seed 9102)
+  - **S2** friend-taken photo outside a coffee shop (A seed 9103, B seed 9104)
+- Founder adjustments applied:
+  1. **S2 simplified:** iced coffee in one hand, the other hand relaxed at her side, a small candid smile, standing naturally. No laughing or hair movement.
+  2. Prompts now say: "Prioritize ordinary, everyday photographic believability over beauty or polish… not a fashion shoot, not a campaign, not stock photography."
+  3. **Originals and phone-pass variants are kept separately.**
+     - `scripts/phone_pass.py`: 1080×1920 crop/resize, unsharp mask 1.2/60%/2, shadow-weighted luminance noise σ 1–4, JPEG q82 4:2:0, saved as PNG.
+     - The originals' blind copies get the same 1080×1920 crop/resize and nothing else.
+     - `scripts/blind_set.py` shuffles all 8 under random codes. The key `blind_key.json` is git-ignored; only its SHA-256 is committed.
+     - **The phone pass is not assumed to improve realism.**
+  4. Face, body and photographic realism are assessed separately.
+  5. **Blind human evaluation procedure:** `BLIND_REVIEW.md`, with the form `human_ratings.csv`, kept separate from `claude_assessment.csv` (and ChatGPT's).
+  6. **Mandatory video gate:** no image-to-video unless at least one still passes identity (≥ 4/5) and realism (overall ≥ 4/5) with no major artifacts, **and** the founder separately approves video.
+  7. **Fallback rule:** if the stills remain obviously AI-generated, stop and propose a different still-image approach, e.g. a real photographic background as the base.
+- Cap $0.75 (estimate $0.60).
+
+### Results — Part 1 (4 stills)
+- Cost **$0.60** (4 × $0.15). Exp 009 total $0.60 of the $0.75 cap. Month-to-date ≈ $5.37. All 1536×2752 (9:16); no safety flags; no seeds returned.
+- Files in `experiments/009-realism-video/`:
+  - `contact_sheet.jpg` (references + 4 originals)
+  - `face_crops.jpg`
+  - **`blind_sheet.jpg`**: 8 coded images, originals and phone pass shuffled
+  - `blind_key.sha256`
+  - `claude_assessment.csv`, `claude_blind_variant_ratings.csv`, empty `chatgpt_assessment.csv` and `human_ratings.csv` templates
+  - `BLIND_REVIEW.md`
+- Originals: local `images/` plus OneDrive. Blind PNGs for reviewers: OneDrive `…/009-realism-video/blind_for_reviewers/` (8 × 1080×1920 PNG plus instructions). The sealed key is backed up as `SEALED_blind_key.json`.
+
+**Claude's assessment** (not blind to scenario or body version; separate from ChatGPT and humans)
+| Still | Face (vs 2002) | Body reads as intended? | Realism sub-scores (skin/camera/env/light/pose) | Overall "would a scroller suspect AI" | Video gate |
+|---|---|---|---|---|---|
+| S1-A mirror selfie, A | **3/5**: looking down at the phone, face rounder and younger-looking; mark not clearly visible | 4 (A) | 4/4/4/4/4 | **4** | no: identity < 4 |
+| S1-B mirror selfie, B | **3/5**: same rounder, younger look; mark on left cheek, **mirror-correct side** | **2: reads like A (regressed)** | 4/4/4/4/4 | **4** | no: identity < 4 |
+| S2-A coffee shop, A | **4/5**; mark left cheek | 4 (A) | 4/4/4/4/4 | **3**: gibberish chalkboard text | no: realism < 4 |
+| S2-B coffee shop, B | **4/5**: best match; mark left cheek | **2: reads slim (regressed)** | 4/4/4/4/4 | **3**: gibberish chalkboard/window/awning text | no: realism < 4 |
+
+- **Big improvement over Exp 008.** At feed size these read like ordinary phone photos:
+  - phone optics: deep focus, wide perspective, tilted framing
+  - mixed real light
+  - lived-in clutter, lint on the leggings, mirror smudges
+  - passers-by and reflections
+  - candid expressions
+- By Claude's judgement they are **not "obviously AI-generated"**, so the fallback rule (real-photo backgrounds) is not triggered.
+- **Remaining AI tells:**
+  - **gibberish text** on the chalkboards and signage (S2, the main giveaway on a closer look)
+  - an overly uniform dust/speck pattern on the mirror (S1)
+  - a real-brand logo on sneakers (S1-B), a publishing concern rather than a realism one
+- **Face consistency is weaker in the mirror selfies** (downward gaze, phone partly covering the face, rounder/younger read) than in the friend-taken photos.
+- **Body:** consistent with Exp 008. **Version B references do not produce a recognizably fuller body.** Both B stills read like Version A. Version A stills match A.
+- **Phone pass (rated blind, without the key):** original and processed variants are **indistinguishable at feed scale**. At 2× one of each pair is slightly crisper and grainier. No realism preference from Claude; human ratings will decide. Not assumed to help.
+
+### Video gate status
+**Not met by Claude's assessment:** no still has identity ≥ 4 **and** realism ≥ 4 with no notable artifacts.
+- S1 stills fail on identity.
+- S2 stills fail on garbled text.
+- Pending ChatGPT and blind human review. **No video generated. Video requires separate founder approval anyway.**
+
+### Decision
+Pending founder, ChatGPT and blind human review. Version A and Version B preserved; nothing canonical.
 

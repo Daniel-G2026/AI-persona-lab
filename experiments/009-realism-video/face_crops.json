@@ -1,0 +1,37 @@
+{
+  "note": "Face boxes chosen manually by Claude (x0,y0,x1,y1 in original 1536x2752 pixels). Upscaled for viewing only.",
+  "references": {
+    "2002": [
+      430,
+      380,
+      1330,
+      1280
+    ]
+  },
+  "images": {
+    "S1-A-seed-9101.png": [
+      520,
+      640,
+      800,
+      960
+    ],
+    "S1-B-seed-9102.png": [
+      600,
+      570,
+      880,
+      890
+    ],
+    "S2-A-seed-9103.png": [
+      470,
+      560,
+      750,
+      880
+    ],
+    "S2-B-seed-9104.png": [
+      620,
+      420,
+      900,
+      740
+    ]
+  }
+}
