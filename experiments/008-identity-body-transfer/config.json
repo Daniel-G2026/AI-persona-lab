@@ -1,0 +1,81 @@
+{
+  "experiment": "008-identity-body-transfer",
+  "description": "Identity + Version B body-shape transfer to new outfits, poses and environments. Face scored separately from body.",
+  "approved_by_founder": "2026-10-25 (2 images, with adjustments)",
+  "proposal": "experiments/008-identity-body-transfer/PROPOSAL.md",
+  "spend_cap_usd": 0.5,
+  "references": {
+    "2002": {
+      "path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
+      "sha256": "5b5191d0f0cf2e24f752b9e800115cf0684417b8b57890c1bcd2a774ab818893",
+      "label": "REF 2002 (face)"
+    },
+    "B-front": {
+      "path": "experiments/007-reconstruction/shortlist/B/front-R2-s035.png",
+      "sha256": "5eae9d12976f650cffe72dadfcd31db9966a0fdbfcd7200b89d7a6807c798354",
+      "label": "REF Version B front (body)"
+    },
+    "B-3q": {
+      "path": "experiments/007-reconstruction/shortlist/B/three-quarter-R2-s035.png",
+      "sha256": "f8d1cddfae0a027a2355e63a6efc4f386a8f30492ff33d8eb8f4406e9e6c79ba",
+      "label": "REF Version B 3q (body)"
+    }
+  },
+  "arms": [
+    {
+      "name": "8-1",
+      "view": "front",
+      "scene": "city sidewalk, slim-cut stretch jeans",
+      "references": [
+        "2002",
+        "B-front",
+        "B-3q"
+      ],
+      "prompt_file": "prompt_8-1.txt",
+      "seed_planned": 8001,
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "8-2",
+      "view": "three-quarter",
+      "scene": "apartment kitchen, fitted knit dress",
+      "references": [
+        "2002",
+        "B-front",
+        "B-3q"
+      ],
+      "prompt_file": "prompt_8-2.txt",
+      "seed_planned": 8002,
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    }
+  ],
+  "version_a_for_comparison_only": {
+    "front": "experiments/005-body-ab/base/004-front-gen-v2-seed-4101.png",
+    "three-quarter": "experiments/005-body-ab/base/004-3q-gen-v2-seed-4101.png"
+  },
+  "evaluation_note": "Face and body scored separately. B-retention index = (output ratio - A ratio) / (B ratio - A ratio) is SUPPORTING evidence only (clothing, stance, rotation and perspective influence it); a separate qualitative judgement of whether Version B fullness is visually recognizable is required."
+}

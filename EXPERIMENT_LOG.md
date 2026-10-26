@@ -633,5 +633,27 @@ Founder + ChatGPT (2026-10-25):
 - **Reconstruction testing complete.** No further tuning of the same studio photographs.
 
 ### Next Experiment
-Experiment 008: identity and body-shape transfer to new outfits, poses and environments. Proposal: `experiments/008-identity-body-transfer/PROPOSAL.md` (pending founder approval).
+Experiment 008: identity and body-shape transfer to new outfits, poses and environments. Proposal: `experiments/008-identity-body-transfer/PROPOSAL.md` (approved 2026-10-25 with adjustments).
+
+---
+
+## Experiment 008 — Identity and Body-Shape Transfer
+Date: 2026-10-25
+Status: Approved by founder (after ChatGPT review) 2026-10-25 for **2 images**, $0.50 cap. Running.
+
+### Hypothesis
+Nano Banana Pro, given 2002 (face) and the Version B R2 0.35 front and three-quarter images (body), can produce the same woman with Version B fullness in new outfits, poses and real environments, rather than reverting to a default slimmer body.
+
+### Setup
+- Settings: `experiments/008-identity-body-transfer/config.json`. Prompts: `prompt_8-1.txt`, `prompt_8-2.txt`.
+- Nano Banana Pro Edit, 2:3, 2K, PNG, fal default safety settings. **Price and parameters re-verified on fal before running:** $0.15/image (4K would be double); up to 14 references; 2:3 and 2K supported.
+- References in order:
+  1. 2002 (face)
+  2. Version B front R2 0.35 (body)
+  3. Version B three-quarter R2 0.35 (body)
+  - All hash-checked. Version A is not sent; it is the slim comparison point only.
+- **8-1** (seed 8001): city sidewalk, facing the camera. **Adjustment 1:** realistically fitted, slim-cut, high-waisted stretch-denim jeans that clearly show the hip and upper-thigh silhouette (replacing straight-leg jeans), white ribbed tank top, white sneakers.
+- **8-2** (seed 8002): apartment kitchen, true three-quarter view. **Adjustment 2:** fitted oatmeal knit dress. She stands in front of the counter with fingertips on its edge; the counter, arms and fabric explicitly must not hide the waist, hips, glutes or upper thighs, and there are no loose folds over the lower body.
+- **Adjustment 3:** the B-retention index is **supporting evidence only** (clothing, stance, rotation and perspective affect the ratios). A **separate qualitative judgement** of whether Version B fullness is still visually recognizable is required.
+- Estimate $0.30.
 
