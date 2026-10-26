@@ -265,5 +265,12 @@ Founder + ChatGPT assessment (2026-10-25):
 - **Against the founder's stopping rule:** the front view improved noticeably; the three-quarter view improved in pose and face but not in shape. Two text revisions have now moved the hip ratio by about 10% at most.
 
 ### Decision
-Pending founder + ChatGPT review. If more shape change is wanted, the founder's rule points away from further text-only revisions, toward a dedicated body-shape reference or a more controllable editing approach.
+Founder direction (2026-10-25):
+- **Exp 004 front-gen-v2 4101 is the strongest current front-body reference** for improved hip shape.
+- The current slimmer lean-curvy body is kept as **Version A**, a valid option that is not discarded.
+- A fuller lower-body **Version B** ("gym girl thicker": broader hips, fuller upper thighs, larger, rounder, more projected glutes; same face, waist, bust and upper body) will be explored **as a comparison branch, not a replacement**.
+- Both must be the same woman, and are compared side by side before any direction is chosen. `PROJECT_SPEC.md` is not rewritten around Version B.
+
+### Next Experiment
+Experiment 005: Version A vs Version B comparison. Proposal: `experiments/005-body-ab/PROPOSAL.md` (pending founder approval).
 
