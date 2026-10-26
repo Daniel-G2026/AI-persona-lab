@@ -180,7 +180,7 @@
         "three-quarter": "prompt_R2_3q.txt"
       },
       "enabled": false,
-      "status": "proposed 2026-10-25; awaiting founder approval"
+      "status": "run 2026-10-25; not preferred (see log). Disabled."
     }
   }
 }
