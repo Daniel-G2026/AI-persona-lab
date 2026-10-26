@@ -421,5 +421,11 @@ A local geometric warp can produce a clearly fuller lower body (hips, inner and 
   - Likely best: the broad mask for fabric, combined with a prompt that holds the outline.
 
 ### Decision
-Pending: **the founder selects the preferred intensity (B-mid or B-strong, per view)** before any paid realism reconstruction. No Version A/B winner; the canonical body specification is not changed. Version A remains a fully valid alternative.
+Founder decision (2026-10-25):
+- **B-strong is the correct Version B lower-body fullness target** for both views (`warp/front-B-strong.png`, `warp/three-quarter-B-strong.png`).
+- B-strong is the **selected shape target, not a finished image**. Realism reconstruction comes next.
+- **Version A remains preserved** as a valid alternative. **Version B is not canonical.**
+
+### Next Experiment
+Experiment 007: realism reconstruction of the B-strong targets. Proposal: `experiments/007-reconstruction/PROPOSAL.md` (pending founder approval).
 
