@@ -157,7 +157,7 @@ Experiment 004: lower-body shape refinement. Proposal: `experiments/004-body-sha
 
 ## Experiment 004 — Lower-Body Shape Refinement
 Date: 2026-10-25
-Status: Batch 1 (seed 4001, one image per arm) complete 2026-10-25. Paused for founder + ChatGPT review. Seeds 4002–4003 not approved.
+Status: Batch 1 and revised Batch 2 (seed 4101, front-gen-v2 + 3q-gen-v2) complete 2026-10-25. Paused for founder + ChatGPT review.
 
 ### Hypothesis
 Nano Banana Pro can add more lateral hip curvature and rounded, lifted glutes without changing the 2002 face, upper body, longer torso, waist width, bust or slim athletic build. Editing an Exp 003 image may control a front view better than generating fresh. For three-quarter views, an Exp 003 body reference may help or hinder.
@@ -222,7 +222,7 @@ Founder + ChatGPT assessment (2026-10-25):
 - **Do not run seeds 4002–4003 with the original prompts** (cancelled).
 - Wanted: a **noticeably more pronounced lower-body silhouette**, visually apparent compared with Exp 003, while preserving the approved upper body and facial identity.
 
-### Revised Batch 2 (proposed, awaiting approval)
+### Revised Batch 2 (approved 2026-10-25)
 - Two new generations, **2002 as the only identity reference**, seed 4101:
   - `front-gen-v2`: front-facing. Prompt: `experiments/004-body-shape/prompt_front_gen_v2.txt`
   - `3q-gen-v2`: true three-quarter view. Prompt: `experiments/004-body-shape/prompt_3q_gen_v2.txt`
@@ -243,4 +243,27 @@ Founder + ChatGPT assessment (2026-10-25):
 - ChatGPT's full anatomical description was not received verbatim; the prompts were written from its five emphasis points.
 - Estimate: 2 × $0.15 = **$0.30**. Experiment 004 total would be $0.90 of the $2.50 cap; month-to-date about $3.03.
 - Same success criteria as Experiment 004, plus: the front image must show a hip curve **visibly** more outward than the 003 base (side by side and by approximate width ratio); the three-quarter image must be a true 45° view with an unobscured hip and glute silhouette and identity ≥ 4/5.
+- **Approval (founder, after ChatGPT review, 2026-10-25):** two images, seed 4101, $0.30 estimate within the $2.50 cap. Before generating, the lower-body introduction was strengthened in both prompts to stress the **visible contrast between her slender upper body and naturally fuller hips and glutes**, with shoulders, waist, bust and torso proportions explicitly unchanged.
+- **Founder stopping rule:** if the hip shape still doesn't noticeably improve, stop revising the text and investigate a dedicated body-shape reference or a more controllable editing approach.
+
+### Results — Revised Batch 2 (seed 4101, 2 images)
+- Actual cost: **$0.30** by script estimate (2 × $0.15). Experiment 004 total: **$0.90** of the $2.50 cap. Month-to-date ≈ $3.03.
+- Both images 1696×2528. No seeds returned, no safety flags. References unchanged.
+- Files: `before_after_v2.jpg` (003 base, front-gen v1, front-gen-v2, 3q-gen v1, 3q-gen-v2 at identical scale), updated `face_crops.jpg`, `contact_sheet.jpg`, `runs.jsonl`, `review.csv`.
+- **Approximate front-view widths** (manual, ±10 px):
+
+| Image | Shoulders | Waist | Hips | Hip ÷ waist |
+|---|---|---|---|---|
+| 003 base | ~540 | ~322 | ~432 | ~1.34 |
+| front-gen 4001 (v1) | ~570 | ~324 | ~444 | ~1.37 |
+| **front-gen-v2 4101** | ~558 | ~320 | ~469 | **~1.47** |
+
+- Claude's technical first look (the acceptance calls are for founder + ChatGPT):
+  - **front-gen-v2:** a **measurable improvement**. Hip-to-waist ratio is about 1.47 vs about 1.34 for the base (roughly +10%), from wider hips while the waist stays about the same. The outward hip curve is visible side by side. The upper body, flat stomach and bust read as unchanged. Still clearly slim and realistic, not exaggerated. Whether the change is *enough* is the reviewers' call; it is noticeable but moderate.
+  - **3q-gen-v2:** **pose fixed**. A true front-left three-quarter view, left hip nearest the camera, front of the torso visible, arms clear of the hips. **The face is the closest to 2002 of any Exp 004 image**: same orientation, beauty mark on the left cheek. The glute projection and hip curve are visible but **clearly less pronounced than 3q-gen 4001**, so the rear-leaning v1 pose showed more shape than the true three-quarter view.
+  - Hands, feet and outfit look clean and on-brief in both.
+- **Against the founder's stopping rule:** the front view improved noticeably; the three-quarter view improved in pose and face but not in shape. Two text revisions have now moved the hip ratio by about 10% at most.
+
+### Decision
+Pending founder + ChatGPT review. If more shape change is wanted, the founder's rule points away from further text-only revisions, toward a dedicated body-shape reference or a more controllable editing approach.
 

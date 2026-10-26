@@ -1,5 +1,7 @@
 arm,seed,file,width,height,face_crop_px,identity_vs_2002_1to5_or_inconclusive,photorealism_1to5,exaggerated_or_artificial_yes_no,waist_not_narrower_yes_no,bust_not_larger_yes_no,torso_stomach_shoulders_preserved_yes_no,lateral_hip_curve_1to5,waist_to_hip_transition_1to5,curve_from_hips_not_thighs_yes_no,glute_roundness_projection_1to5_3q_only,silhouette_unobscured_yes_no_3q_only,still_slim_athletic_yes_no,shape_avg,outfit_matches_yes_no,beauty_mark_left_if_visible,scar_absent_yes_no,passes_all_mandatory_yes_no,shortlist_yes_no,reviewer,notes
 3q-gen,4001,images/3q-gen-seed-4001.png,1696,2528,340x340,,,,,,,,,,,,,,,,,,,,
 3q-gen+003,4001,images/3q-gen+003-seed-4001.png,1696,2528,320x320,,,,,,,,,,,,,,,,,,,,
+3q-gen-v2,4101,images/3q-gen-v2-seed-4101.png,1696,2528,340x340,,,,,,,,,,,,,,,,,,,,
 front-edit,4001,images/front-edit-seed-4001.png,1696,2528,320x320,,,,,,,,,,,,,,,,,,,,
 front-gen,4001,images/front-gen-seed-4001.png,1696,2528,340x340,,,,,,,,,,,,,,,,,,,,
+front-gen-v2,4101,images/front-gen-v2-seed-4101.png,1696,2528,340x340,,,,,,,,,,,,,,,,,,,,
