@@ -1,0 +1,5 @@
+arm,seed,file,width,height,realism_1to5,skin_texture_1to5,eyes_1to5,hair_hairline_1to5,asymmetry_natural_1to5,matches_brief_1to5,scar_visible_side,beauty_mark_visible_side,artifacts,usable_yes_no,shortlist_yes_no,reviewer,notes
+S1-A,9101,images/S1-A-seed-9101.png,1536,2752,,,,,,,,,,,,,
+S1-B,9102,images/S1-B-seed-9102.png,1536,2752,,,,,,,,,,,,,
+S2-A,9103,images/S2-A-seed-9103.png,1536,2752,,,,,,,,,,,,,
+S2-B,9104,images/S2-B-seed-9104.png,1536,2752,,,,,,,,,,,,,
