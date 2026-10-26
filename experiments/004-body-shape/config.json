@@ -158,7 +158,7 @@
       "name": "batch-2-revised",
       "seeds": "4101",
       "arms": "front-gen-v2, 3q-gen-v2",
-      "status": "proposed; awaiting founder approval"
+      "status": "approved 2026-10-25 (intro strengthened per founder); seed 4101 for each arm, then stop for review"
     }
   ],
   "acceptance_rules": [

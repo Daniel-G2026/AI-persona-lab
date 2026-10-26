@@ -222,7 +222,7 @@ Founder + ChatGPT assessment (2026-10-25):
 - **Do not run seeds 4002–4003 with the original prompts** (cancelled).
 - Wanted: a **noticeably more pronounced lower-body silhouette**, visually apparent compared with Exp 003, while preserving the approved upper body and facial identity.
 
-### Revised Batch 2 (proposed, awaiting approval)
+### Revised Batch 2 (approved 2026-10-25)
 - Two new generations, **2002 as the only identity reference**, seed 4101:
   - `front-gen-v2`: front-facing. Prompt: `experiments/004-body-shape/prompt_front_gen_v2.txt`
   - `3q-gen-v2`: true three-quarter view. Prompt: `experiments/004-body-shape/prompt_3q_gen_v2.txt`
@@ -243,4 +243,6 @@ Founder + ChatGPT assessment (2026-10-25):
 - ChatGPT's full anatomical description was not received verbatim; the prompts were written from its five emphasis points.
 - Estimate: 2 × $0.15 = **$0.30**. Experiment 004 total would be $0.90 of the $2.50 cap; month-to-date about $3.03.
 - Same success criteria as Experiment 004, plus: the front image must show a hip curve **visibly** more outward than the 003 base (side by side and by approximate width ratio); the three-quarter image must be a true 45° view with an unobscured hip and glute silhouette and identity ≥ 4/5.
+- **Approval (founder, after ChatGPT review, 2026-10-25):** two images, seed 4101, $0.30 estimate within the $2.50 cap. Before generating, the lower-body introduction was strengthened in both prompts to stress the **visible contrast between her slender upper body and naturally fuller hips and glutes**, with shoulders, waist, bust and torso proportions explicitly unchanged.
+- **Founder stopping rule:** if the hip shape still doesn't noticeably improve, stop revising the text and investigate a dedicated body-shape reference or a more controllable editing approach.
 
