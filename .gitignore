@@ -11,3 +11,6 @@ experiments/*/images/
 __pycache__/
 *.pyc
 .venv/
+
+# Experiment 006 per-image diff PNGs (summarised in warp_diff_sheet.jpg)
+experiments/*/warp/*-diff.png

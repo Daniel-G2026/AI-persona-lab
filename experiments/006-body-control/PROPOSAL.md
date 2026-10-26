@@ -1,6 +1,6 @@
 # Experiment 006 — Controllable Lower-Body Shaping (Proposal)
 
-**Status:** Proposed by Claude 2026-10-25. **Awaiting founder approval. Nothing generated, nothing spent.**
+**Status:** Stage 0 approved and complete 2026-10-25 (free; no paid calls). Stage 1 not approved.
 
 ## Why a new method
 Exp 004–005 showed that text prompts change hip, thigh and glute volume only a little. Front-view edits barely move, and the one successful change (B-3q-edit 5001) still lacks fuller upper thighs. We need a method where **we decide the shape and its size**, and the model only has to make it look real.
