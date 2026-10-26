@@ -1,0 +1,54 @@
+{
+  "front": {
+    "interior": {
+      "pixels": 282325,
+      "frame_pct": 6.58,
+      "rows": [
+        1172,
+        1887
+      ],
+      "overlap_face_upper_body_rows_lt_1000": 0,
+      "overlap_waistband_rows_1000_to_mask_start": 0,
+      "overlap_hands_arms_skin": 0,
+      "within_crop_rows": true
+    },
+    "broad": {
+      "pixels": 351318,
+      "frame_pct": 8.19,
+      "rows": [
+        1160,
+        1899
+      ],
+      "overlap_face_upper_body_rows_lt_1000": 0,
+      "overlap_waistband_rows_1000_to_mask_start": 0,
+      "overlap_hands_arms_skin": 0,
+      "within_crop_rows": true
+    }
+  },
+  "three-quarter": {
+    "interior": {
+      "pixels": 175217,
+      "frame_pct": 4.09,
+      "rows": [
+        1197,
+        1887
+      ],
+      "overlap_face_upper_body_rows_lt_1000": 0,
+      "overlap_waistband_rows_1000_to_mask_start": 0,
+      "overlap_hands_arms_skin": 0,
+      "within_crop_rows": true
+    },
+    "broad": {
+      "pixels": 227939,
+      "frame_pct": 5.32,
+      "rows": [
+        1185,
+        1899
+      ],
+      "overlap_face_upper_body_rows_lt_1000": 0,
+      "overlap_waistband_rows_1000_to_mask_start": 0,
+      "overlap_hands_arms_skin": 0,
+      "within_crop_rows": true
+    }
+  }
+}

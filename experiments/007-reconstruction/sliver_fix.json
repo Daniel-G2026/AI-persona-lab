@@ -1,0 +1,32 @@
+{
+  "front": {
+    "file": "experiments/007-reconstruction/front-B-strong-v2-fixed.png",
+    "sha256": "4588c038fce1ea57afe1a9b5ecdee992e4609e11a0a659cd50d163a4dec1a4ba",
+    "pixels_changed_vs_v2": 3775,
+    "rows": [
+      1000,
+      1329
+    ],
+    "cols": [
+      547,
+      1157
+    ],
+    "changed_above_y1000": 0,
+    "changed_below_y1330": 0
+  },
+  "three-quarter": {
+    "file": "experiments/007-reconstruction/three-quarter-B-strong-v2-fixed.png",
+    "sha256": "de2c74e8989593bdefba21b7f6f88a8e8519f0ac52965b3537ba78373faaffc1",
+    "pixels_changed_vs_v2": 3293,
+    "rows": [
+      1000,
+      1304
+    ],
+    "cols": [
+      875,
+      1006
+    ],
+    "changed_above_y1000": 0,
+    "changed_below_y1330": 0
+  }
+}

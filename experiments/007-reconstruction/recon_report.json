@@ -1,0 +1,485 @@
+{
+  "front": {
+    "version_A": {
+      "hips": {
+        "outer_span_px": 466
+      },
+      "upper_thigh": {
+        "outer_span_px": 430,
+        "single_leg_px": 201
+      },
+      "mid_thigh": {
+        "outer_span_px": 410,
+        "single_leg_px": 181
+      },
+      "knee": {
+        "outer_span_px": 368,
+        "single_leg_px": 135
+      }
+    },
+    "target": {
+      "hips": {
+        "outer_span_px": 533
+      },
+      "upper_thigh": {
+        "outer_span_px": 499,
+        "single_leg_px": 245
+      },
+      "mid_thigh": {
+        "outer_span_px": 480,
+        "single_leg_px": 229
+      },
+      "knee": {
+        "outer_span_px": 374,
+        "single_leg_px": 139
+      }
+    },
+    "R1": {
+      "composite_info": {
+        "raw_size": [
+          1440,
+          832
+        ],
+        "expected_crop_size": [
+          1696,
+          992
+        ],
+        "aligned": false,
+        "resized_to_crop": true
+      },
+      "measure": {
+        "hips": {
+          "outer_span_px": 533
+        },
+        "upper_thigh": {
+          "outer_span_px": 499,
+          "single_leg_px": 240
+        },
+        "mid_thigh": {
+          "outer_span_px": 480,
+          "single_leg_px": 229
+        },
+        "knee": {
+          "outer_span_px": 374,
+          "single_leg_px": 139
+        }
+      },
+      "changed_pixels_outside_region": 0,
+      "boundary_luma_step_out": 1.64,
+      "boundary_luma_step_target": 1.34,
+      "retention": {
+        "hips.outer_span_px": {
+          "A": 466,
+          "target": 533,
+          "out": 533,
+          "vs_A_pct": 14.4,
+          "vs_target_pct": 0.0
+        },
+        "upper_thigh.outer_span_px": {
+          "A": 430,
+          "target": 499,
+          "out": 499,
+          "vs_A_pct": 16.0,
+          "vs_target_pct": 0.0
+        },
+        "upper_thigh.single_leg_px": {
+          "A": 201,
+          "target": 245,
+          "out": 240,
+          "vs_A_pct": 19.4,
+          "vs_target_pct": -2.0
+        },
+        "mid_thigh.outer_span_px": {
+          "A": 410,
+          "target": 480,
+          "out": 480,
+          "vs_A_pct": 17.1,
+          "vs_target_pct": 0.0
+        },
+        "mid_thigh.single_leg_px": {
+          "A": 181,
+          "target": 229,
+          "out": 229,
+          "vs_A_pct": 26.5,
+          "vs_target_pct": 0.0
+        },
+        "knee.outer_span_px": {
+          "A": 368,
+          "target": 374,
+          "out": 374,
+          "vs_A_pct": 1.6,
+          "vs_target_pct": 0.0
+        },
+        "knee.single_leg_px": {
+          "A": 135,
+          "target": 139,
+          "out": 139,
+          "vs_A_pct": 3.0,
+          "vs_target_pct": 0.0
+        }
+      }
+    },
+    "R2": {
+      "composite_info": {
+        "raw_size": [
+          1696,
+          992
+        ],
+        "expected_crop_size": [
+          1696,
+          992
+        ],
+        "aligned": true
+      },
+      "measure": {
+        "hips": {
+          "outer_span_px": 533
+        },
+        "upper_thigh": {
+          "outer_span_px": 499,
+          "single_leg_px": 245
+        },
+        "mid_thigh": {
+          "outer_span_px": 480,
+          "single_leg_px": 229
+        },
+        "knee": {
+          "outer_span_px": 375,
+          "single_leg_px": 140
+        }
+      },
+      "changed_pixels_outside_region": 0,
+      "retention": {
+        "hips.outer_span_px": {
+          "A": 466,
+          "target": 533,
+          "out": 533,
+          "vs_A_pct": 14.4,
+          "vs_target_pct": 0.0
+        },
+        "upper_thigh.outer_span_px": {
+          "A": 430,
+          "target": 499,
+          "out": 499,
+          "vs_A_pct": 16.0,
+          "vs_target_pct": 0.0
+        },
+        "upper_thigh.single_leg_px": {
+          "A": 201,
+          "target": 245,
+          "out": 245,
+          "vs_A_pct": 21.9,
+          "vs_target_pct": 0.0
+        },
+        "mid_thigh.outer_span_px": {
+          "A": 410,
+          "target": 480,
+          "out": 480,
+          "vs_A_pct": 17.1,
+          "vs_target_pct": 0.0
+        },
+        "mid_thigh.single_leg_px": {
+          "A": 181,
+          "target": 229,
+          "out": 229,
+          "vs_A_pct": 26.5,
+          "vs_target_pct": 0.0
+        },
+        "knee.outer_span_px": {
+          "A": 368,
+          "target": 374,
+          "out": 375,
+          "vs_A_pct": 1.9,
+          "vs_target_pct": 0.3
+        },
+        "knee.single_leg_px": {
+          "A": 135,
+          "target": 139,
+          "out": 140,
+          "vs_A_pct": 3.7,
+          "vs_target_pct": 0.7
+        }
+      }
+    },
+    "R3": {
+      "composite_info": {
+        "raw_size": [
+          1696,
+          2528
+        ],
+        "aligned": true
+      },
+      "measure": {
+        "hips": {
+          "outer_span_px": 521,
+          "single_leg_px": 265
+        },
+        "upper_thigh": {
+          "outer_span_px": 505,
+          "single_leg_px": 246
+        },
+        "mid_thigh": {
+          "outer_span_px": 480,
+          "single_leg_px": 228
+        },
+        "knee": {
+          "outer_span_px": 374,
+          "single_leg_px": 139
+        }
+      },
+      "retention": {
+        "hips.outer_span_px": {
+          "A": 466,
+          "target": 533,
+          "out": 521,
+          "vs_A_pct": 11.8,
+          "vs_target_pct": -2.3
+        },
+        "upper_thigh.outer_span_px": {
+          "A": 430,
+          "target": 499,
+          "out": 505,
+          "vs_A_pct": 17.4,
+          "vs_target_pct": 1.2
+        },
+        "upper_thigh.single_leg_px": {
+          "A": 201,
+          "target": 245,
+          "out": 246,
+          "vs_A_pct": 22.4,
+          "vs_target_pct": 0.4
+        },
+        "mid_thigh.outer_span_px": {
+          "A": 410,
+          "target": 480,
+          "out": 480,
+          "vs_A_pct": 17.1,
+          "vs_target_pct": 0.0
+        },
+        "mid_thigh.single_leg_px": {
+          "A": 181,
+          "target": 229,
+          "out": 228,
+          "vs_A_pct": 26.0,
+          "vs_target_pct": -0.4
+        },
+        "knee.outer_span_px": {
+          "A": 368,
+          "target": 374,
+          "out": 374,
+          "vs_A_pct": 1.6,
+          "vs_target_pct": 0.0
+        },
+        "knee.single_leg_px": {
+          "A": 135,
+          "target": 139,
+          "out": 139,
+          "vs_A_pct": 3.0,
+          "vs_target_pct": 0.0
+        }
+      }
+    }
+  },
+  "three-quarter": {
+    "version_A": {
+      "waistband": {
+        "outer_span_px": 229
+      },
+      "glutes": {
+        "outer_span_px": 387
+      },
+      "upper_thigh": {
+        "outer_span_px": 296
+      },
+      "knee": {
+        "outer_span_px": 216
+      }
+    },
+    "target": {
+      "waistband": {
+        "outer_span_px": 230
+      },
+      "glutes": {
+        "outer_span_px": 430
+      },
+      "upper_thigh": {
+        "outer_span_px": 336
+      },
+      "knee": {
+        "outer_span_px": 220
+      }
+    },
+    "R1": {
+      "composite_info": {
+        "raw_size": [
+          1440,
+          832
+        ],
+        "expected_crop_size": [
+          1696,
+          992
+        ],
+        "aligned": false,
+        "resized_to_crop": true
+      },
+      "measure": {
+        "waistband": {
+          "outer_span_px": 230
+        },
+        "glutes": {
+          "outer_span_px": 430
+        },
+        "upper_thigh": {
+          "outer_span_px": 336
+        },
+        "knee": {
+          "outer_span_px": 220
+        }
+      },
+      "changed_pixels_outside_region": 0,
+      "boundary_luma_step_out": 1.12,
+      "boundary_luma_step_target": 0.42,
+      "retention": {
+        "waistband.outer_span_px": {
+          "A": 229,
+          "target": 230,
+          "out": 230,
+          "vs_A_pct": 0.4,
+          "vs_target_pct": 0.0
+        },
+        "glutes.outer_span_px": {
+          "A": 387,
+          "target": 430,
+          "out": 430,
+          "vs_A_pct": 11.1,
+          "vs_target_pct": 0.0
+        },
+        "upper_thigh.outer_span_px": {
+          "A": 296,
+          "target": 336,
+          "out": 336,
+          "vs_A_pct": 13.5,
+          "vs_target_pct": 0.0
+        },
+        "knee.outer_span_px": {
+          "A": 216,
+          "target": 220,
+          "out": 220,
+          "vs_A_pct": 1.9,
+          "vs_target_pct": 0.0
+        }
+      }
+    },
+    "R2": {
+      "composite_info": {
+        "raw_size": [
+          1696,
+          992
+        ],
+        "expected_crop_size": [
+          1696,
+          992
+        ],
+        "aligned": true
+      },
+      "measure": {
+        "waistband": {
+          "outer_span_px": 230
+        },
+        "glutes": {
+          "outer_span_px": 430
+        },
+        "upper_thigh": {
+          "outer_span_px": 336
+        },
+        "knee": {
+          "outer_span_px": 220
+        }
+      },
+      "changed_pixels_outside_region": 0,
+      "retention": {
+        "waistband.outer_span_px": {
+          "A": 229,
+          "target": 230,
+          "out": 230,
+          "vs_A_pct": 0.4,
+          "vs_target_pct": 0.0
+        },
+        "glutes.outer_span_px": {
+          "A": 387,
+          "target": 430,
+          "out": 430,
+          "vs_A_pct": 11.1,
+          "vs_target_pct": 0.0
+        },
+        "upper_thigh.outer_span_px": {
+          "A": 296,
+          "target": 336,
+          "out": 336,
+          "vs_A_pct": 13.5,
+          "vs_target_pct": 0.0
+        },
+        "knee.outer_span_px": {
+          "A": 216,
+          "target": 220,
+          "out": 220,
+          "vs_A_pct": 1.9,
+          "vs_target_pct": 0.0
+        }
+      }
+    },
+    "R3": {
+      "composite_info": {
+        "raw_size": [
+          1696,
+          2528
+        ],
+        "aligned": true
+      },
+      "measure": {
+        "waistband": {
+          "outer_span_px": 229
+        },
+        "glutes": {
+          "outer_span_px": 432
+        },
+        "upper_thigh": {
+          "outer_span_px": 337
+        },
+        "knee": {
+          "outer_span_px": 220
+        }
+      },
+      "retention": {
+        "waistband.outer_span_px": {
+          "A": 229,
+          "target": 230,
+          "out": 229,
+          "vs_A_pct": 0.0,
+          "vs_target_pct": -0.4
+        },
+        "glutes.outer_span_px": {
+          "A": 387,
+          "target": 430,
+          "out": 432,
+          "vs_A_pct": 11.6,
+          "vs_target_pct": 0.5
+        },
+        "upper_thigh.outer_span_px": {
+          "A": 296,
+          "target": 336,
+          "out": 337,
+          "vs_A_pct": 13.9,
+          "vs_target_pct": 0.3
+        },
+        "knee.outer_span_px": {
+          "A": 216,
+          "target": 220,
+          "out": 220,
+          "vs_A_pct": 1.9,
+          "vs_target_pct": 0.0
+        }
+      }
+    }
+  }
+}
