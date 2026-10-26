@@ -623,5 +623,15 @@ Founder + ChatGPT (2026-10-25):
   5. Face and upper body: exactly preserved in both (0 px outside the mask).
 
 ### Decision (strength comparison)
-Per the founder's rule (if 0.45 brings no meaningful realism improvement, keep 0.35): **0.45 brings no improvement and adds defects, so R2 at strength 0.35 remains the preferred setting.** Pending founder confirmation. The R2 0.35 outputs remain the shortlisted provisional Version B reconstructed candidates. R2-s045 is disabled in the config. Version A untouched; nothing canonical.
+Per the founder's rule (if 0.45 brings no meaningful realism improvement, keep 0.35): **0.45 brings no improvement and adds defects, so R2 at strength 0.35 remains the preferred setting.** The R2 0.35 outputs remain the shortlisted provisional Version B reconstructed candidates. R2-s045 is disabled in the config. Version A untouched; nothing canonical.
+
+### Final decision (Experiment 007 closed)
+Founder + ChatGPT (2026-10-25):
+- **R2 at strength 0.35 confirmed** as the preferred reconstruction setting. **Strength 0.45 rejected** (reduced glute projection, ghost contours, contact artifacts).
+- **R2 0.35 front and three-quarter outputs kept as provisional Version B body references** (`experiments/007-reconstruction/shortlist/B/`).
+- Version A preserved as a valid alternative. **Neither body direction is canonical.**
+- **Reconstruction testing complete.** No further tuning of the same studio photographs.
+
+### Next Experiment
+Experiment 008: identity and body-shape transfer to new outfits, poses and environments. Proposal: `experiments/008-identity-body-transfer/PROPOSAL.md` (pending founder approval).
 
