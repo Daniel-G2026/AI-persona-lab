@@ -18,3 +18,9 @@ experiments/*/warp/*-diff.png
 # Experiment 007 raw API outputs and composites stay local (mirrored to BACKUP_DIR); sheets + metadata are committed
 experiments/007-reconstruction/raw/
 experiments/007-reconstruction/out/
+
+# Experiment 009 blind-review key and full-size variants stay local (key SHA-256 is committed)
+experiments/009-realism-video/blind_key.json
+experiments/009-realism-video/variants/
+experiments/009-realism-video/blind/
+experiments/009-realism-video/blind_for_reviewers/

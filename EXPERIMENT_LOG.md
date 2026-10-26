@@ -709,5 +709,34 @@ Founder reassessment (2026-10-25):
 - Keep 2002 as the face anchor. Keep **both** Version A and Version B body references; neither is canonical.
 
 ### Next Experiment
-Experiment 009: smartphone-style photographic believability and an early image-to-video proof of concept. Proposal: `experiments/009-realism-video/PROPOSAL.md` (pending founder approval).
+Experiment 009: smartphone-style photographic believability and an early image-to-video proof of concept. Proposal: `experiments/009-realism-video/PROPOSAL.md` (direction approved 2026-10-25; Part 1 only).
+
+---
+
+## Experiment 009 — Smartphone Believability (Part 1: stills)
+Date: 2026-10-25
+Status: Direction approved by founder (after ChatGPT review). **Part 1 only authorized: 4 stills + free phone-pass variants, about $0.60.** Video NOT approved. Running Part 1.
+
+### Hypothesis
+With prompts aimed at ordinary smartphone photography (phone optics, real light, lived-in settings, candid posing, unretouched skin), Nano Banana Pro can produce stills of the same woman that ordinary viewers would not immediately identify as AI.
+
+### Setup
+- Settings: `experiments/009-realism-video/config.json`. Prompts: `prompt_S{1,2}-{A,B}.txt`. Nano Banana Pro Edit, **9:16, 2K**, PNG, fal default safety settings, $0.15/image (re-verified on fal earlier today).
+- References in order: 2002 (face), then the body front and three-quarter for **Version A or Version B**. Both versions are kept; neither is canonical. All hash-checked.
+- Arms:
+  - **S1** mirror selfie in a lived-in hallway (A seed 9101, B seed 9102)
+  - **S2** friend-taken photo outside a coffee shop (A seed 9103, B seed 9104)
+- Founder adjustments applied:
+  1. **S2 simplified:** iced coffee in one hand, the other hand relaxed at her side, a small candid smile, standing naturally. No laughing or hair movement.
+  2. Prompts now say: "Prioritize ordinary, everyday photographic believability over beauty or polish… not a fashion shoot, not a campaign, not stock photography."
+  3. **Originals and phone-pass variants are kept separately.**
+     - `scripts/phone_pass.py`: 1080×1920 crop/resize, unsharp mask 1.2/60%/2, shadow-weighted luminance noise σ 1–4, JPEG q82 4:2:0, saved as PNG.
+     - The originals' blind copies get the same 1080×1920 crop/resize and nothing else.
+     - `scripts/blind_set.py` shuffles all 8 under random codes. The key `blind_key.json` is git-ignored; only its SHA-256 is committed.
+     - **The phone pass is not assumed to improve realism.**
+  4. Face, body and photographic realism are assessed separately.
+  5. **Blind human evaluation procedure:** `BLIND_REVIEW.md`, with the form `human_ratings.csv`, kept separate from `claude_assessment.csv` (and ChatGPT's).
+  6. **Mandatory video gate:** no image-to-video unless at least one still passes identity (≥ 4/5) and realism (overall ≥ 4/5) with no major artifacts, **and** the founder separately approves video.
+  7. **Fallback rule:** if the stills remain obviously AI-generated, stop and propose a different still-image approach, e.g. a real photographic background as the base.
+- Cap $0.75 (estimate $0.60).
 
