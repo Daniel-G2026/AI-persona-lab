@@ -272,5 +272,30 @@ Founder direction (2026-10-25):
 - Both must be the same woman, and are compared side by side before any direction is chosen. `PROJECT_SPEC.md` is not rewritten around Version B.
 
 ### Next Experiment
-Experiment 005: Version A vs Version B comparison. Proposal: `experiments/005-body-ab/PROPOSAL.md` (pending founder approval).
+Experiment 005: Version A vs Version B comparison. Proposal: `experiments/005-body-ab/PROPOSAL.md` (approved 2026-10-25, Stage 1 only).
+
+---
+
+## Experiment 005 — Body Direction A/B Comparison
+Date: 2026-10-25
+Status: Design approved by founder (after ChatGPT review) 2026-10-25. **Stage 1 only (6 images) authorized**; Stage 2 needs separate approval. Running Stage 1.
+
+### Hypothesis
+The same woman can be shown in two body directions: **Version A** (current lean-curvy) and **Version B** (fuller hips, upper thighs and glutes, same face and upper body). These can be compared side by side without the identity drifting into a different woman.
+
+### Setup
+- Proposal: `experiments/005-body-ab/PROPOSAL.md`. Settings: `experiments/005-body-ab/config.json`.
+- Model: Nano Banana Pro Edit, 2K, 2:3, PNG, fal default safety settings.
+- References (hash-checked):
+  - 2002 face anchor
+  - Version A bases (preserved, read-only originals): `base/004-front-gen-v2-seed-4101.png` (`24dd9192…`) and `base/004-3q-gen-v2-seed-4101.png` (`3c8eafb4…`)
+- Arms:
+  - **Track 1 (paired edits):** `B-front-edit` and `B-3q-edit` edit the Version A bases (A image first, then 2002).
+  - **Track 2 (matched generations, 2002 only):** `A-front-gen`, `B-front-gen`, `A-3q-gen`, `B-3q-gen`. A and B prompts are identical except the body paragraphs.
+- Stage 1: seed 5001 for all 6 arms. Estimate **$0.90**. Experiment cap **$3.00**.
+- Founder adjustments on approval:
+  1. **Version B thighs strengthened** (all 4 B prompts): visibly fuller upper thighs through both inner and outer thigh contours, natural quadriceps and hamstring fullness, athletic definition, gradual taper toward the knees; the A/B thigh difference should be clearly noticeable. **Version A prompts unchanged.**
+  2. **Evaluation:** separate real anatomical differences from apparent ones caused by camera angle, perspective, stance or pose. Matched seeds don't guarantee identical compositions. A pair-level review (`review_pairs.csv`) records composition differences and discounts differences they explain.
+- Preserved for both versions: 2002 facial identity, beauty mark on the left cheekbone, slim upper body, same waist width and medium natural bust, longer torso, realistic anatomy and skin.
+- **Version A stays a fully valid alternative. No winner is designated until the founder compares the images.**
 
