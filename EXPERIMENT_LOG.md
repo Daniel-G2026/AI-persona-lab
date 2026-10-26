@@ -478,6 +478,33 @@ Status: Approach approved in principle by founder (after ChatGPT review), **stag
   3. Front hands remain shifted outward (up to 36 px vs Version A) because they follow the widened thighs. Their shape is not distorted.
 - No new background, fabric or contour artifacts seen at 1:1 in the zoom crops.
 
-### Decision
-Pending: founder visual approval of the B-strong-v2 previews. No paid reconstruction until then. Version A untouched and valid; nothing canonical.
+### Decision (Step 1)
+Founder (after ChatGPT review, 2026-10-25): **B-strong-v2 approved** as the reconstruction starting point for both views. Forearms and knee transitions are improved, and B-strong fullness is adequately preserved.
+
+### Step 1b — pre-checkpoint fixes (free)
+- **Arm/hip light-line fix** (founder item 1): `scripts/fix_arm_sliver.py`.
+  - Light runs under 7 px wide (found by a horizontal morphological opening of luma > 170, plus their anti-aliased fringe) in rows 1000–1330 are filled with a blend of their neighbours, then lightly smoothed vertically **inside the repaired strip only**.
+  - The real arm-to-waist background gap is wider and left untouched. Front thigh-gap columns 780–920 are excluded.
+  - Two earlier versions were rejected after 1:1 inspection: one used a colour classifier that missed the shadowed arm edge; one used a per-row fill that left a dashed line.
+  - Outputs: `experiments/007-reconstruction/front-B-strong-v2-fixed.png` (`4588c038…`) changes 3,775 px; `three-quarter-B-strong-v2-fixed.png` (`de2c74e8…`) changes 3,293 px.
+  - All changes are in rows 1000–1329 at the forearm/hip contact. **0 px above y=1000, 0 below y=1330.** Silhouette unchanged. Summary: `sliver_fix.json`.
+  - A first run spilled 13 px above y=1000 in the three-quarter view through the smoothing margin; it was clamped and re-run.
+- **Approved B-strong-v2 files preserved untouched** (founder item 3): `experiments/006-body-control/warp/*-B-strong-v2.png`, hashes re-verified (`ca6539a2…`, `160b8969…`). The fixed copies are new files.
+- **Cleanup masks** (founder item 2): `scripts/reconstruct.py masks` → `experiments/007-reconstruction/masks/`, `masks_preview.jpg`, `masks/mask_checks.json`.
+  - Built from the filled legging area (fixes the draft's waistband-seam false positive).
+  - Rows start below the waistband seam: front 1160, three-quarter 1185, to 1900.
+  - Hands and arms excluded with a 10 px margin.
+  - Interior mask = legging area eroded 12 px; broad mask = dilated 20 px.
+  - **Verified 0 px overlap with the face and upper body (rows < 1000), the waistband, and hands/arms**, for both masks in both views. All masks sit inside the crop.
+
+### Checkpoint (paid) — approved 2026-10-25
+- 6 images, estimate **$0.52**, Exp 007 cap $1.50. Endpoints, prices and parameters re-verified on fal before running:
+  - FLUX.1 Fill [pro]: $0.05/MP rounded up; `image_url`, `mask_url`, `seed` returned
+  - Z-Image Turbo image-to-image: `strength`, custom `image_size`, `seed` returned
+  - Nano Banana Pro Edit: $0.15/image at 2K
+- **R1:** FLUX Fill, interior mask, lower-body crop rows 1008–2000 (1696×992), seed 7001. Composited with a 4 px feather that ramps only inside the mask.
+- **R2:** Z-Image Turbo image-to-image on the same crop, **strength 0.35** (single documented strength: the midpoint of the proposed 0.30/0.45, low enough to keep the silhouette and hands, high enough to re-render fabric), 8 steps, acceleration none, seed 7001. Composited through the broad mask with an 8 px inside feather.
+- **R3:** Nano Banana Pro Edit on the full image, references [fixed target, 2002], 2:3, 2K, seed 7001 (not returned by this model). No compositing.
+- Prompts: `experiments/007-reconstruction/prompt_R*.txt` (as proposed). Settings: `recon_config.json`.
+- Raw outputs kept in `raw/` and mirrored to OneDrive; composites in `out/`.
 
