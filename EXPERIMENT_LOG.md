@@ -701,6 +701,13 @@ Nano Banana Pro, given 2002 (face) and the Version B R2 0.35 front and three-qua
 ### Interpretation (technical, for review)
 Nano Banana Pro transfers the **face** reliably into new scenes, but **body references alone do not reliably carry Version B's fuller lower body**. The model drifts toward a slimmer, straighter default, most visibly in the front view. Two images is a small sample.
 
-### Decision
-Pending founder + ChatGPT review. Version A untouched; nothing canonical; no further generations without approval.
+### Decision / direction change
+Founder reassessment (2026-10-25):
+- The real goal is **believable, high-quality social-media content** (Instagram photos, Reels, short videos) featuring the fictional adult character.
+- Exp 008 showed the main problem: the photos are attractive and technically photorealistic but still **look obviously AI-generated and overly staged**.
+- **Stop optimizing body proportions in isolation.** The key question is now whether believable content can be produced **repeatedly**.
+- Keep 2002 as the face anchor. Keep **both** Version A and Version B body references; neither is canonical.
+
+### Next Experiment
+Experiment 009: smartphone-style photographic believability and an early image-to-video proof of concept. Proposal: `experiments/009-realism-video/PROPOSAL.md` (pending founder approval).
 
