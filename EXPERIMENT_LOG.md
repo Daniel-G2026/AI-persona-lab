@@ -427,5 +427,57 @@ Founder decision (2026-10-25):
 - **Version A remains preserved** as a valid alternative. **Version B is not canonical.**
 
 ### Next Experiment
-Experiment 007: realism reconstruction of the B-strong targets. Proposal: `experiments/007-reconstruction/PROPOSAL.md` (pending founder approval).
+Experiment 007: realism reconstruction of the B-strong targets. Proposal: `experiments/007-reconstruction/PROPOSAL.md` (approved in principle 2026-10-25; staged).
+
+---
+
+## Experiment 007 — Realism Reconstruction of the B-strong Target
+Date: 2026-10-25
+Status: Approach approved in principle by founder (after ChatGPT review), **staged**. **Step 1 (free B-strong-v2 re-warp) complete. Paused for founder visual approval.** No paid calls. The paid reconstruction checkpoint is not yet approved.
+
+### Founder conditions for later stages
+- After v2 approval, propose a **6-image checkpoint**: R1 (FLUX Fill, interior mask), R2 (Z-Image i2i, **one documented strength**) and R3 (Nano Banana Pro), each 1 front + 1 three-quarter. About $0.52.
+- Checks required at that stage:
+  1. the 12 px protected silhouette band keeps no visible stretching and creates no boundary seams
+  2. crop dimensions, output alignment and compositing accuracy verified
+  3. R1/R2 preserve every pixel outside the compositing region
+  4. R3: face independently checked against 2002, and the lower-body silhouette measured for any reduction
+  5. all raw outputs kept
+
+### Step 1 — B-strong-v2 (free)
+- Settings: `experiments/006-body-control/warp_config.json`, intensity `B-strong-v2`. Script `scripts/body_warp.py` gains `arm_mode: linear`: each forearm's shift grows evenly from the elbow row (y=1000) to the wrist row (front y=1320, three-quarter y=1300), then stays constant across the hand. The forearm stays straight, pivoting at the elbow, instead of bowing.
+- Knee taper lengthened: outer/back profiles now step down at about 1620/1600 → 1760/1740 → 0 at 1880 (B-strong reached 0 at 1830). Hip and upper-thigh keyframes are unchanged.
+- Outputs:
+  - `experiments/006-body-control/warp/front-B-strong-v2.png` (`ca6539a2…`)
+  - `…/three-quarter-B-strong-v2.png` (`160b8969…`)
+  - Review sheets in `experiments/007-reconstruction/`: `v2_compare.jpg` (equal scale), `v2_zoom.jpg` (1:1 forearm, hand and knee crops) and `v2_vs_bstrong_diff.jpg`.
+- B-mid and B-strong re-rendered byte-identical (hashes unchanged), so the warp is reproducible.
+- **Measured vs B-strong** (automatic legging outline):
+
+| | B-strong | B-strong-v2 | Δ |
+|---|---|---|---|
+| Front hips (outer span) | 539 | 531 | −1.5% |
+| Front upper thigh (outer / single leg) | 506 / 249 | 499 / 245 | −1.4% / −1.6% |
+| Front mid thigh (outer / single leg) | 472 / 225 | 480 / 229 | +1.7% / +1.8% |
+| Front knee | 368 | 374 | +1.6% |
+| Three-quarter glutes | 430 | 430 | 0% |
+| Three-quarter upper thigh | 334 | 336 | +0.6% |
+| Three-quarter waistband | 229 | 230 | +1 px |
+| Pixels changed above waistband / below knee+60 | 0 / 0 | 0 / 0 | n/a |
+| Max hand/arm shift (vs Version A) | 40.5 / 14.2 | 36.5 / 10.9 | n/a |
+
+- All within ±2% of B-strong. **The small front-hip drop is a measuring effect:** the straightened forearms sit slightly closer to the body and hide a little more of the hip edge. The hip displacement profile is identical. **Versus Version A, front hips remain +13.9%** (531 vs 466) by this occlusion-limited measure.
+- **Where v2 differs from B-strong:** only the forearms and hands, and the outer thigh-to-knee edge band (rows 1000–1899). No background, face, upper-body or shoe changes.
+- Claude's subjective look:
+  - The forearms read straighter, with natural elbow-to-wrist alignment.
+  - The thigh-to-knee transition is visibly smoother and longer, with no loss of upper-thigh fullness.
+  - Three-quarter: glutes unchanged, slightly smaller hand shift.
+- **Artifacts still present (honest):**
+  1. A **thin light line where the front forearms meet the hip edge**, inherited from B-strong (background pixels squeezed between arm and hip). It sits in the outline band, which R1's interior mask leaves untouched, so it would need R2's broad blend, R3, or a small manual touch.
+  2. **Legging shading is still warp-stretched** across the front thighs. This is the paid reconstruction's job.
+  3. Front hands remain shifted outward (up to 36 px vs Version A) because they follow the widened thighs. Their shape is not distorted.
+- No new background, fabric or contour artifacts seen at 1:1 in the zoom crops.
+
+### Decision
+Pending: founder visual approval of the B-strong-v2 previews. No paid reconstruction until then. Version A untouched and valid; nothing canonical.
 

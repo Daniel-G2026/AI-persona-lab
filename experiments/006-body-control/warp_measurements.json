@@ -59,6 +59,27 @@
       "changed_pixels_below_knee_plus_60": 0,
       "max_displacement_px": 40.8,
       "max_arm_hand_shift_px": 40.5
+    },
+    "B-strong-v2": {
+      "hips": {
+        "outer_span_px": 531
+      },
+      "upper_thigh": {
+        "outer_span_px": 499,
+        "single_leg_px": 245
+      },
+      "mid_thigh": {
+        "outer_span_px": 480,
+        "single_leg_px": 229
+      },
+      "knee": {
+        "outer_span_px": 374,
+        "single_leg_px": 139
+      },
+      "changed_pixels_above_waistband": 0,
+      "changed_pixels_below_knee_plus_60": 0,
+      "max_displacement_px": 40.1,
+      "max_arm_hand_shift_px": 36.5
     }
   },
   "three-quarter": {
@@ -112,12 +133,32 @@
       "changed_pixels_below_knee_plus_60": 0,
       "max_displacement_px": 40.5,
       "max_arm_hand_shift_px": 14.2
+    },
+    "B-strong-v2": {
+      "waistband": {
+        "outer_span_px": 230
+      },
+      "glutes": {
+        "outer_span_px": 430
+      },
+      "upper_thigh": {
+        "outer_span_px": 336
+      },
+      "knee": {
+        "outer_span_px": 220
+      },
+      "changed_pixels_above_waistband": 0,
+      "changed_pixels_below_knee_plus_60": 0,
+      "max_displacement_px": 40.5,
+      "max_arm_hand_shift_px": 10.9
     }
   },
   "files_sha256": {
     "warp/front-B-mid.png": "811aace49121e637a9f43c49004be8d758031191c7fe28b1b2a57b26e7886d52",
+    "warp/front-B-strong-v2.png": "ca6539a282a3a4264a368f179f15f5716b51855a02665e5af041cbbb03628c18",
     "warp/front-B-strong.png": "fb7f48ab4f6b154c9859b15708665b518b5cba445c7f394bb59a84ef9ed1e01b",
     "warp/three-quarter-B-mid.png": "2f572de8b0792936c6d100d93d0535b43e111f1394d6501ce664a59ca1943d5a",
+    "warp/three-quarter-B-strong-v2.png": "160b89696f6f395a08bab607aa5f99c99a24f0f26b6ea5449ea843d5dce18e12",
     "warp/three-quarter-B-strong.png": "d1feac3c1041dd2bfe240c1ac6ca452d0862cbc50f4242f44c1a1430ec5953f1"
   }
 }

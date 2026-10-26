@@ -88,12 +88,13 @@ def arm_runs(skin, view):
     return {y: runs_in_row(S[y], 0, S.shape[1], min_len=6) for y in range(a0, a1)}
 
 
-def rigid_interp(xs, src, dst, runs):
-    """Piecewise-linear map through (src, dst); each arm run moves rigidly by the base displacement at its centre."""
+def rigid_interp(xs, src, dst, runs, shifts=None):
+    """Piecewise-linear map through (src, dst); each arm run moves rigidly, by the base displacement at its centre
+    or by the given per-run shift."""
     src, dst = list(src), list(dst)
-    for a, b in runs:
+    for i, (a, b) in enumerate(runs):
         c = (a + b) / 2
-        dc = np.interp(c, src, dst) - c
+        dc = shifts[i] if shifts is not None else np.interp(c, src, dst) - c
         lo, hi = a - 4, b + 4
         keep = [(s_, d_) for s_, d_ in zip(src, dst) if not (lo <= s_ <= hi)]
         keep += [(lo, lo + dc), (hi, hi + dc)]
@@ -109,6 +110,7 @@ def build_forward_map(view, intensity, L, y0, y1, W, arms):
     prof = view["intensities"][intensity]
     xs = np.arange(W, dtype=float)
     disp = np.zeros((y1 - y0, W))
+    rows_sd = []
     margin = view.get("anchor_margin", 220)
     if view["type"] == "front":
         d_out = profile(prof["outer"], ys)
@@ -126,7 +128,7 @@ def build_forward_map(view, intensity, L, y0, y1, W, arms):
             src = [0, oL - margin, oL, cL, iL, xm, iR, cR, oR, oR + margin, W - 1]
             dst = [0, oL - margin, oL - d_out[j], cL - (d_out[j] - din) / 2, iL + din, xm,
                    iR - din, cR + (d_out[j] - din) / 2, oR + d_out[j], oR + margin, W - 1]
-            disp[j] = rigid_interp(xs, src, dst, arms.get(ys[j], [])) - xs
+            rows_sd.append((src, dst, xm))
     else:  # three-quarter: front edge = leftmost legging pixel, back edge = rightmost
         d_back = profile(prof["back"], ys)
         d_front = profile(prof["front"], ys)
@@ -135,7 +137,27 @@ def build_forward_map(view, intensity, L, y0, y1, W, arms):
             M = (F + Bk) / 2
             src = [0, F - margin, F, M, Bk, Bk + margin, W - 1]
             dst = [0, F - margin, F - d_front[j], M, Bk + d_back[j], Bk + margin, W - 1]
-            disp[j] = rigid_interp(xs, src, dst, arms.get(ys[j], [])) - xs
+            rows_sd.append((src, dst, M))
+    linear = prof.get("arm_mode") == "linear"
+    if linear:
+        # Straight forearms: per side, shift grows linearly from the elbow row to the wrist row, then stays constant.
+        e_y, w_y = view["arm_linear"]["elbow_y"], view["arm_linear"]["wrist_y"]
+        ref = {"L": [], "R": []}
+        for j, y in enumerate(ys):
+            if w_y <= y < w_y + 150:
+                src, dst, mid = rows_sd[j]
+                for a, b in arms.get(y, []):
+                    c = (a + b) / 2
+                    ref["L" if c < mid else "R"].append(np.interp(c, src, dst) - c)
+        ref = {k: float(np.median(v)) if v else 0.0 for k, v in ref.items()}
+    for j, y in enumerate(ys):
+        src, dst, mid = rows_sd[j]
+        runs = arms.get(y, [])
+        shifts = None
+        if linear:
+            f = float(np.clip((y - e_y) / (w_y - e_y), 0, 1))
+            shifts = [ref["L" if (a + b) / 2 < mid else "R"] * f for a, b in runs]
+        disp[j] = rigid_interp(xs, src, dst, runs, shifts) - xs
     disp = gaussian_filter(disp, sigma=(6, 2))
     return disp
 
@@ -210,7 +232,8 @@ def main():
     (exp_dir / "warp_measurements.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
 
     tw, th, lh = 560, 835, 34
-    sheet = Image.new("RGB", (3 * tw, len(rows) * (th + lh)), "white")
+    ncol = max(len(t) for t in rows)
+    sheet = Image.new("RGB", (ncol * tw, len(rows) * (th + lh)), "white")
     draw = ImageDraw.Draw(sheet)
     try:
         font = ImageFont.truetype("arial.ttf", 22)
