@@ -565,9 +565,34 @@ Founder (after ChatGPT review, 2026-10-25): **B-strong-v2 approved** as the reco
   - Front hips reduced 2.3% vs the target, and the face drifted as above.
 - No method shows new background warping. Knees look smooth in all three.
 
-### Decision
-Pending founder + ChatGPT review. No winner and nothing canonical. Version A untouched and valid. **Technical summary:**
+### Technical summary at checkpoint
 - R2 best satisfies the constraints (shape and identity exact, clean, cheap) but is a light-touch refresh.
 - R3 looks most natural but slightly slims the front hips and drifts the face.
 - R1 needs a re-run at ≤ 1.2 MP crop size and still showed contour defects.
+
+### Decision (checkpoint review)
+Founder + ChatGPT (2026-10-25):
+- **R1 rejected:** visible contour and contact-point artifacts.
+- **R2 (strength 0.35) is the preferred reconstruction method so far.**
+- R3: polished, but facial styling drift and reduced front hip fullness.
+- **R2 front and three-quarter shortlisted as provisional Version B reconstructed candidates:**
+  - `experiments/007-reconstruction/shortlist/B/front-R2-s035.png` (`5eae9d12…`)
+  - `…/three-quarter-R2-s035.png` (`f8d1cddf…`)
+- Version A preserved as a valid alternative. **Neither physique is canonical.**
+- No further FLUX Fill or global Nano Banana spend this checkpoint. R1 and R3 are disabled in `recon_config.json` (`enabled: false`), and `scripts/reconstruct.py` skips disabled methods.
+
+### Proposed: R2 strength comparison (awaiting founder approval)
+- New method `R2-s045` in `recon_config.json`: **identical to R2 except strength 0.45**. Verified programmatically:
+  - same endpoint (`fal-ai/z-image/turbo/image-to-image`)
+  - same B-strong-v2-fixed inputs, prompts (`prompt_R2_front.txt`, `prompt_R2_3q.txt`), crop rows 1008–2000 (1696×992, custom `image_size` = crop) and broad masks with 8 px inside feather
+  - same 8 steps, acceleration none, PNG, seed 7001
+  - Keeping the same seed isolates the effect of strength.
+- 2 images (front, three-quarter). **Dry-run estimate $0.02** (2 MP × $0.005 each, matching the 2 billable units observed on the R2 0.35 calls). Exp 007 total would be $0.54 of the $1.50 cap.
+- Comparison vs R2 0.35, at equal scale and 1:1, on:
+  1. fabric texture, tension and shading
+  2. retention of B-strong hip, thigh and glute fullness (automatic measurements)
+  3. inner-thigh contours and arm/hip contact
+  4. compositing seams
+  5. exact face and upper-body preservation (changed pixels outside the mask must be 0)
+- Rule: **if 0.45 gives no meaningful realism improvement, 0.35 stays the preferred setting.**
 

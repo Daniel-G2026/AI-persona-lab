@@ -113,7 +113,8 @@ def cmd_run(exp, cfg, dry):
     rows = [json.loads(l) for l in ledger.read_text().splitlines()] if ledger.exists() else []
     done = {(r["view"], r["method"]) for r in rows if r["status"] == "ok"}
     spent = sum(r.get("cost_usd", 0) for r in rows if r.get("billed"))
-    jobs = [(v, m) for v in cfg["views"] for m in cfg["methods"] if (v, m) not in done]
+    jobs = [(v, m) for v in cfg["views"] for m, meth in cfg["methods"].items()
+            if (v, m) not in done and meth.get("enabled", True)]
     est = 0.0
     for v, m in jobs:
         view, meth = cfg["views"][v], cfg["methods"][m]
@@ -141,7 +142,7 @@ def cmd_run(exp, cfg, dry):
             if m == "R1":
                 mk = np.asarray(Image.open(exp / "masks" / f"{v}-{meth['mask']}.png"))[c0:c1]
                 payload["mask_url"] = data_uri(np.ascontiguousarray(mk), "L")
-            if m == "R2":
+            if m.startswith("R2"):
                 payload["image_size"] = {"width": crop.shape[1], "height": crop.shape[0]}
             mp = crop.shape[0] * crop.shape[1] / 1e6
         else:

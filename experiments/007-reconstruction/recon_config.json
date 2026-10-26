@@ -1,9 +1,11 @@
 {
   "experiment": "007-reconstruction",
   "approved_by_founder": "2026-10-25 (6-image checkpoint)",
-  "spend_cap_usd": 1.50,
-  "face_reference": {"path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
-                     "sha256": "5b5191d0f0cf2e24f752b9e800115cf0684417b8b57890c1bcd2a774ab818893"},
+  "spend_cap_usd": 1.5,
+  "face_reference": {
+    "path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
+    "sha256": "5b5191d0f0cf2e24f752b9e800115cf0684417b8b57890c1bcd2a774ab818893"
+  },
   "warp_config": "experiments/006-body-control/warp_config.json",
   "views": {
     "front": {
@@ -11,40 +13,174 @@
       "target_sha256": "4588c038fce1ea57afe1a9b5ecdee992e4609e11a0a659cd50d163a4dec1a4ba",
       "v2_untouched": "experiments/006-body-control/warp/front-B-strong-v2.png",
       "version_a": "experiments/005-body-ab/base/004-front-gen-v2-seed-4101.png",
-      "mask_rows": [1160, 1900],
-      "crop_rows": [1008, 2000],
-      "face_box": [660, 100, 1000, 440],
-      "closeups": {"thigh_fabric": [600, 1350, 1100, 1750], "arm_hip_left": [530, 1060, 720, 1500], "arm_hip_right": [990, 1060, 1180, 1500]}
+      "mask_rows": [
+        1160,
+        1900
+      ],
+      "crop_rows": [
+        1008,
+        2000
+      ],
+      "face_box": [
+        660,
+        100,
+        1000,
+        440
+      ],
+      "closeups": {
+        "thigh_fabric": [
+          600,
+          1350,
+          1100,
+          1750
+        ],
+        "arm_hip_left": [
+          530,
+          1060,
+          720,
+          1500
+        ],
+        "arm_hip_right": [
+          990,
+          1060,
+          1180,
+          1500
+        ]
+      }
     },
     "three-quarter": {
       "target": "experiments/007-reconstruction/three-quarter-B-strong-v2-fixed.png",
       "target_sha256": "de2c74e8989593bdefba21b7f6f88a8e8519f0ac52965b3537ba78373faaffc1",
       "v2_untouched": "experiments/006-body-control/warp/three-quarter-B-strong-v2.png",
       "version_a": "experiments/005-body-ab/base/004-3q-gen-v2-seed-4101.png",
-      "mask_rows": [1185, 1900],
-      "crop_rows": [1008, 2000],
-      "face_box": [680, 110, 1020, 450],
-      "closeups": {"thigh_glute_fabric": [700, 1200, 1120, 1700], "arm_hip": [820, 1040, 1060, 1480]}
+      "mask_rows": [
+        1185,
+        1900
+      ],
+      "crop_rows": [
+        1008,
+        2000
+      ],
+      "face_box": [
+        680,
+        110,
+        1020,
+        450
+      ],
+      "closeups": {
+        "thigh_glute_fabric": [
+          700,
+          1200,
+          1120,
+          1700
+        ],
+        "arm_hip": [
+          820,
+          1040,
+          1060,
+          1480
+        ]
+      }
     }
   },
-  "masks": {"interior_erode_px": 12, "broad_dilate_px": 20, "hand_exclusion_dilate_px": 10,
-            "r1_feather_px": 4, "r2_feather_px": 8},
+  "masks": {
+    "interior_erode_px": 12,
+    "broad_dilate_px": 20,
+    "hand_exclusion_dilate_px": 10,
+    "r1_feather_px": 4,
+    "r2_feather_px": 8
+  },
   "methods": {
-    "R1": {"endpoint": "fal-ai/flux-pro/v1/fill", "api_url": "https://fal.run/fal-ai/flux-pro/v1/fill",
-           "on": "crop", "mask": "interior", "seed": 7001,
-           "params": {"output_format": "png", "num_images": 1},
-           "cost": {"type": "per_megapixel_ceil", "usd_per_mp": 0.05},
-           "prompt_files": {"front": "prompt_R1_front.txt", "three-quarter": "prompt_R1_3q.txt"}},
-    "R2": {"endpoint": "fal-ai/z-image/turbo/image-to-image", "api_url": "https://fal.run/fal-ai/z-image/turbo/image-to-image",
-           "on": "crop", "mask": "broad", "seed": 7001,
-           "params": {"strength": 0.35, "num_inference_steps": 8, "acceleration": "none", "output_format": "png", "num_images": 1},
-           "strength_note": "Single documented strength 0.35 (founder: one strength initially). Midpoint of the proposed 0.30/0.45 pair: low enough to keep the warped silhouette and hands, high enough to re-render stretched fabric shading.",
-           "cost": {"type": "per_megapixel_ceil", "usd_per_mp": 0.005},
-           "prompt_files": {"front": "prompt_R2_front.txt", "three-quarter": "prompt_R2_3q.txt"}},
-    "R3": {"endpoint": "fal-ai/nano-banana-pro/edit", "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
-           "on": "full", "seed": 7001,
-           "params": {"aspect_ratio": "2:3", "resolution": "2K", "num_images": 1, "output_format": "png"},
-           "cost": {"type": "per_image", "usd": 0.15},
-           "prompt_files": {"front": "prompt_R3.txt", "three-quarter": "prompt_R3.txt"}}
+    "R1": {
+      "endpoint": "fal-ai/flux-pro/v1/fill",
+      "api_url": "https://fal.run/fal-ai/flux-pro/v1/fill",
+      "on": "crop",
+      "mask": "interior",
+      "seed": 7001,
+      "params": {
+        "output_format": "png",
+        "num_images": 1
+      },
+      "cost": {
+        "type": "per_megapixel_ceil",
+        "usd_per_mp": 0.05
+      },
+      "prompt_files": {
+        "front": "prompt_R1_front.txt",
+        "three-quarter": "prompt_R1_3q.txt"
+      },
+      "enabled": false,
+      "disabled_reason": "Rejected by founder 2026-10-25 (contour and contact-point artifacts); no further FLUX Fill spend this checkpoint."
+    },
+    "R2": {
+      "endpoint": "fal-ai/z-image/turbo/image-to-image",
+      "api_url": "https://fal.run/fal-ai/z-image/turbo/image-to-image",
+      "on": "crop",
+      "mask": "broad",
+      "seed": 7001,
+      "params": {
+        "strength": 0.35,
+        "num_inference_steps": 8,
+        "acceleration": "none",
+        "output_format": "png",
+        "num_images": 1
+      },
+      "strength_note": "Single documented strength 0.35 (founder: one strength initially). Midpoint of the proposed 0.30/0.45 pair: low enough to keep the warped silhouette and hands, high enough to re-render stretched fabric shading.",
+      "cost": {
+        "type": "per_megapixel_ceil",
+        "usd_per_mp": 0.005
+      },
+      "prompt_files": {
+        "front": "prompt_R2_front.txt",
+        "three-quarter": "prompt_R2_3q.txt"
+      }
+    },
+    "R3": {
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "on": "full",
+      "seed": 7001,
+      "params": {
+        "aspect_ratio": "2:3",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15
+      },
+      "prompt_files": {
+        "front": "prompt_R3.txt",
+        "three-quarter": "prompt_R3.txt"
+      },
+      "enabled": false,
+      "disabled_reason": "Not preferred (face styling drift, reduced front hips); no further global Nano Banana spend this checkpoint."
+    },
+    "R2-s045": {
+      "endpoint": "fal-ai/z-image/turbo/image-to-image",
+      "api_url": "https://fal.run/fal-ai/z-image/turbo/image-to-image",
+      "on": "crop",
+      "mask": "broad",
+      "seed": 7001,
+      "params": {
+        "strength": 0.45,
+        "num_inference_steps": 8,
+        "acceleration": "none",
+        "output_format": "png",
+        "num_images": 1
+      },
+      "strength_note": "Strength comparison vs R2 (0.35). Identical inputs (B-strong-v2-fixed targets), prompts, crop rows 1008-2000, broad compositing masks, 8 px feather, steps, acceleration and seed 7001; only strength differs.",
+      "cost": {
+        "type": "per_megapixel_ceil",
+        "usd_per_mp": 0.005
+      },
+      "prompt_files": {
+        "front": "prompt_R2_front.txt",
+        "three-quarter": "prompt_R2_3q.txt"
+      },
+      "enabled": false,
+      "status": "proposed 2026-10-25; awaiting founder approval"
+    }
   }
 }
