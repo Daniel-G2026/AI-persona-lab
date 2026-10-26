@@ -338,5 +338,19 @@ The same woman can be shown in two body directions: **Version A** (current lean-
 - B 3q gen 5001 may narrow the waist (or be slightly rotated).
 
 ### Decision
-Pending founder + ChatGPT review. **No version designated as the winner. Version A remains a fully valid alternative.** Stage 2 not approved.
+Founder + ChatGPT assessment (2026-10-25):
+- Track 1 front edit: insufficient A/B difference.
+- **Track 1 three-quarter edit: a successful directional improvement.** B has more rounded, projected glutes with the face, waist, lighting and pose preserved.
+- Track 2 front generation: insufficient difference in hip and thigh fullness.
+- Track 2 three-quarter generation: some improvement, but possibly partly from a narrower waist depth or a slight pose difference.
+- **B-3q-edit 5001 is the strongest fuller-body result so far, but Version B still doesn't fully meet the brief, especially the noticeably fuller upper thighs.**
+
+Decisions:
+1. **Version A preserved** as a valid alternative (references in `experiments/005-body-ab/base/`; see `shortlist/A/README.md`).
+2. **B-3q-edit seed 5001 shortlisted** as the strongest Version B candidate → `experiments/005-body-ab/shortlist/B/B-3q-edit-seed-5001.png` (SHA-256 `7bf900c2…a5`).
+3. **Neither physique is canonical.**
+4. **The original Stage 2 is cancelled** (do not run it unchanged).
+
+### Next Experiment
+Experiment 006: a more controllable method for lower-body shaping (masked editing vs a body-shape reference, plus a geometric warp). Proposal: `experiments/006-body-control/PROPOSAL.md` (pending founder approval).
 
