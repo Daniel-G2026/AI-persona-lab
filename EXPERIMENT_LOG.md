@@ -352,5 +352,74 @@ Decisions:
 4. **The original Stage 2 is cancelled** (do not run it unchanged).
 
 ### Next Experiment
-Experiment 006: a more controllable method for lower-body shaping (masked editing vs a body-shape reference, plus a geometric warp). Proposal: `experiments/006-body-control/PROPOSAL.md` (pending founder approval).
+Experiment 006: a more controllable method for lower-body shaping (masked editing vs a body-shape reference, plus a geometric warp). Proposal: `experiments/006-body-control/PROPOSAL.md` (Stage 0 approved 2026-10-25).
+
+---
+
+## Experiment 006 — Controllable Lower-Body Shaping
+Date: 2026-10-25
+Status: **Stage 0 only** (free local warp previews) approved by founder after ChatGPT review, and complete. **No paid calls made.** Paused for the founder to choose a shape intensity.
+
+### Hypothesis
+A local geometric warp can produce a clearly fuller lower body (hips, inner and outer upper thighs, glutes) at an exact, measurable size, with the face, upper body and waist provably unchanged. It can then serve as the shape target for a later realism pass.
+
+### Setup
+- Proposal: `experiments/006-body-control/PROPOSAL.md`. Warp settings: `warp_config.json`. Scripts: `scripts/body_warp.py`, `scripts/cleanup_masks.py`.
+- Sources: Version A front and three-quarter (`experiments/005-body-ab/base/…4101.png`). **Unchanged after the run:** hashes re-verified (`24dd9192…`, `3c8eafb4…`), and the originals in Exp 004 are read-only.
+- Method:
+  - Each image row gets a smooth 1-D mapping built from the legging outline (detected by colour).
+  - Displacement is zero at and above the waistband (y≈1000) and tapers to zero at the knees (y≈1830).
+  - Front: outer contours pushed out, inner-thigh contours pushed toward each other (fills the thigh gap).
+  - Three-quarter: back contour (glutes, back of thigh) pushed out, plus a small front-thigh push.
+  - **Arms and hands move rigidly with the body surface beside them** (translated, never stretched). An earlier attempt pasted the original arms back on top; it left light halos, then streaks and background-coloured chunks in the three-quarter view, so it was replaced.
+- Intensities: **B-mid** (about 25 px per side) and **B-strong** (about 40 px per side), per the proposal.
+- Cost: **$0.00.**
+
+### Results
+- Files in `experiments/006-body-control/`:
+  - **`warp_previews.jpg`**: A | B-mid | B-strong per view, same scale
+  - `warp/*.png`: full-resolution previews (hashes in `warp_measurements.json`)
+  - `warp_diff_sheet.jpg`: changed pixels in red
+  - `warp_measurements.json`
+  - `cleanup_masks_preview.jpg` plus `warp/*-mask-narrow.png` / `*-mask-broad.png` (drafts)
+- **Measured** (automatic, from the legging outline in the same 1696×2528 frame; outer span = legging edge to legging edge; arms excluded):
+
+| Front | A | B-mid | B-strong |
+|---|---|---|---|
+| Hips (outer span) | 466 | 516 (**+10.7%**) | 539 (**+15.7%**) |
+| Upper thigh (outer span) | 430 | 477 (+10.9%) | 506 (+17.7%) |
+| Upper thigh, single leg | 201 | 232 (+15%) | 249 (+24%) |
+| Mid thigh, single leg | 181 | 208 (+15%) | 225 (+24%) |
+| Knee (outer span) | 368 | 368 (0%) | 368 (0%) |
+| Pixels changed above waistband / below knee | n/a | 0 / 0 | 0 / 0 |
+| Max hand/arm shift | n/a | 25 px | 40 px |
+
+| Three-quarter | A | B-mid | B-strong |
+|---|---|---|---|
+| Glute-level depth | 387 | 414 (**+7.0%**) | 430 (**+11.1%**) |
+| Upper thigh depth | 296 | 321 (+8.4%) | 334 (+12.8%) |
+| Waistband depth | 229 | 229 (0%) | 229 (0%) |
+| Knee | 216 | 216 | 216 |
+| Pixels changed above waistband / below knee | n/a | 0 / 0 | 0 / 0 |
+| Max hand/arm shift | n/a | 9 px | 14 px |
+
+- **Waist width is unchanged by construction:** zero changed pixels at or above the waistband in all four previews. The face and upper body are pixel-identical to Version A.
+- Claude's **subjective** look (separate from the measurements):
+  - Front B-mid: reads as noticeably fuller hips and thighs, with the upper thigh gap mostly closed. Still natural-looking.
+  - Front B-strong: clearly "thicker" lower body. The thigh-to-knee taper is somewhat abrupt just above the knee.
+  - Three-quarter B-mid: rounder, more lifted, more projected glutes; looks natural.
+  - Three-quarter B-strong: strongly projected glutes; still plausible to me, but reviewers should judge.
+- **Artifacts (reported honestly):**
+  1. **Front hands and forearms are shifted outward** (up to 25 px mid / 40 px strong), and at B-strong the forearms **bow slightly**, because the shift grows from elbow to wrist. This was the trade-off to avoid the halos and streaks of pasting the arms back. Three-quarter hand shifts are small (9 / 14 px).
+  2. **Legging shading is stretched, not re-rendered:** side-shading bands are wider and fold or tension detail doesn't update physically. Most visible across the front thighs at B-strong. This is what a realism pass must fix.
+  3. Background beside the legs is slightly compressed; invisible on the plain backdrop at normal viewing size.
+  4. Knees, calves, shoes, floor and everything above the waistband are untouched.
+- **Cleanup masks (founder point 4), for a future paid stage:**
+  - **Narrow** (about ±25 px around the new outline, 2.6–3.6% of the frame): fixes edges only. **It cannot fix the stretched shading across the thighs** (artifact 2).
+  - **Broad** (the whole legging area from waistband to knee plus margin, 6.3–9.8% of the frame): lets the model re-render fabric tension, folds and shading throughout, at a higher risk of the model shrinking the shape back.
+  - Draft limitation: the front narrow mask wrongly includes the waistband seam line (lighter than the fabric). Both masks need a manual touch-up before any paid use.
+  - Likely best: the broad mask for fabric, combined with a prompt that holds the outline.
+
+### Decision
+Pending: **the founder selects the preferred intensity (B-mid or B-strong, per view)** before any paid realism reconstruction. No Version A/B winner; the canonical body specification is not changed. Version A remains a fully valid alternative.
 
