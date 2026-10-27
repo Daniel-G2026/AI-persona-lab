@@ -30,3 +30,7 @@
 ## Immediate next step
 
 Validate one short **rights-cleared Motion Transfer** clip with the chosen blonde identity and a distinct setting, plus finalize a **centered, belly-height low-angle G63 driver-seat selfie** using the founder-approved camera perspective. Log quality, credits and assets before scaling.
+
+## Business direction test (Exp 012, proposed)
+
+**[experiments/012-niche-test/](experiments/012-niche-test/)** — proposed test of selling AI product/listing content to small businesses (product brands, real estate agents, clothing boutiques): proposal, outreach playbook, prompts, pitch tracker and sample review sheet. Separate from the persona workflow above. **Not approved; nothing generated or spent** (estimate ≈ $16.86, cap $20). See the Experiment 012 entry in [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md).
