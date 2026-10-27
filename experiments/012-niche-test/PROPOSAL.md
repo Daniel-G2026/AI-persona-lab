@@ -1,6 +1,6 @@
 # Experiment 012 — Niche Test for AI Content Services
 
-**Status:** Proposed 2026-10-27. **Needs founder approval before any spend.**
+**Status:** Approved by founder 2026-10-27, spend cap $20. Nothing generated yet.
 **Branch:** Business test. Separate from the persona work (Exp 001–011, blonde persona).
 
 ## Question
@@ -33,7 +33,7 @@ Small product brands will reply most often. Real estate agents will reply less o
 | **Total estimate** | | **≈ 16.86** |
 | **Spend cap** | | **20.00** |
 
-**Monthly budget warning:** the $110 cap still has unreconciled Higgsfield and fal playground spend. Reconcile it before approving this test.
+**Monthly budget:** reconciled 2026-10-27. Month-to-date spend is $25.78 of the $110 cap ($84.22 remaining), so the $20 cap fits. See "Budget reconciliation (2026-10-27)" in `EXPERIMENT_LOG.md`.
 
 ## Per-sample quality gate (all must pass before sending)
 1. **Product fidelity:** logo, label text, colours, shape and proportions match the real product. Zoom to 100%. *This is the #1 deal-killer.*

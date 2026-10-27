@@ -963,12 +963,21 @@ Pending founder + ChatGPT review (and optional blind human viewing). No further 
 
 ## Experiment 012 — Niche Test for AI Content Services (proposed 2026-10-27)
 
-**Status:** Proposed. **Not approved; nothing generated or spent.** Business-direction test, separate from the persona branches.
+**Status:** Approved by founder 2026-10-27, spend cap $20. Nothing generated yet. Business-direction test, separate from the persona branches.
 
 - **Why:** The founder is stepping back from the AI-influencer goal to test selling AI product and listing content to small businesses.
 - **Design:** 30 personalised pitches across three niches, 10 each: small product brands, real estate agents, clothing boutiques. Each prospect gets 2 private sample images. One demo clip per niche.
 - **Tools:** fal Nano Banana Pro Edit ($0.15/image at 2K) and Kling v3 Pro image-to-video ($0.56 per 5 s, audio off). Re-verify prices before running.
-- **Budget:** estimate ≈ $16.86, cap $20. Must fit within the $110 monthly cap once Higgsfield and playground spend are reconciled.
+- **Budget:** estimate ≈ $16.86, cap $20. Fits within the $84.22 remaining under the $110 monthly cap (see Budget reconciliation below).
 - **Gate:** product/room/garment fidelity is checked at 100% zoom before anything is sent.
 - **Decision rule:** positive-reply rate × price quoted ÷ minutes per sample, with at least 2 positive replies required.
 - **Files:** `experiments/012-niche-test/` (PROPOSAL, OUTREACH, prompts, pitch tracker, review sheet, config template). Prospect photos are git-ignored.
+
+---
+
+## Budget reconciliation (2026-10-27)
+
+- **Higgsfield plan:** $19/month (270 credits/month).
+- **fal.ai total to date:** $6.78, founder-reported from the fal dashboard (the repo ledger was ~$6.73).
+- **Month-to-date spend:** $25.78 of the $110 cap.
+- **Remaining:** $84.22.

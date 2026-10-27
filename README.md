@@ -23,7 +23,7 @@
 
 **Character clarification:** The founder elected to keep a new **blonde Higgsfield working persona**; the brown-haired 2002 face and A/B body references remain preserved separately, not overwritten.
 
-**Funding:** $110 USD/month cap, including subscriptions and manual platform usage. Last **repository-recorded fal experiments total approximately $6.73 through Exp 011 Part A**; paid Higgsfield subscription, Higgsfield runs and manual fal playground spending require reconciliation. No further spending is implied by this documentation update.
+**Funding:** $110 USD/month cap, including subscriptions and manual platform usage. Reconciled 2026-10-27: Higgsfield plan $19/month (270 credits/month) + fal.ai $6.78 to date (founder-reported from the fal dashboard) = **$25.78 month-to-date, $84.22 remaining**. No further spending is implied by this documentation update.
 
 **Rights and disclosure:** Use original or properly licensed performances for publication; a downloadable Instagram Reel is not automatically licensable. Disclose photorealistic AI-generated content as required by relevant platforms.
 
@@ -33,6 +33,6 @@ Validate one short **rights-cleared Motion Transfer** clip with the chosen blond
 
 ## Business direction test (Exp 012, proposed)
 
-**[experiments/012-niche-test/](experiments/012-niche-test/)** — proposed test of selling AI product/listing content to small businesses (product brands, real estate agents, clothing boutiques): proposal, outreach playbook, prompts, pitch tracker and sample review sheet. Separate from the persona workflow above. **Not approved; nothing generated or spent** (estimate ≈ $16.86, cap $20). See the Experiment 012 entry in [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md).
+**[experiments/012-niche-test/](experiments/012-niche-test/)** — approved test of selling AI product/listing content to small businesses (product brands, real estate agents, clothing boutiques): proposal, outreach playbook, prompts, pitch tracker and sample review sheet. Separate from the persona workflow above. **Approved by founder 2026-10-27, spend cap $20; nothing generated yet** (estimate ≈ $16.86). See the Experiment 012 entry in [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md).
 
 **[BUSINESS.md](BUSINESS.md)** — Outward Studio business details: name, contact, starter offer, payment and registration status.
