@@ -1,0 +1,7 @@
+Reference image 1 is a real listing photo of a furnished room. Restyle this room's furniture and decor.
+
+Keep the room EXACTLY as it is: same walls, wall colour, windows, the roller blinds, the view outside the window, doors, the door frame, floors, ceiling, the ceiling texture, the ceiling light fixture, light fixtures, outlets, trim, the wall-mounted TV bracket in its exact position, and camera angle. Do not move, add or remove any architectural or fixed feature, and do not change the view outside the windows.
+
+Replace only movable furniture, bedding, textiles and decor, keeping each main piece in roughly the same position and footprint. New style: warm modern minimalist: natural oak and walnut wood, cream and oatmeal linen textiles, a soft wool rug, a few ceramic accents, one or two plants, simple neutral framed art, uncluttered surfaces. Furniture must be at correct real-world scale for the room, sit on the floor with correct contact shadows, and match the existing light direction.
+
+Result should look like a professionally styled real estate photo. No text, no watermarks.

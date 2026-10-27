@@ -981,3 +981,17 @@ Pending founder + ChatGPT review (and optional blind human viewing). No further 
 - **fal.ai total to date:** $6.78, founder-reported from the fal dashboard (the repo ledger was ~$6.73).
 - **Month-to-date spend:** $25.78 of the $110 cap.
 - **Remaining:** $84.22.
+
+---
+
+## Experiment 012 — Portfolio batch (2026-10-27)
+
+**Status:** All 7 arms generated (run 1: 5 arms; run 2: the 2 quarter-zip arms after a crop fix). Awaiting founder review. Within the approved $20 Exp 012 cap (batch cap $3.00). No video.
+
+- **Inputs:** the founder's own photos (git-ignored, `portfolio/inputs/`). Each one was made upright (EXIF), cropped to the founder's boxes, downscaled to a long edge of at most 3072 px and saved as JPEG q95. The config hashes both the originals and the copies that were sent.
+- **Model:** `fal-ai/nano-banana-pro/edit`, 2K PNG, seed 12001. Price re-checked 2026-10-27: $0.15/image (4K is charged 2x). Products are 4:5 (1856×2304); the room is 4:3 (2400×1792).
+- **Arms run:** cologne-bathroom, cologne-dresser, watch-desk, watch-wrist, room-restyle. Prompts are in `portfolio/prompts/`, filled in from the shared templates. `prompts/prompt_realestate_restyle.txt` was drafted from the staging template because the founder-supplied file was not found.
+- **Quarter-zip crop fix:** the first box (0.000, 0.068, 0.940, 0.778) cut off the waistband and both cuffs, so it was held and never sent. Run 2 used the founder-approved box (0.000, 0.068, 1.000, 0.850); the sleeve outer edges touch the original photo edges.
+- **Cost:** est. $1.05 (7 × $0.15; run 1 $0.75, run 2 $0.30). Month-to-date ≈ $26.83 of $110 (confirm in the fal dashboard).
+- **First look (not a gate verdict):** the room output appears to change the window (blinds raised, wider city view) and the framing of the right wall, so it likely fails G4. Product outputs need the 100% zoom check on logo and label text. The quarter-zip outputs read slightly greyer and less blue than the input (G5 colour check), and the model shot is framed from the nose down.
+- **Files:** `portfolio/config.json`, `runs.jsonl`, `contact_sheet.jpg`, `pairs_sheet.jpg` (input vs output), `review.csv` (quality-gate columns, unscored). Full-size outputs are git-ignored and mirrored to BACKUP_DIR.
