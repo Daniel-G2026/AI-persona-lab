@@ -1,0 +1,87 @@
+{
+  "experiment": "011-pipeline-benchmark / Part A (first video comparison)",
+  "approved_by_founder": "2026-10-26 (A1 Omni Flash 720p 5 s + A2 Kling v3 Pro Elements 5 s audio off; cap $1.25)",
+  "spend_cap_usd": 1.25,
+  "start_max_side": 1920,
+  "start_note": "Start frame = S2-A signfix, sent as JPEG q95 resized to 1072x1920 (from 1536x2752) to keep the request small; outputs are 720p anyway.",
+  "inputs": {
+    "S2A-signfix": {
+      "path": "experiments/010-correction/candidates/S2-A-signfix.png",
+      "sha256": "6ff697ecaca01bc71a54f2cee31e172031ad755965baa521d966ab2a2617d6a3"
+    },
+    "2002": {
+      "path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
+      "sha256": "5b5191d0f0cf2e24f752b9e800115cf0684417b8b57890c1bcd2a774ab818893"
+    },
+    "A-front": {
+      "path": "experiments/005-body-ab/base/004-front-gen-v2-seed-4101.png",
+      "sha256": "24dd91922c51f10d4914876941ad646f013c6953f7f609e8544a22a0e36713a0"
+    }
+  },
+  "clips": [
+    {
+      "name": "A1-omni",
+      "endpoint": "google/gemini-omni-flash/v1.1/image-to-video",
+      "start": "S2A-signfix",
+      "start_param": "image_url",
+      "api_params": {
+        "aspect_ratio": "9:16",
+        "resolution": "720p",
+        "duration": 5
+      },
+      "params": {
+        "duration_s": 5
+      },
+      "prompt_file": "prompt_A1_omni.txt",
+      "cost": {
+        "usd_per_s": 0.1,
+        "price_checked_on": "2026-10-26"
+      },
+      "note": "No audio parameter exposed; any audio track is stripped before review."
+    },
+    {
+      "name": "A2-kling",
+      "endpoint": "fal-ai/kling-video/v3/pro/image-to-video",
+      "start": "S2A-signfix",
+      "start_param": "start_image_url",
+      "api_params": {
+        "duration": "5",
+        "generate_audio": false
+      },
+      "params": {
+        "duration_s": 5
+      },
+      "elements": [
+        {
+          "frontal": "2002",
+          "frontal_box": [
+            330,
+            230,
+            1430,
+            1430
+          ],
+          "references": [
+            {
+              "input": "S2A-signfix",
+              "box": [
+                400,
+                480,
+                820,
+                960
+              ]
+            },
+            {
+              "input": "A-front"
+            }
+          ]
+        }
+      ],
+      "prompt_file": "prompt_A2_kling.txt",
+      "cost": {
+        "usd_per_s": 0.112,
+        "price_checked_on": "2026-10-26"
+      },
+      "note": "Aspect follows the start image (9:16). Element: frontal = 2002 face crop; references = S2-A face crop + Version A front body ref."
+    }
+  ]
+}
