@@ -995,3 +995,21 @@ Pending founder + ChatGPT review (and optional blind human viewing). No further 
 - **Cost:** est. $1.05 (7 × $0.15; run 1 $0.75, run 2 $0.30). Month-to-date ≈ $26.83 of $110 (confirm in the fal dashboard).
 - **First look (not a gate verdict):** the room output appears to change the window (blinds raised, wider city view) and the framing of the right wall, so it likely fails G4. Product outputs need the 100% zoom check on logo and label text. The quarter-zip outputs read slightly greyer and less blue than the input (G5 colour check), and the model shot is framed from the nose down.
 - **Files:** `portfolio/config.json`, `runs.jsonl`, `contact_sheet.jpg`, `pairs_sheet.jpg` (input vs output), `review.csv` (quality-gate columns, unscored). Full-size outputs are git-ignored and mirrored to BACKUP_DIR.
+
+---
+
+## Experiment 012 — Portfolio fix test (2026-10-27)
+
+**Status:** Run (3 images), approved by the founder after a $0.45 dry run. Awaiting founder review. No video.
+
+- **Why:** the portfolio batch read as AI. Logos and text were redrawn (FOSSIL missing, cologne lettering garbled), the watch was out of scale on the wrist, and the scenes were stock-photo clichés.
+- **Change 1, prompts:** phone-photo style (ordinary iPhone shot by the owner, everyday clutter, mixed light, mild noise, no grading), true-to-life scale, and the product facing the camera as in reference 1. Written directly in `portfolio-v2/prompts/`; the shared templates are unchanged.
+- **Change 2, compositing:** `scripts/product_composite.py` warps the real product photo onto the generated product (SIFT+RANSAC, or hand-marked dial points) and blends in only the label/dial; every pixel outside the region is unchanged. Lettering on clear glass is applied by darkening, so the studio background is not carried over.
+- **Model:** `fal-ai/nano-banana-pro/edit`, 2K PNG, 4:5, seed 12101. Arms: cologne-bathroom, watch-desk, watch-wrist.
+- **Results:**
+  - cologne-bathroom: the raw output already has correct lettering (the front-facing prompt fixed it). The composite aligned automatically (71 inliers) and acts as a guarantee; it adds a faint second dip-tube clip.
+  - watch-desk: the model produced a different watch (round case with lugs, different dial), so it was **not composited** and fails G1. The notebook handwriting is gibberish at zoom.
+  - watch-wrist: scale and pose are now right. The composite uses 4 manual dial-edge points and gives the real numerals, hands and logo, but the real dial is darker than the scene and carries red studio reflections. The raw output looks cleaner at viewing size.
+- **Cost:** est. $0.45 (3 × $0.15). Exp 012 total so far ≈ $1.50; month-to-date ≈ $27.28 of $110 (confirm in the fal dashboard).
+- **Lessons:** a front-facing product prompt fixes most label/text errors on simple flat-fronted products. Watches at an angle get redrawn (and sometimes the case design changes); the composite needs a clean, evenly lit, face-on reference photo to look natural.
+- **Files:** `portfolio-v2/config.json`, `prompts/`, `runs.jsonl`, `contact_sheet.jpg`, `review_sheet.jpg` (run 1 → v2 raw → v2 composite), `review.csv` (composite results filled in, scores unfilled). Images and composites are git-ignored and mirrored to BACKUP_DIR.
