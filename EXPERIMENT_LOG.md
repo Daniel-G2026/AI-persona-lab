@@ -781,5 +781,20 @@ With prompts aimed at ordinary smartphone photography (phone optics, real light,
 - Pending ChatGPT and blind human review. **No video generated. Video requires separate founder approval anyway.**
 
 ### Decision
-Pending founder, ChatGPT and blind human review. Version A and Version B preserved; nothing canonical.
+Founder + ChatGPT assessment (2026-10-26):
+- **S1-A and S1-B are the most promising for everyday smartphone realism**, but both show noticeable facial drift vs 2002.
+- S2-A and S2-B have stronger facial consistency, but background signage and lettering remain obvious AI artifacts.
+- Both Version B outputs regress toward Version A's slimmer body.
+- The phone-processing pass shows no realism advantage yet.
+
+Decisions:
+1. **Video generation not authorized.**
+2. **All four originals and their processed variants preserved.** Originals are set read-only; `variants/`, `blind/` and the sealed key are kept.
+3. **Blind human ratings to be collected** with the existing procedure (`BLIND_REVIEW.md`), without revealing the original/processed mapping.
+4. A minimal correction experiment (face consistency for the mirror image, realistic signage for the café image) to be proposed.
+5. Keep the casual smartphone style. 6. No further body-shape refinement unless a specific shot needs it. 7. Version A and Version B stay separate and provisional.
+- **Priority:** one convincing, identity-consistent photo to serve as the first video-test input.
+
+### Next Experiment
+Experiment 010: minimal image correction. Proposal: `experiments/010-correction/PROPOSAL.md` (pending founder approval).
 
