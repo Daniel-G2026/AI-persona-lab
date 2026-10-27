@@ -1,5 +1,7 @@
 # AI Persona Lab — Project Specification
 
+> **Current production direction (2026-10-27):** see [PRODUCTION_PLAYBOOK.md](PRODUCTION_PLAYBOOK.md). This document retains the original **brown-haired research character brief**; it must not silently override the founder-selected **blonde Higgsfield working persona**. New platform work is tracked in [PRODUCTION_ASSET_REGISTER.md](PRODUCTION_ASSET_REGISTER.md).
+
 ## Objective
 Create an original fictional adult AI influencer who remains photorealistic and visually consistent across still images and videos. The product is a coherent **full digital human**, not a face alone: facial identity, body shape, proportions, skin tone, hair, and distinctive features must persist across different poses, clothes, scenes, camera angles, and motion.
 
@@ -17,8 +19,17 @@ Create an original fictional adult AI influencer who remains photorealistic and 
 - Convincing video with minimal facial or body-identity drift throughout motion.
 - A repeatable workflow with measurable usable-output rate and cost per usable photo/video.
 
-## Character Identity
-**Status: Creative brief approved for first-round exploration; exact visual identity is not locked until the founder selects and approves a reference set.** These are design targets, not proof that any model can preserve them. Prioritize anatomical plausibility and recognizable identity over maximizing every adjective.
+## Identity Branches and Current Character Status
+
+### Active blonde Higgsfield production persona
+- Founder elected on 2026-10-27 to **keep** the blonde woman produced in Higgsfield's AI Influencer Studio, with long honey-blonde hair and tinted aviator glasses. She is the **current production test identity** for short-form videos and profile photography.
+- Her initial e-commerce-style beige-coat/burgundy-trouser appearance is a **look/outfit**, not a permanently locked wardrobe. Later blouse and selfie variations are allowed.
+- The successful Milan-location Motion Transfer established **promising motion and location compositing**, not a fully repeatable identity model.
+- A ChatGPT-generated low-angle G63 selfie was approved for **camera angle/composition**; that approval does **not** lock its exact face or make it the definitive profile photograph.
+- Only founder approval can formally lock a production master identity. The new blonde master and newer session exports are **not yet imported into this repository**.
+
+### Original brown-haired research brief (preserved)
+**Status: Archived reference direction, not silently replaced or converted to the current blonde look.** These design targets explain Experiments 001–011 and must be preserved for traceability. Prioritize anatomical plausibility and recognizable identity over maximizing every adjective.
 
 ### Core Profile and Visual Impression
 - **Age:** Clearly adult woman in her early 20s; working visual target around 23–24.
@@ -67,21 +78,17 @@ Create an original fictional adult AI influencer who remains photorealistic and 
 - Avoid independently constructing an attractive face and unrelated body: every reference view must depict a coherent, single fictional human.
 - Show realistic asymmetry and physical variation *without* moving, duplicating, or erasing her distinguishing facial features.
 
-## Canonical Reference Set
-**Status: Portrait references provisionally approved; full-body references not yet generated.**
-- Provisional refined canonical portrait: Exp 002 Nano Banana Pro seed 2002, `experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png`
-- Original untouched facial baseline: Exp 001 seed 1001, `experiments/001-portrait/shortlist/seed-1001.png`
+## Preserved Research References (brown-haired branch)
 
-Build a cohesive reference set depicting the **same original adult fictional character**, not unrelated independently selected faces and bodies:
-1. Close-up facial portrait.
-2. Full-body front view.
-3. Full-body side view.
-4. Full-body three-quarter view.
-5. Natural seated or walking pose.
+**The portrait and body variants below remain valid historical research references, separate from the new working blonde production persona. Neither body A nor body B has been selected as canonical.**
 
-Preserve the selected source image(s), exact prompts, model/version, seeds (if supported), settings, and file paths. The founder must approve **both facial and full-body identity** before any large training dataset is assembled.
+- Approved/refined brown-haired face: Exp 002 Nano Banana Pro seed 2002 — `experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png`.
+- Original baseline: Exp 001 seed 1001 — `experiments/001-portrait/shortlist/seed-1001.png`.
+- **Body Version A**: `experiments/005-body-ab/base/004-front-gen-v2-seed-4101.png` and `experiments/005-body-ab/base/004-3q-gen-v2-seed-4101.png`.
+- **Body Version B** (preferred **provisional** R2 s0.35 reconstruction): `experiments/007-reconstruction/shortlist/B/front-R2-s035.png` and `experiments/007-reconstruction/shortlist/B/three-quarter-R2-s035.png`.
+- Brown-haired branch results and identity/body limitations are recorded in Experiments 001–011 in `EXPERIMENT_LOG.md`. Notably, fuller Version B proportions frequently regress when transferred into new settings.
 
-Reference sheets are not proof of consistency: the pipeline must subsequently reproduce the same person in controlled tests with altered lighting, outfits, settings, poses, and camera angles, plus an early image-to-video test.
+Do not overwrite, repurpose or describe these assets as references for the new blonde production character without founder approval. Keep reference hashes, prompts and source media separated by identity branch.
 
 ## Technical Constraints
 - Hardware: Windows 11, Intel i7-14700F, 32 GB RAM, RTX 5060 (verify available VRAM before local training decisions).
@@ -89,19 +96,27 @@ Reference sheets are not proof of consistency: the pipeline must subsequently re
 - Tool selection: Open pending controlled benchmarks.
 - Avoid committing to LoRA training, Soul ID, or a large synthetic dataset before initial identity-consistency tests.
 
-## Current Workflow
-- Status: Character design brief complete; generating and evaluating canonical identity is next.
-- Approved tools: Nano Banana Pro Edit (fal) is the preferred portrait refinement tool (Exp 002). Full-body tool under evaluation (Exp 003).
-- Canonical face and body references: face provisionally 2002 (baseline 1001); body none yet.
-- Execution and review responsibilities: See `WORKFLOW.md`.
-- Historical tests and costs: See `EXPERIMENT_LOG.md`.
+## Current Workflow (2026-10-27)
 
-## Decisions
-- Use an original fictional adult identity; do not intentionally copy a real person's likeness.
-- Define the face and body as one cohesive character.
-- Test facial **and full-body** consistency before creating a large training dataset.
-- Test image-to-video consistency early.
-- Record repeatability, failures, and cost, not just attractive examples.
+- **Videos:** Higgsfield Genjutsu **Motion Transfer** is the active working method: source performance video controls movement and timing; the **blonde character reference** controls identity; a distinct location image controls the new scene. Select actual **@-tagged references** in Higgsfield where supported. Do not treat Object Swap as the default: a user test retained the Instagram watermark and drifted toward the reference performer's face.
+- **Stills:** fal.ai **Nano Banana Pro Edit** is used for reference-driven profile images and lifestyle photography without an additional Higgsfield stills upgrade. The G63 project uses the blonde character, supplied white Gucci polo-style blouse, and black/ivory G63 cabin references. Working target is a **1:1, 2K selfie**, photographed from **directly in front at belly/lap height and angled upward**, with sunglasses and kissing/pout lips.
+- **External media:** originals and newly generated Higgsfield photos/videos supplied in chat **have not been imported to the repo** by this doc update. Check `PRODUCTION_ASSET_REGISTER.md` before assuming availability.
+- **Research tools:** original Nano Banana, Omni/Kling video comparison and A/B silhouette work remain documented, but new bespoke model training is **paused** pending a specific demonstrated blocker.
+- **Budget:** initial **$110/month total** remains. Repository API spend through Experiment 011 Part A is about **$6.73**. Additional purchased Higgsfield subscription, user-run generations and manual fal playground charges have **not been reconciled**; do not claim the rest is unspent.
+- **Quality:** measure full-motion face stability, correct choreography, sharpness, original scene replacement, no watermark contamination and rights to motion/background materials. Naturalistic quality alone does not establish rights to Instagram source performances.
+
+## Decisions and Guardrails
+
+- Continue creating an original, clearly adult fictional influencer; do not copy the identity of the human performer in a motion source.
+- Maintain **identity branch separation**: blonde working production persona vs preserved brown-haired research face/body variants.
+- Use real or licensed performance footage for any content intended for publication. Downloadability does not grant commercial rights.
+- Preserve all original experiments and pending proposals as **historical records**, not as current run instructions.
+- Require costed approval for new paid tests; no automatic LoRA/Soul ID adoption.
+- Disclose generated photorealistic content where platforms require it; do not claim invented events/locations or endorsements as real.
+- Keep outfit, environment and camera instructions separate from identity and choreography.
 
 ## Next Action
-Use the character design brief above to run a small controlled first-round portrait and full-body generation experiment. Select and approve a coherent face/body identity, lock the exact locations of the scar and cheekbone beauty mark, and test consistency before any large training dataset.
+
+1. With a source performance that has appropriate usage rights, generate another **blonde Higgsfield Motion Transfer** clip in a distinctly different, clean environment. Verify continuity, face stability, setting realism, watermarks, actual export resolution and cost.
+2. For profile photos, build on the **founder-approved low front-facing belly-height selfie angle** with the blonde identity, white blouse and G63 cabin references. Do not promote an angled or identity-drifting still to final profile status.
+3. Record durable asset links, rights, user/platform expenses and comparative quality in the production register/log before making content at scale.
