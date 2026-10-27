@@ -24,3 +24,8 @@ experiments/009-realism-video/blind_key.json
 experiments/009-realism-video/variants/
 experiments/009-realism-video/blind/
 experiments/009-realism-video/blind_for_reviewers/
+
+# Experiment 011 videos stay local (mirrored to BACKUP_DIR); frames + sheets are committed
+experiments/011-pipeline-benchmark/partA/raw/
+experiments/011-pipeline-benchmark/partA/review/
+experiments/011-pipeline-benchmark/partA/frames/
