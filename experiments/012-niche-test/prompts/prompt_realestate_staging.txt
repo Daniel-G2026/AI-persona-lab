@@ -1,0 +1,7 @@
+Reference image 1 is a real listing photo of an empty room. Virtually stage this room.
+
+Keep the room EXACTLY as it is: same walls, wall colour, windows, window views, doors, floors, ceiling, light fixtures, outlets, trim and camera angle. Do not move, add or remove any architectural or fixed feature, and do not change the view outside the windows.
+
+Add only furniture and decor: [STYLE — e.g. modern Scandinavian living room: light oak coffee table, neutral linen sofa, wool rug, two plants, simple framed art]. Furniture must be at correct real-world scale for the room, sit on the floor with correct contact shadows, and match the existing light direction.
+
+Result should look like a professionally staged real estate photo. No text, no watermarks.

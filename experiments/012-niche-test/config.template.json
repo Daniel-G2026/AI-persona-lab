@@ -1,0 +1,27 @@
+{
+  "experiment": "012-niche-test",
+  "description": "TEMPLATE. Copy per prospect batch, fill in reference path + sha256, then dry-run. Prospect photos live in prospects/ (git-ignored) and are never committed.",
+  "approved_by_founder": "NOT YET APPROVED",
+  "proposal": "experiments/012-niche-test/PROPOSAL.md",
+  "spend_cap_usd": 20.0,
+  "references": {
+    "A01-product": {
+      "path": "experiments/012-niche-test/prospects/A01/product.jpg",
+      "sha256": "FILL_ME",
+      "label": "A01 client product (private)"
+    }
+  },
+  "arms": [
+    {
+      "name": "A01-scene1",
+      "niche": "product",
+      "references": ["A01-product"],
+      "prompt_file": "prompts/prompt_product.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {"aspect_ratio": "4:5", "resolution": "2K", "num_images": 1, "output_format": "png"},
+      "cost": {"type": "per_image", "usd": 0.15, "price_checked_on": "2026-10-25 (re-verify)"}
+    }
+  ],
+  "note": "Fill the [SCENE]/[STYLE]/[FORMAT] placeholder in a per-prospect copy of the prompt file, not the shared template."
+}

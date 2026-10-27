@@ -958,3 +958,17 @@ Pending founder + ChatGPT review (and optional blind human viewing). No further 
 3. Next useful controlled run: **one rights-cleared vertical performance, working blonde character, and an intentionally different clean location**; assess motion fidelity, full-speed facial stability, generated scene sharpness and cost.
 4. For profile pictures, use the accepted front-facing **belly-level upward** selfie camera angle and verify facial identity against the blonde working reference before publication.
 5. Reconcile Higgsfield subscription and platform usage, actual fal playground spend, approved assets and licence status before reporting total spend or launching a production batch.
+
+---
+
+## Experiment 012 — Niche Test for AI Content Services (proposed 2026-10-27)
+
+**Status:** Proposed. **Not approved; nothing generated or spent.** Business-direction test, separate from the persona branches.
+
+- **Why:** The founder is stepping back from the AI-influencer goal to test selling AI product and listing content to small businesses.
+- **Design:** 30 personalised pitches across three niches, 10 each: small product brands, real estate agents, clothing boutiques. Each prospect gets 2 private sample images. One demo clip per niche.
+- **Tools:** fal Nano Banana Pro Edit ($0.15/image at 2K) and Kling v3 Pro image-to-video ($0.56 per 5 s, audio off). Re-verify prices before running.
+- **Budget:** estimate ≈ $16.86, cap $20. Must fit within the $110 monthly cap once Higgsfield and playground spend are reconciled.
+- **Gate:** product/room/garment fidelity is checked at 100% zoom before anything is sent.
+- **Decision rule:** positive-reply rate × price quoted ÷ minutes per sample, with at least 2 positive replies required.
+- **Files:** `experiments/012-niche-test/` (PROPOSAL, OUTREACH, prompts, pitch tracker, review sheet, config template). Prospect photos are git-ignored.
