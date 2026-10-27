@@ -796,5 +796,63 @@ Decisions:
 - **Priority:** one convincing, identity-consistent photo to serve as the first video-test input.
 
 ### Next Experiment
-Experiment 010: minimal image correction. Proposal: `experiments/010-correction/PROPOSAL.md` (pending founder approval).
+Experiment 010: minimal image correction. Proposal: `experiments/010-correction/PROPOSAL.md` (2-image checkpoint approved 2026-10-26).
+
+---
+
+## Experiment 010 — Minimal Image Correction (2-image checkpoint)
+Date: 2026-10-26
+Status: Approved by founder (after ChatGPT review): **one face correction (S1-A) and one signage correction (S2-A)**, about $0.30. Remaining variants and video not approved. **Checkpoint complete 2026-10-26; paused for review.**
+
+### Setup
+- Bases copied from Exp 009, hash-verified against Exp 009 `runs.jsonl`:
+  - `experiments/010-correction/base/009-S1-A-seed-9101.png` (`392ee08f…`)
+  - `…/009-S2-A-seed-9103.png` (`0452a0f1…`)
+  - **The Exp 009 originals stay read-only, and the sealed blind key is unchanged** (SHA-256 still `6db95176…`).
+- Method: Nano Banana Pro Edit (9:16, 2K) on the whole photo, then `scripts/local_composite.py` pastes the edit back **only inside a hand-drawn mask** (alpha ramps up inside the mask; exactly 0 outside). It checks that sizes match (no rescaling), counts changed pixels outside the mask (must be 0), and reports how much the edit drifted elsewhere.
+- Masks (`experiments/010-correction/masks/`, `masks.json`, previews `mask_preview_S1-A.jpg` / `mask_preview_S2-A.jpg`):
+  - **S1-A face:** face and ear, hairline to chin. It stops at x=733, so the phone, its camera reflection and the fingers are excluded. 6 px inside feather.
+  - **S2-A signage:** the visible chalkboard face, cut around her strap, bag and jeans (widened once after a preview showed garbled fragments left uncovered beside the bag), plus the reflected board above the window sill. 4 px inside feather.
+- Prompts (`prompt_C1-face.txt`, `prompt_C2-signage.txt`), with founder adjustments:
+  1. C1 keeps her original downward gaze, expression, head angle, lighting, skin texture and the phone reflection. The face must resemble 2002 without looking pasted in. **Mirror check:** the beauty mark is on the left side of the picture (the cheek nearer her visible ear), the anatomically correct side in a reflection.
+  2. C2 uses minimal readable lettering ("COFFEE" / "& PASTRIES" only, no other words or drawings). The window reflection is soft, low-contrast and unreadable, not artificially sharp. The rest of the photo is preserved.
+  3. Localized compositing, 1:1 edge checks, zero changed pixels outside the masks.
+  4. Exp 009 photos and the sealed blind set preserved.
+- Seeds 10001 (C1), 10002 (C2). Cap $0.40.
+
+### Results (2 edits)
+- Cost **$0.30** (2 × $0.15). Exp 010 total $0.30 of the $0.40 cap. Month-to-date ≈ $5.67. Both edits returned at 1536×2752, the same size as the bases (no rescaling). No safety flags.
+- Raw edits: `experiments/010-correction/images/` (local and OneDrive).
+- **Corrected candidates (composited):**
+  - `experiments/010-correction/candidates/S1-A-facefix.png` (`dcb83338…`)
+  - `…/S2-A-signfix.png` (`6ff697ec…`)
+- Review files:
+  - `compare_S1-A.jpg`, `compare_S2-A.jpg` (original | corrected, full frame)
+  - `closeup_S1-A_face.jpg`, `closeup_S2-A_sign.jpg` (1:1)
+  - `face_crops.jpg` (2002 | S1-A original | S1-A corrected | S2-A)
+  - `mask_preview_*.jpg`
+
+| Check | S1-A face fix | S2-A signage fix |
+|---|---|---|
+| Changed pixels outside mask | **0** | **0** |
+| Edit drift outside mask (how much the model altered the rest of the frame) | 3.81, well aligned | 13.73, re-rendered more, so the mask edges were checked closely |
+| Mask edges at 1:1 / 2× | No visible seam at hairline, chin or phone boundary; grain and light continuous | No visible seam at bag, jeans or window sill |
+
+**Claude's assessment** (separate from ChatGPT and humans)
+- **S1-A face fix:**
+  - Identity **improved from 3 to 4/5**: brow shape, eye shape, nose and lips now read as the 2002 woman.
+  - Beauty mark visible on the **left of the picture (cheek nearer her visible ear), correct for a mirror reflection**.
+  - Downward glance, smile, head angle and phone reflection kept. The gaze is slightly less downcast than the original.
+  - **Drift: the face is more groomed than the original** (bolder, shaped brows, more defined lips and contour, smoother and more matte skin). At 1:1 it is slightly smoother than the surrounding photo. At feed scale it sits naturally.
+  - Realism **4/5**, no major artifacts. **Video gate: borderline pass (polish flagged).**
+- **S2-A signage fix:**
+  - Board reads "COFFEE" / "& PASTRIES", with her jeans naturally hiding part of "PASTRIES"; real chalk texture and an erased smudge.
+  - **No gibberish remains anywhere in the frame** (the licence plate is too small to read, which is normal).
+  - The window reflection shows the sign **mirror-reversed (physically correct) but more legible than requested** (asked for soft and unreadable). Plausible, not artificially sharp.
+  - Face unchanged (identity 4/5).
+  - Realism **4/5**, no major artifacts. **Video gate: pass.**
+- **Technical recommendation:** S2-A signfix is the safer first video input (no face edit, strong identity, the main giveaway removed). S1-A facefix is the alternative if the founder prefers the mirror selfie's realism and accepts the slightly polished face.
+
+### Decision
+Pending founder + ChatGPT review. **No video and no further variants without approval.** Exp 009 originals and the sealed blind set untouched; Version A and Version B separate and provisional.
 

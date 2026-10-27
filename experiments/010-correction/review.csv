@@ -1,0 +1,3 @@
+arm,seed,file,width,height,realism_1to5,skin_texture_1to5,eyes_1to5,hair_hairline_1to5,asymmetry_natural_1to5,matches_brief_1to5,scar_visible_side,beauty_mark_visible_side,artifacts,usable_yes_no,shortlist_yes_no,reviewer,notes
+C1-face,10001,images/C1-face-seed-10001.png,1536,2752,,,,,,,,,,,,,
+C2-signage,10002,images/C2-signage-seed-10002.png,1536,2752,,,,,,,,,,,,,
