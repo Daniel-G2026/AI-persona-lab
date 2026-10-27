@@ -981,3 +981,17 @@ Pending founder + ChatGPT review (and optional blind human viewing). No further 
 - **fal.ai total to date:** $6.78, founder-reported from the fal dashboard (the repo ledger was ~$6.73).
 - **Month-to-date spend:** $25.78 of the $110 cap.
 - **Remaining:** $84.22.
+
+---
+
+## Experiment 012 — Portfolio batch, run 1 (2026-10-27)
+
+**Status:** 5 of 7 arms generated; the 2 quarter-zip arms are held. Within the approved $20 Exp 012 cap (batch cap $3.00). No video.
+
+- **Inputs:** the founder's own photos (git-ignored, `portfolio/inputs/`). Each one was made upright (EXIF), cropped to the founder's boxes, downscaled to a long edge of at most 3072 px and saved as JPEG q95. The config hashes both the originals and the copies that were sent.
+- **Model:** `fal-ai/nano-banana-pro/edit`, 2K PNG, seed 12001. Price re-checked 2026-10-27: $0.15/image (4K is charged 2x). Products are 4:5 (1856×2304); the room is 4:3 (2400×1792).
+- **Arms run:** cologne-bathroom, cologne-dresser, watch-desk, watch-wrist, room-restyle. Prompts are in `portfolio/prompts/`, filled in from the shared templates. `prompts/prompt_realestate_restyle.txt` was drafted from the staging template because the founder-supplied file was not found.
+- **Held:** quarterzip-flatlay and quarterzip-model. The crop box (0.000, 0.068, 0.940, 0.778) cuts off the waistband and both cuffs (the garment ends at about y 0.84, and the right cuff reaches the photo edge). Needs a corrected box.
+- **Cost:** est. $0.75 (5 × $0.15). Month-to-date ≈ $26.53 of $110 (confirm in the fal dashboard).
+- **First look (not a gate verdict):** the room output appears to change the window (blinds raised, wider city view) and the framing of the right wall, so it likely fails G4. Product outputs need the 100% zoom check on logo and label text.
+- **Files:** `portfolio/config.json`, `runs.jsonl`, `contact_sheet.jpg`, `pairs_sheet.jpg` (input vs output), `review.csv` (quality-gate columns, unscored). Full-size outputs are git-ignored and mirrored to BACKUP_DIR.

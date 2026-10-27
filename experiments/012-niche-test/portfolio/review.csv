@@ -1,0 +1,6 @@
+arm,seed,file,width,height,g1_product_fidelity_pass,g2_light_shadow_scale_pass,g3_no_garbled_text_or_warping_pass,g4_realestate_fixed_features_unchanged_pass,g5_boutique_garment_match_pass,gate_all_pass,usable_yes_no,shortlist_yes_no,reviewer,notes
+cologne-bathroom,12001,images/cologne-bathroom-seed-12001.png,1856,2304,,,,,,,,,,
+cologne-dresser,12001,images/cologne-dresser-seed-12001.png,1856,2304,,,,,,,,,,
+room-restyle,12001,images/room-restyle-seed-12001.png,2400,1792,,,,,,,,,,
+watch-desk,12001,images/watch-desk-seed-12001.png,1856,2304,,,,,,,,,,
+watch-wrist,12001,images/watch-wrist-seed-12001.png,1856,2304,,,,,,,,,,
