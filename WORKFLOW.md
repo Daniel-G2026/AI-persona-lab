@@ -18,7 +18,7 @@
 ## Spending and recording
 
 1. Monthly cap **$110 USD** across API generations, failed jobs, subscriptions and paid platform plans. **Get approval before new spending.**
-2. Current committed API ledger through Experiment 011 Part A: **approximately $6.73**. It **does not include** the separately purchased Higgsfield plan, its generations or ad-hoc fal playground calls. Ask for actual transaction/credit usage before reporting a grand total.
+2. Reconciled 2026-10-27: Higgsfield plan **$19/month** (270 credits/month) + fal.ai **$6.78** to date (founder-reported from the fal dashboard; repo ledger was ~$6.73) = **$25.78 month-to-date, $84.22 remaining**. Update this figure from actual billing/credit data as spend changes.
 3. For each new run, record **date, model/mode, exact reference roles, prompt, source licence, settings, duration/resolution, cost/credits, source/output locations and reviewer verdict**.
 4. Save originals and exports separately. Do not assume user chat uploads automatically exist in GitHub or cloud storage. Do not upload third-party copyrighted footage or payments/credentials to the repo.
 
