@@ -1,5 +1,8 @@
 # Experiment 011 Part B — 4-Image Pilot: Real Background vs Generated Scene (Proposal)
 
+> **ON HOLD (2026-10-27).** This proposal describes an unexecuted **brown-haired research-branch** four-image pilot. It was **not generated**. The founder's immediate direction changed to ready-made platforms: Higgsfield Motion Transfer for the working **blonde** influencer and fal Nano Banana Pro for new profile/lifestyle photos. Do not substitute the new blonde character into this brown-haired A/B protocol or spend credits without a fresh, explicit approval. See `../../PRODUCTION_PLAYBOOK.md`.
+
+
 **Status:** Proposed by Claude 2026-10-26. **Awaiting founder approval and the background photo. Nothing generated.**
 
 ## Question

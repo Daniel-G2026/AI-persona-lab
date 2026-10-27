@@ -1,5 +1,8 @@
 # Experiment 011 — Pipeline Benchmark + First Motion Test (Proposal)
 
+> **HISTORICAL PROPOSAL / PARTIALLY COMPLETED.** This document is the original proposal, not the live production plan. **Part A completed** 2026-10-26: two café image-to-video outputs, $1.06, results in `EXPERIMENT_LOG.md` and `partA/`. **Part B's sixteen-image design was replaced by a four-image pilot** (`PILOT_B_PROPOSAL.md`), and the pilot is now **on hold** after the 2026-10-27 shift to **Higgsfield Genjutsu Motion Transfer** with a separate blonde working persona. No re-run, purchase, or training is authorized by this old proposal. See `../../PRODUCTION_PLAYBOOK.md`.
+
+
 **Status:** Proposed by Claude 2026-10-26. **Awaiting founder approval. Nothing generated, nothing spent.** Context: `STRATEGY_REVIEW.md`.
 
 Fixed and unchanged throughout: 2002 face, 1001 baseline, Version A and Version B body references (neither canonical), all Exp 009/010 images and the sealed blind set.
