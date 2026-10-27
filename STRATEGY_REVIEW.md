@@ -1,5 +1,8 @@
 # AI Persona Lab — Production Pipeline Review
 
+> **HISTORICAL SNAPSHOT — 2026-10-26.** The review below accurately describes the research-stage strategy at the time. **It is not the current production workflow.** On 2026-10-27 the founder adopted a separate **blonde Higgsfield influencer** as a working production persona, tested real-video Motion Transfer with a new Milan environment, and began creating **fal Nano Banana Pro profile stills**. See [PRODUCTION_PLAYBOOK.md](PRODUCTION_PLAYBOOK.md) and [PRODUCTION_ASSET_REGISTER.md](PRODUCTION_ASSET_REGISTER.md). Experiment 011 Part A was subsequently completed for the *earlier brown-haired* branch (Omni vs Kling; $1.06). Its Part B real-background pilot is **on hold** in the newer platform-led workflow, not silently canceled or run.
+
+
 **Date:** 2026-10-26 · **Author:** Claude · **Status:** For founder + ChatGPT review. Nothing generated or spent for this review.
 
 ## 1. Where we are (honest summary)
