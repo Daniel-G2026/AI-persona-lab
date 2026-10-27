@@ -854,5 +854,19 @@ Status: Approved by founder (after ChatGPT review): **one face correction (S1-A)
 - **Technical recommendation:** S2-A signfix is the safer first video input (no face edit, strong identity, the main giveaway removed). S1-A facefix is the alternative if the founder prefers the mirror selfie's realism and accepts the slightly polished face.
 
 ### Decision
-Pending founder + ChatGPT review. **No video and no further variants without approval.** Exp 009 originals and the sealed blind set untouched; Version A and Version B separate and provisional.
+Founder (2026-10-26): reassess the technical and commercial direction.
+- After 10 experiments (≈ $5.67), believable, repeatable social video is not yet proven.
+- **Stop proposing incremental corrections to the same photographs as the default workflow.**
+- A strategic pipeline review was requested, comparing:
+  1. Nano Banana Pro reference + local edit
+  2. Runway Gen-4 References
+  3. Kling Elements
+  4. a trained character LoRA
+  5. real photographic backgrounds + character generation
+- Plus a two-workflow still benchmark and an immediate 5 s image-to-video test on S2-A signfix.
+- All references and both body versions retained; nothing canonical.
+
+### Next
+- Strategy review: `STRATEGY_REVIEW.md`.
+- Proposed Experiment 011 (pipeline benchmark + first motion test): `experiments/011-pipeline-benchmark/PROPOSAL.md` (pending founder approval).
 
