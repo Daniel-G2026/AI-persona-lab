@@ -134,7 +134,7 @@
     },
     "quarterzip": {
       "path": "experiments/012-niche-test/portfolio/inputs/normalized/quarterzip.jpg",
-      "sha256": "93ff6e1d080964a39c9c0f3d4244efce9d12f5507a68e058c46040aba59868c6",
+      "sha256": "d78219936f7c9a51e4d0a8de047b1895b129b8727ba9d4c743346a545e5c930d",
       "label": "INPUT quarterzip",
       "source": {
         "path": "experiments/012-niche-test/portfolio/inputs/quarterzip.jpeg",
@@ -143,20 +143,20 @@
       "crop_fraction_upright": [
         0.0,
         0.068,
-        0.94,
-        0.778
+        1.0,
+        0.85
       ],
       "crop_px_upright": [
         0,
         388,
-        4027,
-        4444
+        4284,
+        4855
       ],
       "size": [
-        3050,
+        2946,
         3072
       ],
-      "note": "Crop (0.000, 0.068, 0.940, 0.778) cuts off the waistband and both cuffs; quarterzip arms held for a corrected box."
+      "note": "Run 2 crop. The first box (0.000, 0.068, 0.940, 0.778) cut off the waistband and both cuffs and was never sent. Sleeve outer edges touch the original photo edges."
     },
     "room": {
       "path": "experiments/012-niche-test/portfolio/inputs/normalized/room.jpg",
