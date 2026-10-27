@@ -868,5 +868,21 @@ Founder (2026-10-26): reassess the technical and commercial direction.
 
 ### Next
 - Strategy review: `STRATEGY_REVIEW.md`.
-- Proposed Experiment 011 (pipeline benchmark + first motion test): `experiments/011-pipeline-benchmark/PROPOSAL.md` (pending founder approval).
+- Proposed Experiment 011 (pipeline benchmark + first motion test): `experiments/011-pipeline-benchmark/PROPOSAL.md` (direction approved 2026-10-26; Part A approved; Part B replaced by a 4-image pilot proposal).
+
+---
+
+## Experiment 011 — Pipeline Benchmark
+Date: 2026-10-26
+Founder decisions (after ChatGPT review of `STRATEGY_REVIEW.md`):
+1. **Part A approved:** the first video comparison on the corrected S2-A café photo. A1 Gemini Omni Flash 1.1 (5 s, 720p) and A2 Kling v3 Pro with Elements (5 s, audio off). About $1.06, cap $1.25. **Simplified motion prompt** (founder text, used for both). Verify schemas and prices first; keep raw videos; extract frames; stop after the two videos.
+2. **Part B modified:** no 16-image run yet. First a **4-image pilot in one scene** (W1-A, W1-B, W2-A, W2-B), with W2 on a **rights-clean real background**, explicitly testing whether W2 *preserves* the photograph's environment (lighting, geometry, perspective, objects, text) instead of regenerating it. The background, prompts, costs and evaluation are to be presented for approval first.
+3. **No automatic LoRA recommendation from a pass threshold.** Diagnose the bottleneck (face identity, body identity, backgrounds, posing, general photorealism) and recommend training only if it addresses the demonstrated bottleneck and a clean, consistent dataset exists.
+
+### Part A — setup (verified 2026-10-26 before spending)
+- Settings: `experiments/011-pipeline-benchmark/partA/video_config.json`. Prompts: `prompt_A1_omni.txt`, `prompt_A2_kling.txt` (the same founder text; Kling adds "@Element1 is the woman."). Script: `scripts/video_gen.py` (fal queue API, ledger, cap check).
+- **Start frame:** `experiments/010-correction/candidates/S2-A-signfix.png` (`6ff697ec…`), sent as JPEG q95 at 1072×1920 to keep the request small (outputs are 720p).
+- **A1 Omni Flash 1.1** (`google/gemini-omni-flash/v1.1/image-to-video`): schema verified (`image_url`, `aspect_ratio` 16:9/9:16, `resolution` 360p–4k, `duration` integer seconds). $0.10/s at 720p. **No audio parameter exposed**, so any audio is stripped before review. Sent: 9:16, 720p, 5 s.
+- **A2 Kling v3 Pro** (`fal-ai/kling-video/v3/pro/image-to-video`): schema verified (`start_image_url`, `duration` 3–15, `generate_audio`, `elements` [frontal_image_url + reference_image_urls]). **$0.112/s audio off** ($0.56 / 5 s). Aspect follows the start image.
+  - Element @Element1: frontal = 2002 face crop; references = S2-A face crop + Version A front body reference. Kling's page says references are optional and the API schema says at least one, so sending them satisfies both.
 
