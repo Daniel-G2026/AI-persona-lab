@@ -296,7 +296,10 @@ def main():
     if projected > cap:
         sys.exit(f"Refusing: projected spend ${projected:.4f} exceeds cap ${cap:.2f}.")
 
-    ref_uri = {n: "data:image/png;base64," + base64.b64encode((REPO / r["path"]).read_bytes()).decode()
+    def mime(path):
+        return "image/jpeg" if Path(path).suffix.lower() in (".jpg", ".jpeg") else "image/png"
+
+    ref_uri = {n: f"data:{mime(r['path'])};base64," + base64.b64encode((REPO / r["path"]).read_bytes()).decode()
                for n, r in refs.items()}
 
     def payload_for(arm, seed):
