@@ -796,5 +796,27 @@ Decisions:
 - **Priority:** one convincing, identity-consistent photo to serve as the first video-test input.
 
 ### Next Experiment
-Experiment 010: minimal image correction. Proposal: `experiments/010-correction/PROPOSAL.md` (pending founder approval).
+Experiment 010: minimal image correction. Proposal: `experiments/010-correction/PROPOSAL.md` (2-image checkpoint approved 2026-10-26).
+
+---
+
+## Experiment 010 — Minimal Image Correction (2-image checkpoint)
+Date: 2026-10-26
+Status: Approved by founder (after ChatGPT review): **one face correction (S1-A) and one signage correction (S2-A)**, about $0.30. Remaining variants and video not approved. Running.
+
+### Setup
+- Bases copied from Exp 009, hash-verified against Exp 009 `runs.jsonl`:
+  - `experiments/010-correction/base/009-S1-A-seed-9101.png` (`392ee08f…`)
+  - `…/009-S2-A-seed-9103.png` (`0452a0f1…`)
+  - **The Exp 009 originals stay read-only, and the sealed blind key is unchanged** (SHA-256 still `6db95176…`).
+- Method: Nano Banana Pro Edit (9:16, 2K) on the whole photo, then `scripts/local_composite.py` pastes the edit back **only inside a hand-drawn mask** (alpha ramps up inside the mask; exactly 0 outside). It checks that sizes match (no rescaling), counts changed pixels outside the mask (must be 0), and reports how much the edit drifted elsewhere.
+- Masks (`experiments/010-correction/masks/`, `masks.json`, previews `mask_preview_S1-A.jpg` / `mask_preview_S2-A.jpg`):
+  - **S1-A face:** face and ear, hairline to chin. It stops at x=733, so the phone, its camera reflection and the fingers are excluded. 6 px inside feather.
+  - **S2-A signage:** the visible chalkboard face, cut around her strap, bag and jeans (widened once after a preview showed garbled fragments left uncovered beside the bag), plus the reflected board above the window sill. 4 px inside feather.
+- Prompts (`prompt_C1-face.txt`, `prompt_C2-signage.txt`), with founder adjustments:
+  1. C1 keeps her original downward gaze, expression, head angle, lighting, skin texture and the phone reflection. The face must resemble 2002 without looking pasted in. **Mirror check:** the beauty mark is on the left side of the picture (the cheek nearer her visible ear), the anatomically correct side in a reflection.
+  2. C2 uses minimal readable lettering ("COFFEE" / "& PASTRIES" only, no other words or drawings). The window reflection is soft, low-contrast and unreadable, not artificially sharp. The rest of the photo is preserved.
+  3. Localized compositing, 1:1 edge checks, zero changed pixels outside the masks.
+  4. Exp 009 photos and the sealed blind set preserved.
+- Seeds 10001 (C1), 10002 (C2). Cap $0.40.
 

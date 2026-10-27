@@ -1,0 +1,80 @@
+{
+  "experiment": "010-correction",
+  "approved_by_founder": "2026-10-26 (2-image checkpoint: one face correction, one signage correction)",
+  "proposal": "experiments/010-correction/PROPOSAL.md",
+  "spend_cap_usd": 0.4,
+  "references": {
+    "S1-A": {
+      "path": "experiments/010-correction/base/009-S1-A-seed-9101.png",
+      "label": "BASE S1-A (Exp 009)",
+      "sha256": "392ee08f8faa8b88bcde47dfcceb279046ea9cf93500765f6f4b78e8f2a5de29"
+    },
+    "S2-A": {
+      "path": "experiments/010-correction/base/009-S2-A-seed-9103.png",
+      "label": "BASE S2-A (Exp 009)",
+      "sha256": "0452a0f1932175822729d8463fc141585bc868b483159de7ff60e65d75a7bc39"
+    },
+    "2002": {
+      "path": "experiments/002-portrait-refine/shortlist/nanobananapro-seed-2002.png",
+      "label": "REF 2002 (face)",
+      "sha256": "5b5191d0f0cf2e24f752b9e800115cf0684417b8b57890c1bcd2a774ab818893"
+    }
+  },
+  "arms": [
+    {
+      "name": "C1-face",
+      "base": "S1-A",
+      "mask": "masks/S1-A-face.png",
+      "feather_px": 6,
+      "references": [
+        "S1-A",
+        "2002"
+      ],
+      "prompt_file": "prompt_C1-face.txt",
+      "seed_planned": 10001,
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "9:16",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    },
+    {
+      "name": "C2-signage",
+      "base": "S2-A",
+      "mask": "masks/S2-A-signage.png",
+      "feather_px": 4,
+      "references": [
+        "S2-A"
+      ],
+      "prompt_file": "prompt_C2-signage.txt",
+      "seed_planned": 10002,
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "9:16",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-25"
+      }
+    }
+  ],
+  "rules": [
+    "Composite back only inside the approved masks; verify 0 changed pixels outside.",
+    "Check mask edges at 1:1.",
+    "No further variants or video without founder approval.",
+    "Exp 009 originals and the sealed blind set are untouched."
+  ]
+}
