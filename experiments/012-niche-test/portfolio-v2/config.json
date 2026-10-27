@@ -1,0 +1,278 @@
+{
+  "experiment": "012-niche-test/portfolio-v2",
+  "description": "Fix test for the portfolio batch, whose outputs read as AI: phone-photo prompts (no stock props, true scale, front-facing product), then the real product's label/dial composited back over the generated one with scripts/product_composite.py.",
+  "approved_by_founder": "PENDING (dry-run shown 2026-10-27; awaiting 'go')",
+  "proposal": "experiments/012-niche-test/PROPOSAL.md",
+  "spend_cap_usd": 0.6,
+  "seed_planned": 12101,
+  "input_normalization": "Founder originals (sources, git-ignored) are 5712x4284 phone JPEGs that rely on EXIF orientation. Sent references: EXIF orientation applied, then the founder's crop box (fractions of the upright width/height; room uncropped), then downscaled with Lanczos so the long edge is at most 3072 px (never upscaled), saved JPEG q95 4:4:4. Originals are untouched.",
+  "references": {
+    "cologne1": {
+      "path": "experiments/012-niche-test/portfolio/inputs/normalized/cologne1.jpg",
+      "sha256": "7cab8844fa28106c8fc5da0133aa1ef5ea03b422ff7ad2b306ae956fd05796b3",
+      "label": "INPUT cologne1",
+      "source": {
+        "path": "experiments/012-niche-test/portfolio/inputs/cologne1.jpeg",
+        "sha256": "8356f5be731ba764b523ec3704d01a891b400dd2d342af1015fb43cd1c0177da"
+      },
+      "crop_fraction_upright": [
+        0.151,
+        0.045,
+        0.874,
+        0.723
+      ],
+      "crop_px_upright": [
+        647,
+        257,
+        3744,
+        4130
+      ],
+      "size": [
+        2456,
+        3072
+      ]
+    },
+    "cologne3": {
+      "path": "experiments/012-niche-test/portfolio/inputs/normalized/cologne3.jpg",
+      "sha256": "7df754a8c4392a1b41cdaff9f4b60e1eeaeb44be3aaac55bb03caba8fba399c6",
+      "label": "INPUT cologne3",
+      "source": {
+        "path": "experiments/012-niche-test/portfolio/inputs/cologne3.jpeg",
+        "sha256": "a67fdbf825129ef0be0264809934fc2c40cc90065ddcceaaef975ca50b491939"
+      },
+      "crop_fraction_upright": [
+        0.193,
+        0.018,
+        0.904,
+        0.678
+      ],
+      "crop_px_upright": [
+        827,
+        103,
+        3873,
+        3873
+      ],
+      "size": [
+        2482,
+        3072
+      ]
+    },
+    "watch1": {
+      "path": "experiments/012-niche-test/portfolio/inputs/normalized/watch1.jpg",
+      "sha256": "c6e4b3c4e6c0ac1cb4e4054dba7585cd15203ffa1f80a299a7b9c840a7401623",
+      "label": "INPUT watch1",
+      "source": {
+        "path": "experiments/012-niche-test/portfolio/inputs/watch1.jpeg",
+        "sha256": "c6503d54f3ab1f2832bc350fc013a180f6d3febc9d3353eb4ad89e7a4a8bb09d"
+      },
+      "crop_fraction_upright": [
+        0.241,
+        0.203,
+        0.76,
+        0.565
+      ],
+      "crop_px_upright": [
+        1032,
+        1160,
+        3256,
+        3227
+      ],
+      "size": [
+        2224,
+        2067
+      ]
+    },
+    "watch2": {
+      "path": "experiments/012-niche-test/portfolio/inputs/normalized/watch2.jpg",
+      "sha256": "4d94791e8aa6c0f577404684b5ecc8e8a0c9685012f53b55de5961e7d83d65fb",
+      "label": "INPUT watch2",
+      "source": {
+        "path": "experiments/012-niche-test/portfolio/inputs/watch2.jpeg",
+        "sha256": "c097a5c805d497daad18b70387ae807d3975602a08069c38986a7d3babcd0f85"
+      },
+      "crop_fraction_upright": [
+        0.313,
+        0.19,
+        0.868,
+        0.642
+      ],
+      "crop_px_upright": [
+        1341,
+        1085,
+        3719,
+        3667
+      ],
+      "size": [
+        2378,
+        2582
+      ]
+    },
+    "watch3": {
+      "path": "experiments/012-niche-test/portfolio/inputs/normalized/watch3.jpg",
+      "sha256": "c176c79a69c09fc37d869d410654e723898938a25bc66f52416bdcafc0701d15",
+      "label": "INPUT watch3",
+      "source": {
+        "path": "experiments/012-niche-test/portfolio/inputs/watch3.jpeg",
+        "sha256": "076d7203fd317a8a4a250873d02e7b18b8498f736f12756edabeb892ea40fb2b"
+      },
+      "crop_fraction_upright": [
+        0.103,
+        0.344,
+        0.711,
+        0.633
+      ],
+      "crop_px_upright": [
+        441,
+        1965,
+        3046,
+        3616
+      ],
+      "size": [
+        2605,
+        1651
+      ]
+    }
+  },
+  "arms": [
+    {
+      "name": "cologne-bathroom",
+      "niche": "product",
+      "references": [
+        "cologne1",
+        "cologne3"
+      ],
+      "prompt_file": "prompts/prompt_cologne-bathroom.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "4:5",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-27 (fal.ai model page: $0.15/image at 1K-2K, 4K charged 2x)"
+      }
+    },
+    {
+      "name": "watch-desk",
+      "niche": "product",
+      "references": [
+        "watch1",
+        "watch2",
+        "watch3"
+      ],
+      "prompt_file": "prompts/prompt_watch-desk.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "4:5",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-27 (fal.ai model page: $0.15/image at 1K-2K, 4K charged 2x)"
+      }
+    },
+    {
+      "name": "watch-wrist",
+      "niche": "product",
+      "references": [
+        "watch1",
+        "watch2",
+        "watch3"
+      ],
+      "prompt_file": "prompts/prompt_watch-wrist.txt",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "api_url": "https://fal.run/fal-ai/nano-banana-pro/edit",
+      "params": {
+        "aspect_ratio": "4:5",
+        "resolution": "2K",
+        "num_images": 1,
+        "output_format": "png"
+      },
+      "cost": {
+        "type": "per_image",
+        "usd": 0.15,
+        "price_checked_on": "2026-10-27 (fal.ai model page: $0.15/image at 1K-2K, 4K charged 2x)"
+      }
+    }
+  ],
+  "composite": {
+    "script": "scripts/product_composite.py",
+    "cologne-bathroom": {
+      "reference": "cologne1",
+      "alignment": "SIFT + RANSAC (automatic)",
+      "regions": [
+        "rect:0.33,0.46,0.65,0.575:text",
+        "rect:0.27,0.575,0.71,0.745",
+        "rect:0.33,0.755,0.64,0.805:text"
+      ],
+      "options": "--feather-px 22 --color-strength 0.8"
+    },
+    "watch-desk": {
+      "reference": "watch1",
+      "alignment": "manual --points: 4 dial-edge points (crown direction and 90° steps), marked on the new output",
+      "regions": [
+        "ellipse:0.5315,0.5105,0.186,0.194"
+      ],
+      "options": "--feather-px 6 --color-strength 0.8",
+      "reference_points": {
+        "crown_side": [
+          0.49,
+          0.318
+        ],
+        "next_cw": [
+          0.716,
+          0.5
+        ],
+        "opposite_crown": [
+          0.485,
+          0.703
+        ],
+        "next_ccw": [
+          0.347,
+          0.52
+        ]
+      }
+    },
+    "watch-wrist": {
+      "reference": "watch1",
+      "alignment": "manual --points, as watch-desk",
+      "regions": [
+        "ellipse:0.5315,0.5105,0.186,0.194"
+      ],
+      "options": "--feather-px 6 --color-strength 0.8"
+    },
+    "tested_on_run1": "2026-10-27, free: cologne 44/39 RANSAC inliers, 0 pixels changed outside the region; watch SIFT failed (redrawn dial), manual points worked on watch-wrist."
+  },
+  "review_columns": [
+    "arm",
+    "seed",
+    "file",
+    "width",
+    "height",
+    "composite_ok_yes_no",
+    "reads_as_real_photo_1to5",
+    "g1_product_fidelity_pass",
+    "g2_light_shadow_scale_pass",
+    "g3_no_garbled_text_or_warping_pass",
+    "g4_realestate_fixed_features_unchanged_pass",
+    "g5_boutique_garment_match_pass",
+    "gate_all_pass",
+    "usable_yes_no",
+    "shortlist_yes_no",
+    "reviewer",
+    "notes"
+  ],
+  "rules": [
+    "3 images, one per arm (seed 12101). No re-rolls or video without founder approval.",
+    "Composites are reviewed at 100% zoom alongside the raw output; a failed alignment is reported, not forced.",
+    "Prompts are written directly for this test (phone-photo style), not filled from the shared templates; templates are unchanged."
+  ]
+}
