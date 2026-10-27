@@ -34,3 +34,5 @@ Validate one short **rights-cleared Motion Transfer** clip with the chosen blond
 ## Business direction test (Exp 012, proposed)
 
 **[experiments/012-niche-test/](experiments/012-niche-test/)** — approved test of selling AI product/listing content to small businesses (product brands, real estate agents, clothing boutiques): proposal, outreach playbook, prompts, pitch tracker and sample review sheet. Separate from the persona workflow above. **Approved by founder 2026-10-27, spend cap $20; nothing generated yet** (estimate ≈ $16.86). See the Experiment 012 entry in [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md).
+
+**[BUSINESS.md](BUSINESS.md)** — Outward Studio business details: name, contact, starter offer, payment and registration status.
